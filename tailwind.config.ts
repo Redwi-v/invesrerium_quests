@@ -1,20 +1,36 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
-  theme: {
-    extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-      },
-    },
-  },
-  plugins: [],
+	content: [
+		'./app/**/*.{js,ts,jsx,tsx,mdx}', // Note the addition of the `app` directory.
+		'./pages/**/*.{js,ts,jsx,tsx,mdx}',
+		'./components/**/*.{js,ts,jsx,tsx,mdx}',
+
+		// Or if using `src` directory:
+		'./src/**/*.{js,ts,jsx,tsx,mdx}',
+	],
+	theme: {
+		extend: {
+			screens: {
+				xs: '376px',
+				md: '769px',
+				lg: '1025px',
+				pc: '1660px',
+			},
+			colors: {
+				'bg': '#232323',
+
+				'absolute/100': '#fff',
+				'border': 'rgba(111,111,111, .15)',
+				'absolute/800': '#2E2E2E',
+
+				'blue/400': '#924FFF',
+				'green/400': '#00AF3C',
+
+				'tone/200': '#333333',
+			},
+		},
+	},
+	plugins: [],
 };
 export default config;
