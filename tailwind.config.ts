@@ -2,10 +2,6 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
 	content: [
-		'./app/**/*.{js,ts,jsx,tsx,mdx}', // Note the addition of the `app` directory.
-		'./pages/**/*.{js,ts,jsx,tsx,mdx}',
-		'./components/**/*.{js,ts,jsx,tsx,mdx}',
-
 		// Or if using `src` directory:
 		'./src/**/*.{js,ts,jsx,tsx,mdx}',
 	],
@@ -23,6 +19,7 @@ const config: Config = {
 				'absolute/100': '#fff',
 				'border': 'rgba(111,111,111, .15)',
 				'absolute/800': '#2E2E2E',
+				'absolute/700': '#444444',
 
 				'blue/400': '#924FFF',
 				'green/400': '#00AF3C',

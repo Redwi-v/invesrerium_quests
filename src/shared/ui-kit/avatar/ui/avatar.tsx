@@ -7,11 +7,13 @@ import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
 interface AvatarProps {
 	className?: string;
 	contentClassName?: string;
+	hideLevelLine?: boolean;
+	levelClassName?: string;
 }
 
 export const Avatar: FC<AvatarProps & AvatarProps> = props => {
 	const percentage = 50;
-	const { className, contentClassName, ...muiProps } = props;
+	const { className, hideLevelLine, levelClassName, contentClassName, ...muiProps } = props;
 
 	const size = useWindowSize();
 
@@ -23,27 +25,30 @@ export const Avatar: FC<AvatarProps & AvatarProps> = props => {
 				{...muiProps}
 				className={`${className} w-[40px] h-[40px] max-sm:w-[32px] max-sm:h-[32px]`}
 			/>
-			<div>
-				<CircularProgressbar
-					className='absolute top-0 left-0 !w-[100%] !h-[100%] rotate-[140deg]'
-					strokeWidth={size.width >= 640 ? 7 : 5}
-					value={percentage}
-					styles={buildStyles({
-						pathColor: '#924FFF',
-						trailColor: 'none',
-						strokeLinecap: 'butt',
-					})}
-				/>
-			</div>
+			{!hideLevelLine && (
+				<div>
+					<CircularProgressbar
+						className='absolute top-0 left-0 !w-[100%] !h-[100%] rotate-[140deg]'
+						strokeWidth={size.width >= 640 ? 7 : 5}
+						value={percentage}
+						styles={buildStyles({
+							pathColor: '#924FFF',
+							trailColor: 'none',
+							strokeLinecap: 'butt',
+						})}
+					/>
+				</div>
+			)}
 
 			<div
-				className='absolute 
+				className={`absolute 
 					right-[-7px] bottom-[-4px]
 					border-[3px] w-8 h-8 flex justify-center
 					items-center border-absolute/800
 				 bg-blue/400 radius rounded-[50%] max-sm:w-5 max-sm:h-5 max-sm:font-bold-4
-				 	max-sm:text-[8px] max-sm:leading-[11px] max-sm:bottom-[-2px] max-sm:right-[-2px] max-sm:border-[2px]
-				'
+				 	max-sm:text-[8px] max-sm:leading-[11px] max-sm:bottom-[-2px] max-sm:right-[-2px] 
+					max-sm:border-[2px] ${levelClassName}
+				`}
 			>
 				<span>6</span>
 			</div>
