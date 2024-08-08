@@ -9,7 +9,8 @@
     mx-auto max-w-[1328px] px-4
     max-lg:max-w-none max-lg:px-11
     max-md:px-9
-    max-xs:px-3
+    max-xs:!px-3
+    w-full
 
   ;
 
@@ -19,11 +20,21 @@ button, a, span {
   font-family: inherit !important;
 }
 
+
+html, body {
+  min-height: 100%;
+}
 .main {
-  @apply pt-[84px] max-sm:pt-[60px];
+  @apply pt-[84px] max-sm:pt-[60px] flex flex-col w-full h-full;
+  
+  .content {
+    display: block;
+    min-height: calc(100vh - 277px);
+  }
 }
 
 body {
+  
   background: #232323;
   color: #fff;
 

@@ -8,10 +8,11 @@ const config: Config = {
 	theme: {
 		extend: {
 			screens: {
-				xs: '376px',
-				md: '769px',
-				lg: '1025px',
-				pc: '1660px',
+				'xs': '376px',
+				'md-xs': '670px',
+				'md': '769px',
+				'lg': '1025px',
+				'pc': '1660px',
 			},
 			colors: {
 				'bg': '#232323',
@@ -22,7 +23,9 @@ const config: Config = {
 				'absolute/700': '#444444',
 
 				'blue/400': '#924FFF',
+				'blue/500': '#6A1EE6',
 				'green/400': '#00AF3C',
+				'red': '#FF2E00',
 
 				'tone/200': '#333333',
 			},

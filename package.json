@@ -16,6 +16,7 @@
     "@types/react-slick": "^0.23.13",
     "investerium_quests": "file:",
     "next": "14.2.5",
+    "next-nprogress-bar": "^2.3.13",
     "react": "^18",
     "react-circular-progressbar": "^2.1.0",
     "react-dom": "^18",

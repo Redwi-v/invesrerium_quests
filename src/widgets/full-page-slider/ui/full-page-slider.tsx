@@ -4,7 +4,7 @@ import Slider, { Settings } from 'react-slick';
 import { ArrowIcon } from '../../../shared/images/ui/arrow';
 import Image from 'next/image';
 import { Avatar } from '@mui/material';
-import { Button } from '@/shared/ui-kit';
+import { Button, H1 } from '@/shared/ui-kit';
 import { CoinIcon, CupIcon, Spiral, XpIcon } from '@/shared/images';
 
 interface FullPageSliderProps {}
@@ -37,7 +37,7 @@ const FullPageSlider: FC<FullPageSliderProps> = () => {
 				<Spiral className='absolute rotate-90 -left-[359px] -top-[44px]' />
 
 				<div className='flex justify-between'>
-					<h2 className='font-bold text-3xl '>Featured</h2>
+					<H1>Featured</H1>
 					<div className='flex'>
 						<button
 							onClick={sliderPrev}

@@ -10,8 +10,7 @@ interface MainPageViewProps {}
 
 export const MainPageView: FC<MainPageViewProps> = () => {
 	return (
-		<main className='main'>
-			<Header />
+		<>
 			<div className='max-md:hidden'>
 				<UserStats />
 			</div>
@@ -24,7 +23,6 @@ export const MainPageView: FC<MainPageViewProps> = () => {
 				<span className='mb-[62px] border-b border-border block max-[670px]:mb-8'></span>
 			</div>
 			<ListSlider mainTitle='New Quests' />
-			<Footer />
-		</main>
+		</>
 	);
 };

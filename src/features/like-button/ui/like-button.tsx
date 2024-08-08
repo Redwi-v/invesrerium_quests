@@ -16,7 +16,7 @@ const LikeButton: FC<LikeButtonProps> = ({ className }) => {
 		>
 			<HeartIcon
 				className='w-5 h-5'
-				pathClassName={`fill-absolute/100 ${liked ? 'fill-blue/400' : ''}`}
+				pathClassName={`fill-absolute/100 ${liked ? 'fill-red' : ''}`}
 			/>
 		</button>
 	);

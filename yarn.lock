@@ -559,7 +559,7 @@
 
 "@types/react-slick@^0.23.13":
   version "0.23.13"
-  resolved "https://registry.npmmirror.com/@types/react-slick/-/react-slick-0.23.13.tgz#037434e73a58063047b121e08565f7185d811f36"
+  resolved "https://registry.npmmirror.com/@types/react-slick/-/react-slick-0.23.13.tgz"
   integrity sha512-bNZfDhe/L8t5OQzIyhrRhBr/61pfBcWaYJoq6UDqFtv5LMwfg4NsVDD2J8N01JqdAdxLjOt66OZEp6PX+dGs/A==
   dependencies:
     "@types/react" "*"
@@ -1014,7 +1014,8 @@ index-to-position@^0.1.2:
     "@emotion/styled" "^11.13.0"
     "@fotonjs/core" "^0.0.8"
     "@mui/material" "^5.16.6"
-    investerium_quests "file:../../../AppData/Local/Yarn/Cache/v6/npm-investerium-quests-0.1.0-55ebac38-e530-4a13-a92e-09728de23707-1722755763463/node_modules/investerium_quests"
+    "@types/react-slick" "^0.23.13"
+    investerium_quests "file:../../../AppData/Local/Yarn/Cache/v6/npm-investerium-quests-0.1.0-b36d0d0f-d45a-4a91-9c65-85ab67e548d5-1723040033341/node_modules/investerium_quests"
     next "14.2.5"
     react "^18"
     react-circular-progressbar "^2.1.0"
@@ -1214,6 +1215,13 @@ nanoid@^3.3.6, nanoid@^3.3.7:
   resolved "https://registry.npmmirror.com/nanoid/-/nanoid-3.3.7.tgz"
   integrity sha512-eSRppjcPIatRIMC1U6UngP8XFcz8MQWGQdt1MTBQ7NaAmvXDfvNxbvWV3x2y6CdEUciCSsDHDQZbhYaB8QEo2g==
 
+next-nprogress-bar@^2.3.13:
+  version "2.3.13"
+  resolved "https://registry.npmmirror.com/next-nprogress-bar/-/next-nprogress-bar-2.3.13.tgz#1e19b880e02dc6156f3bab6d762824ec8d2365ee"
+  integrity sha512-eJQDvPSUwZ2yRyNKqAH6xTFI4RtIFvs+qtY8essTtfooyaxLGmkanEO7vL83U166bullMtVpixD6FQk5SQkhMw==
+  dependencies:
+    nprogress "^0.2.0"
+
 next@14.2.5:
   version "14.2.5"
   resolved "https://registry.npmmirror.com/next/-/next-14.2.5.tgz"
@@ -1248,6 +1256,11 @@ normalize-path@^3.0.0, normalize-path@~3.0.0:
   version "3.0.0"
   resolved "https://registry.npmmirror.com/normalize-path/-/normalize-path-3.0.0.tgz"
   integrity sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==
+
+nprogress@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.npmmirror.com/nprogress/-/nprogress-0.2.0.tgz#cb8f34c53213d895723fcbab907e9422adbcafb1"
+  integrity sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==
 
 object-assign@^4.0.1, object-assign@^4.1.1:
   version "4.1.1"

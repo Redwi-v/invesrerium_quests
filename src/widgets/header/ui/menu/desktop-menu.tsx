@@ -36,7 +36,7 @@ export const DesktopMenu: React.FC<IDesktopMenuProps> = ({ isOpen, className }) 
 					<ListItemIcon className='mr-2 w-fit !min-w-0'>
 						<ProfileIcon />
 					</ListItemIcon>
-					<ListItemText className='text-sm'>Cut</ListItemText>
+					<ListItemText className='text-sm'>My Profile</ListItemText>
 				</Link>
 
 				<Link

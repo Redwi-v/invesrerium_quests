@@ -26,15 +26,7 @@ export const XpIcon: FC<{ className?: string }> = ({ className }) => {
 					fill-opacity='0.72'
 				/>
 			</g>
-			<defs>
-				<clipPath id='clip0_1_2890'>
-					<rect
-						width='24'
-						height='24'
-						fill='white'
-					/>
-				</clipPath>
-			</defs>
+
 		</svg>
 	);
 };
