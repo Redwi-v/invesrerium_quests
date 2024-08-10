@@ -1015,8 +1015,9 @@ index-to-position@^0.1.2:
     "@fotonjs/core" "^0.0.8"
     "@mui/material" "^5.16.6"
     "@types/react-slick" "^0.23.13"
-    investerium_quests "file:../../../AppData/Local/Yarn/Cache/v6/npm-investerium-quests-0.1.0-b36d0d0f-d45a-4a91-9c65-85ab67e548d5-1723040033341/node_modules/investerium_quests"
+    investerium_quests "file:../../../AppData/Local/Yarn/Cache/v6/npm-investerium-quests-0.1.0-9f460704-724d-4518-bff6-0e47cabb4239-1723286245630/node_modules/investerium_quests"
     next "14.2.5"
+    next-nprogress-bar "^2.3.13"
     react "^18"
     react-circular-progressbar "^2.1.0"
     react-dom "^18"
@@ -1196,6 +1197,11 @@ minimatch@^9.0.4:
   resolved "https://registry.npmmirror.com/minipass/-/minipass-7.1.2.tgz"
   integrity sha512-qOOzS1cBTWYF4BH8fVePDBOO9iptMnGUEZwNc/cMWnTV2nVLZ7VoNWEPHkYczZA0pdoA7dl6e7FL659nX9S2aw==
 
+moment@^2.30.1:
+  version "2.30.1"
+  resolved "https://registry.npmmirror.com/moment/-/moment-2.30.1.tgz#f8c91c07b7a786e30c59926df530b4eac96974ae"
+  integrity sha512-uEmtNhbDOrWPFS+hdjFCBfy9f2YoyzRpwcl+DqpC6taX21FzsTLQVbMV/W7PzNSX6x/bhC1zA3c2UQ5NzH6how==
+
 ms@2.1.2:
   version "2.1.2"
   resolved "https://registry.npmmirror.com/ms/-/ms-2.1.2.tgz"
@@ -1217,7 +1223,7 @@ nanoid@^3.3.6, nanoid@^3.3.7:
 
 next-nprogress-bar@^2.3.13:
   version "2.3.13"
-  resolved "https://registry.npmmirror.com/next-nprogress-bar/-/next-nprogress-bar-2.3.13.tgz#1e19b880e02dc6156f3bab6d762824ec8d2365ee"
+  resolved "https://registry.npmmirror.com/next-nprogress-bar/-/next-nprogress-bar-2.3.13.tgz"
   integrity sha512-eJQDvPSUwZ2yRyNKqAH6xTFI4RtIFvs+qtY8essTtfooyaxLGmkanEO7vL83U166bullMtVpixD6FQk5SQkhMw==
   dependencies:
     nprogress "^0.2.0"
@@ -1259,7 +1265,7 @@ normalize-path@^3.0.0, normalize-path@~3.0.0:
 
 nprogress@^0.2.0:
   version "0.2.0"
-  resolved "https://registry.npmmirror.com/nprogress/-/nprogress-0.2.0.tgz#cb8f34c53213d895723fcbab907e9422adbcafb1"
+  resolved "https://registry.npmmirror.com/nprogress/-/nprogress-0.2.0.tgz"
   integrity sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==
 
 object-assign@^4.0.1, object-assign@^4.1.1:

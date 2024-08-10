@@ -5,12 +5,12 @@ import React, { FC, PropsWithChildren } from 'react';
 const Providers: FC<PropsWithChildren> = ({ children }) => {
 	return (
 		<>
-			<ProgressBar
+			{/* <ProgressBar
 				height='3px'
 				color='#924FFF'
 				options={{ showSpinner: true }}
 				shallowRouting
-			/>
+			/> */}
 		</>
 	);
 };

@@ -12,7 +12,7 @@ export const Input: FC<IInputProps> = props => {
 
 	return (
 		<div
-			className={`${containerClassName} flex gap-2 p-3 bg-absolute/100 bg-opacity-[.07] rounded-xl min-w-[404px] max-[850px]:min-w-[244px]`}
+			className={`${containerClassName} flex gap-2 p-3 bg-absolute/100 bg-opacity-[.07] rounded-xl min-w-[404px] max-lg:min-w-0 max-lg:!max-w-[244px]`}
 		>
 			<div className='w-fit'>{icon}</div>
 			<input

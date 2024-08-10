@@ -2,7 +2,6 @@
 import { QuestCard } from '@/entities/quest';
 import { useWindowSize } from '@/shared/hooks';
 import {
-	BurgerMenu,
 	ChartIcon,
 	ChartIconDown,
 	CoinIcon,
@@ -59,17 +58,17 @@ export const QuestsPageView: FC<IQuestsPageViewProps> = props => {
 	return (
 		<div className='custom-container'>
 			<div className='pt-[42px]'>
-				<div className='flex justify-between max-md-xs:flex-wrap'>
-					<H2 className='max-md-xs:w-full max-md-xs:mb-[26px]'>Quests</H2>
-					<div className='flex gap-4 items-center max-md-xs:w-full max-md-xs:!grid max-md-xs:grid-cols-2 '>
+				<div className='flex justify-between max-md:flex-wrap'>
+					<H2 className='max-md:w-full max-md:mb-[26px]'>Quests</H2>
+					<div className='flex gap-4 items-center max-md:w-full max-md:!grid max-md:grid-cols-2 '>
 						<Input
-							containerClassName='max-md-xs:!min-w-min '
+							containerClassName='max-md:!min-w-min '
 							icon={<SearchIcon />}
 							inputParas={{ placeholder: 'Search' }}
 						/>
 						<SelectMenu
-							classes={{ formControl: 'max-md-xs:min-w-0 max-md-xs:w-full' }}
-							className='max-md-xs:w-full max-md-xs:min-w-0'
+							classes={{ formControl: 'max-md:min-w-0 max-md:w-full' }}
+							className='max-md:w-full max-md:min-w-0'
 							items={[
 								({ isActive }) => (
 									<ListItem
@@ -117,17 +116,17 @@ export const QuestsPageView: FC<IQuestsPageViewProps> = props => {
 						/>
 					</div>
 				</div>
-				<div className='flex gap-6 mt-6 pb-[62px] max-[1200px]:flex-col max-md-xs:mt-4'>
-					{((windowSizes.width < 670 && filtersIsOpen) || windowSizes.width > 670) && (
+				<div className='flex gap-6 mt-6 pb-[62px] max-pc:flex-col max-lg:mt-4'>
+					{((windowSizes.width < 768 && filtersIsOpen) || windowSizes.width > 768) && (
 						<div
 							className={`w-[306px] 
-                flex flex-col gap-4 max-[1200px]:grid 
-                max-[1200px]:grid-cols-3 max-[1200px]:w-full 
-                max-md-xs:fixed max-md-xs:left-0 max-[620px]:right-0 
-                max-md-xs:top-0 max-md-xs:bottom-0 max-md-xs:z-30 max-md-xs:bg-bg max-md-xs:!flex-col max-md-xs:!flex
-                ${windowSizes.width < 670 && 'custom-container'}`}
+                flex flex-col gap-4 max-pc:grid 
+                max-pc:grid-cols-3 max-pc:w-full 
+                max-md:fixed max-md:left-0 max-[620px]:right-0 
+                max-md:top-0 max-md:bottom-0 max-md:z-30 max-md:bg-bg max-md:!flex-col max-md:!flex
+                ${windowSizes.width < 768 && 'px-3'}`}
 						>
-							<div className='hidden max-md-xs:flex justify-between pt-3 mb-2 items-center'>
+							<div className='hidden max-md:flex justify-between pt-3 mb-2 items-center'>
 								<H2>Filter</H2>
 								<button
 									onClick={() => setFiltersIsOpen(false)}
@@ -207,8 +206,9 @@ export const QuestsPageView: FC<IQuestsPageViewProps> = props => {
 							/>
 						</div>
 					)}
-					{windowSizes.width < 670 && (
+					{windowSizes.width < 768 && (
 						<Button
+							buttonStyle='purple'
 							onClick={() => setFiltersIsOpen(value => !value)}
 							className=''
 						>

@@ -10,7 +10,13 @@ interface NotConnectedHeaderContentProps {
 const NotConnectedHeaderContent: FC<NotConnectedHeaderContentProps> = ({ setUser }) => {
 	return (
 		<div className='flex'>
-			<Button onClick={() => setUser(true)}>Connect Wallet</Button>
+			<Button
+				buttonStyle='purple'
+				className=''
+				onClick={() => setUser(true)}
+			>
+				Connect Wallet
+			</Button>
 			<MobileMenu />
 		</div>
 	);

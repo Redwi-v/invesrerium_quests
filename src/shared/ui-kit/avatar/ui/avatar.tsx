@@ -19,11 +19,11 @@ export const Avatar: FC<AvatarProps & AvatarProps> = props => {
 
 	return (
 		<div
-			className={`relative ${contentClassName} flex w-[56px] h-[56px] max-sm:w-[40px] max-sm:h-[40px] justify-center items-center`}
+			className={`relative ${contentClassName} flex w-[52px] h-[52px] max-md:w-[40px] max-md:h-[40px] justify-center items-center`}
 		>
 			<MuiAvatar
 				{...muiProps}
-				className={`${className} w-[40px] h-[40px] max-sm:w-[32px] max-sm:h-[32px]`}
+				className={`${className} w-[40px] h-[40px] max-md:w-[32px] max-md:h-[32px]`}
 			/>
 			{!hideLevelLine && (
 				<div>
@@ -42,15 +42,15 @@ export const Avatar: FC<AvatarProps & AvatarProps> = props => {
 
 			<div
 				className={`absolute 
-					right-[-7px] bottom-[-4px]
-					border-[3px] w-8 h-8 flex justify-center
+					-right-[2px] -bottom-[2px]
+					border-[3px] w-[28px] h-[28px] flex justify-center
 					items-center border-absolute/800
-				 bg-blue/400 radius rounded-[50%] max-sm:w-5 max-sm:h-5 max-sm:font-bold-4
-				 	max-sm:text-[8px] max-sm:leading-[11px] max-sm:bottom-[-2px] max-sm:right-[-2px] 
-					max-sm:border-[2px] ${levelClassName}
+				 bg-blue/400 radius rounded-[50%] max-md:w-4 max-md:h-4 max-md:font-bold-4
+				 	max-md:text-[8px] max-md:leading-[11px] max-md:bottom-[-2px] max-md:right-[-2px] 
+					max-md:border-[2px] ${levelClassName}
 				`}
 			>
-				<span>6</span>
+				<span className='text-xs'>6</span>
 			</div>
 		</div>
 	);

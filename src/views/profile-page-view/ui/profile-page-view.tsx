@@ -33,7 +33,7 @@ function CustomTabPanel(props: TabPanelProps) {
 		<div
 			role='tabpanel'
 			hidden={value !== index}
-			className='mb-[62px] max-lg:mb-[42px]'
+			className='mb-[62px] max-pc:mb-[42px]'
 			id={`simple-tabpanel-${index}`}
 			aria-labelledby={`simple-tab-${index}`}
 			{...other}
@@ -65,8 +65,9 @@ const ProfilePageView: FC<IProfilePageViewProps> = props => {
 		<div>
 			<div className='custom-container relative'>
 				<Button
+					buttonStyle='purple'
 					href='/profile/edit'
-					className='flex !bg-absolute/100 !bg-opacity-[0.07] items-center gap-2 absolute top-[42px] right-[14px] max-lg:hidden'
+					className='flex  items-center gap-2 absolute top-[42px] right-[14px] max-pc:hidden'
 				>
 					<PlusCircle />
 					<span>Edit Profile</span>
@@ -74,18 +75,18 @@ const ProfilePageView: FC<IProfilePageViewProps> = props => {
 
 				<div className='flex flex-col items-center pt-[42px]'>
 					<div className='block absolute -top-[160px] -z-[1] bg-blue/400 blur-[150px] w-[300px] h-[300px] rounded-full' />
-					<Avatar className='w-[196px] h-[196px] max-lg:w-[136px] max-lg:h-[136px]' />
+					<Avatar className='w-[196px] h-[196px] max-pc:w-[136px] max-pc:h-[136px]' />
 					<IconBox className='!bg-absolute/100 !bg-opacity-[0.07] mt-6 flex items-center gap-[6px]'>
 						<CopyIcon />
 						<span className='font-bold text-base opacity-50'>OxB046...0a4b</span>
 					</IconBox>
 
-					<div className='mt-2 w-[416px] max-md-xs:w-full'>
+					<div className='mt-2 w-[416px] max-md:w-full'>
 						<div className='flex items-center'>
 							<div className=' relative z-10 min-w-[38px] h-[38px] bg-blue/400 flex justify-center items-center font-bold text-lg rounded-full border-[4px] border-bg'>
 								6
 							</div>
-							<div className='relative bg-absolute/800 rounded-[100px] w-[416px] h-3 -ml-3 overflow-hidden max-md-xs:w-full'>
+							<div className='relative bg-absolute/800 rounded-[100px] w-[416px] h-3 -ml-3 overflow-hidden max-md:w-full'>
 								<span className='absolute left-0 w-[40%] bg-blue/400 h-full' />
 							</div>
 						</div>
@@ -95,7 +96,7 @@ const ProfilePageView: FC<IProfilePageViewProps> = props => {
 					</div>
 				</div>
 
-				<div className='flex w-full gap-[24px] mt-[24px] max-[995px]:grid max-[995px]:grid-cols-2 max-[995px]:grid-rows-2 max-md-xs:grid-cols-1 max-md-xs:gap-2'>
+				<div className='flex w-full gap-[24px] mt-[24px] max-lg:grid max-lg:grid-cols-2 max-lg:grid-rows-2 max-md:grid-cols-1 max-md:gap-2'>
 					<IconBox className='!bg-absolute/100 !bg-opacity-[0.07] flex items-center w-full !p-[12px] !rounded-2xl '>
 						<IconBox className='flex justify-center items-center !w-[52px] !h-[52px] !rounded-2xl'>
 							<FireIcon />
@@ -136,24 +137,25 @@ const ProfilePageView: FC<IProfilePageViewProps> = props => {
 					</IconBox>
 				</div>
 
-				<div className='w-full border-b border-absolute/100 border-opacity-15 mt-[42px] max-md-xs:border-hidden'>
+				<div className='w-full border-b border-absolute/100 border-opacity-15 mt-[42px] max-md:border-hidden'>
 					<Tabs
 						value={value}
 						onChange={handleChange}
 						aria-label='basic tabs example'
 						className='flex '
 						centered
-						variant={windowWidth.width < 500 ? 'scrollable' : 'standard'}
+						variant={windowWidth.width < 768 ? 'scrollable' : 'standard'}
+						scrollButtons={false}
 						classes={{
-							indicator: 'bg-blue/400 max-md-xs:hidden',
+							indicator: 'bg-blue/400 max-md:hidden',
 						}}
 					>
 						<Tab
 							classes={{
 								selected:
-									'!text-absolute/100 [&>*>svg>path]:!fill-absolute/100 max-md-xs:bg-blue/400 max-md-xs:!bg-opacity-100 max-md-xs:[&>*>.count]:!bg-blue/500',
+									'!text-absolute/100 [&>*>svg>path]:!fill-absolute/100 max-md:bg-blue/400 max-md:!bg-opacity-100 max-md:[&>*>.count]:!bg-blue/500',
 							}}
-							className='rounded-xl max-md-xs:bg-absolute/100 max-md-xs:bg-opacity-[0.07] text-base font-semibold text-absolute/100 text-opacity-50 normal-case'
+							className='rounded-xl max-md:bg-absolute/100 max-md:bg-opacity-[0.07] text-base font-semibold text-absolute/100 text-opacity-50 normal-case'
 							label={
 								<span className='flex gap-2 '>
 									<HeartIcon className='' />{' '}
@@ -168,9 +170,9 @@ const ProfilePageView: FC<IProfilePageViewProps> = props => {
 						<Tab
 							classes={{
 								selected:
-									'!text-absolute/100 [&>*>svg>path]:!fill-absolute/100 max-md-xs:bg-blue/400 max-md-xs:bg-opacity-100 max-md-xs:!bg-opacity-100 max-md-xs:[&>*>.count]:!bg-blue/500',
+									'!text-absolute/100 [&>*>svg>path]:!fill-absolute/100 max-md:bg-blue/400 max-md:bg-opacity-100 max-md:!bg-opacity-100 max-md:[&>*>.count]:!bg-blue/500',
 							}}
-							className='rounded-xl max-md-xs:bg-absolute/100 max-md-xs:bg-opacity-[0.07] max-md-xs:ml-4 text-base font-semibold text-absolute/100 text-opacity-50 normal-case'
+							className='rounded-xl max-md:bg-absolute/100 max-md:bg-opacity-[0.07] max-md:ml-4 text-base font-semibold text-absolute/100 text-opacity-50 normal-case'
 							label={
 								<span className='flex gap-2 '>
 									<StarIcon className='' />{' '}
@@ -189,7 +191,7 @@ const ProfilePageView: FC<IProfilePageViewProps> = props => {
 					value={value}
 					index={0}
 				>
-					<div className='grid grid-cols-4 gap-6 max-[1250px]:grid-cols-3 max-[995px]:grid-cols-2'>
+					<div className='grid grid-cols-4 gap-6 max-pc:grid-cols-3 max-lg:grid-cols-2'>
 						{Array.from(Array(10).keys()).map(index => {
 							return (
 								<QuestCard
@@ -205,7 +207,7 @@ const ProfilePageView: FC<IProfilePageViewProps> = props => {
 					value={value}
 					index={1}
 				>
-					<div className='grid grid-cols-4 gap-6 max-[1250px]:grid-cols-3 max-[995px]:grid-cols-2'>
+					<div className='grid grid-cols-4 gap-6 max-pc:grid-cols-3 max-lg:grid-cols-2'>
 						{Array.from(Array(4).keys()).map(index => {
 							return (
 								<QuestCard

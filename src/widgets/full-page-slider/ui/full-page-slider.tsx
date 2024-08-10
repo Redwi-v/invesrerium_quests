@@ -32,48 +32,50 @@ const FullPageSlider: FC<FullPageSliderProps> = () => {
 
 	return (
 		<div className='overflow-hidden relative'>
-			<Spiral className='absolute -rotate-90 -right-[213px] top-[12px]' />
-			<div className='custom-container mt-[42px] pb-[62px] relative'>
-				<Spiral className='absolute rotate-90 -left-[359px] -top-[44px]' />
+			<Spiral className='absolute -rotate-90 -right-[213px] top-[12px] max-pc:hidden' />
+			<div className='custom-container mt-[42px] pb-[62px] relative max-md:!mt-6'>
+				<Spiral className='absolute rotate-90 -left-[359px] -top-[44px] max-pc:hidden' />
 
 				<div className='flex justify-between'>
 					<H1>Featured</H1>
 					<div className='flex'>
-						<button
+						<Button
+							buttonStyle='gray'
 							onClick={sliderPrev}
-							className='bg-tone/200 rounded-xl p-[10px] max-[732px]:hidden'
+							className='bg-tone/200 min-w-0 rounded-xl !p-[10px] max-md:hidden'
 						>
 							<ArrowIcon />
-						</button>
-						<button
+						</Button>
+						<Button
+							buttonStyle='gray'
 							onClick={sliderNext}
-							className='bg-tone/200 rounded-xl p-[10px] ml-1 max-[732px]:hidden'
+							className='bg-tone/200 min-w-0 rounded-xl !p-[10px] ml-1 max-md:hidden'
 						>
 							<ArrowIcon className='rotate-180' />
-						</button>
+						</Button>
 
 						<div className='ml-2 bg-tone/200 py-4 px-6 rounded-[50px] flex gap-2'>
 							<button
 								className={`w-2 h-2 bg-absolute/100 rounded-full opacity-[0.65] ${
-									slideIndex === 0 ? '!opacity-100' : ''
+									slideIndex === 0 ? '!opacity-100 scale-[1.1]' : ''
 								}`}
 								onClick={() => sliderGoTo(0)}
 							/>
 							<button
 								className={`w-2 h-2 bg-absolute/100 rounded-full opacity-[.65] ${
-									slideIndex === 1 ? '!opacity-100' : ''
+									slideIndex === 1 ? '!opacity-100 scale-[1.1]' : ''
 								}`}
 								onClick={() => sliderGoTo(1)}
 							/>
 							<button
 								className={`w-2 h-2 bg-absolute/100 rounded-full opacity-[.65] ${
-									slideIndex === 2 ? '!opacity-100' : ''
+									slideIndex === 2 ? '!opacity-100 scale-[1.1]' : ''
 								}`}
 								onClick={() => sliderGoTo(2)}
 							/>
 							<button
 								className={`w-2 h-2 bg-absolute/100 rounded-full opacity-[.65] ${
-									slideIndex === 3 ? '!opacity-100' : ''
+									slideIndex === 3 ? '!opacity-100 scale-[1.1]' : ''
 								}`}
 								onClick={() => sliderGoTo(3)}
 							/>
@@ -81,7 +83,7 @@ const FullPageSlider: FC<FullPageSliderProps> = () => {
 					</div>
 				</div>
 				<Slider
-					className='mt-8 rounded-3xl overflow-hidden max-[732px]:mt-6'
+					className='mt-8 rounded-3xl overflow-hidden max-md:mt-6 cursor-pointer'
 					{...settings}
 					ref={sliderRef}
 				>
@@ -89,14 +91,14 @@ const FullPageSlider: FC<FullPageSliderProps> = () => {
 						return (
 							<div
 								key={index}
-								className='h-[482px] bg-tone/200 max-[732px]:h-[553px]'
+								className='h-[482px] bg-tone/200 max-md:h-[553px]'
 							>
-								<div className='flex h-full max-[732px]:flex-col-reverse'>
-									<div className='max-[1080px]:px-[32px] w-1/2 px-[62px] pt-[106px] max-[1010px]:py-20 max-[1010px]:px-6 max-[732px]:p-4 max-[732px]:w-full'>
+								<div className='flex h-full max-md:flex-col-reverse'>
+									<div className='max-pc:px-[32px] w-1/2 px-[62px] pt-[106px] max-lg:py-20 max-lg:px-6 max-md:p-4 max-md:w-full'>
 										<div className='flex justify-between border-b border-border pb-3 items-center'>
 											<div className='p-[6px] pr-[16px] bg-absolute/100 bg-opacity-[.07] flex items-center rounded-[100px]'>
 												<CoinIcon />
-												<span className='ml-2'>Blockchain</span>
+												<span className='ml-2 text-sm'>Blockchain</span>
 											</div>
 
 											<div className='flex items-center gap-2 font-medium text-sm text-blue/400'>
@@ -106,34 +108,39 @@ const FullPageSlider: FC<FullPageSliderProps> = () => {
 										</div>
 
 										<div className='mt-3'>
-											<h1 className='text-5xl font-bold max-[1010px]:text-4xl'>Bridge to Taiko</h1>
+											<h2 className='text-5xl font-bold max-lg:text-4xl'>Bridge to Taiko</h2>
 											<p className='opacity-50 mt-4 text-base'>
 												Start your Taiko journey by bridging ETH to its permissionless,
 												Ethereum-based rollup.
 											</p>
 										</div>
 
-										<div className='mt-[42px] flex items-center justify-between max-[1010px]:flex-col-reverse max-[1010px]:gap-3 max-[732px]:mt-6'>
-											<Button className='flex gap-2 items-center max-[1010px]:w-full'>
-												<span>Begin</span>
+										<div className='mt-[42px] flex items-center justify-between max-lg:flex-col-reverse max-lg:gap-3 max-lg:mt-6'>
+											<Button
+												buttonStyle='purple'
+												className='flex gap-2 items-center max-lg:w-full !px-[10px] !rounded-xl'
+											>
+												<span className='text-base font-semibold'>Begin</span>
 												<ArrowIcon className='rotate-180' />
 											</Button>
-											<div className='flex gap-1 max-[1010px]:w-full'>
+											<div className='flex gap-1 max-lg:w-full'>
 												<div className='p-3 bg-blue/400 rounded-2xl'>
 													<CupIcon />
 												</div>
-												<div className='py-3 px-4 rounded-2xl bg-absolute/100 bg-opacity-[0.07] flex items-center gap-3 max-[1010px]:w-full max-[1010px]:justify-center'>
+												<div className='py-3 px-4 rounded-2xl bg-absolute/100 bg-opacity-[0.07] flex items-center gap-3 max-lg:w-full max-lg:justify-center'>
 													<Image
 														src={'/icons/nft1.png'}
 														alt='nft'
 														width={24}
 														height={24}
+														quality={100}
 													/>
 													<Image
 														src={'/icons/nft2.png'}
 														alt='nft'
 														width={24}
 														height={24}
+														quality={100}
 													/>
 													<span className='block h-4 w-[1px] bg-absolute/100 bg-opacity-15' />
 
@@ -145,12 +152,13 @@ const FullPageSlider: FC<FullPageSliderProps> = () => {
 											</div>
 										</div>
 									</div>
-									<div className='w-1/2 relative max-[732px]:w-full max-[732px]:h-full'>
+									<div className='w-1/2 relative max-md:w-full max-md:h-full'>
 										<Image
 											src={'/images/Banner.jpg'}
 											alt='banner'
 											fill
 											className='object-cover'
+											quality={100}
 										/>
 									</div>
 								</div>

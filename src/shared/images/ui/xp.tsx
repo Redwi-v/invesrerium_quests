@@ -10,7 +10,7 @@ export const XpIcon: FC<{ className?: string }> = ({ className }) => {
 			fill='none'
 			xmlns='http://www.w3.org/2000/svg'
 		>
-			<g clip-path='url(#clip0_1_2890)'>
+			<g clip-path='url(#clip0_1_2970)'>
 				<path
 					d='M10 1.1547C11.2376 0.440169 12.7624 0.440169 14 1.1547L20.3923 4.8453C21.6299 5.55983 22.3923 6.88034 22.3923 8.3094V15.6906C22.3923 17.1197 21.6299 18.4402 20.3923 19.1547L14 22.8453C12.7624 23.5598 11.2376 23.5598 10 22.8453L3.6077 19.1547C2.37009 18.4402 1.6077 17.1197 1.6077 15.6906V8.3094C1.6077 6.88034 2.37009 5.55983 3.6077 4.8453L10 1.1547Z'
 					fill='#924FFF'
@@ -26,7 +26,15 @@ export const XpIcon: FC<{ className?: string }> = ({ className }) => {
 					fill-opacity='0.72'
 				/>
 			</g>
-
+			<defs>
+				<clipPath id='clip0_1_2970'>
+					<rect
+						width='24'
+						height='24'
+						fill='white'
+					/>
+				</clipPath>
+			</defs>
 		</svg>
 	);
 };

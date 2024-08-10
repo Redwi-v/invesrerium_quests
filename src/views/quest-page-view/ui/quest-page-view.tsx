@@ -16,7 +16,6 @@ import {
 import { CopyIcon } from '@/shared/images/ui/copy';
 import { NftIcon } from '@/shared/images/ui/nft';
 import { Avatars, Button, H1, H2, P, Participants, Tag } from '@/shared/ui-kit';
-import { Checkbox } from '@mui/material';
 import Image from 'next/image';
 import { FC, useState } from 'react';
 interface IQuestPageViewProps {}
@@ -38,11 +37,11 @@ export const QuestPageView: FC<IQuestPageViewProps> = props => {
 	return (
 		<>
 			<div className={`custom-container `}>
-				<div className='flex gap-6 pt-6 pb-[62px] max-lg:pb-[42px]'>
+				<div className='flex gap-6 pt-6 pb-[62px] max-pc:pb-[42px]'>
 					<div
-						className={`w-full max-w-[856px] max-[680px]:opacity-0 max-[680px]:-z-10 max-[680px]:fixed max-[680px]:left-0 
-							 max-[680px]:bottom-0 max-[680px]:top-0 max-[680px]:bg-bg 
-							${questIsOpen && '!flex max-[680px]:opacity-100 flex-col overflow-y-auto max-[680px]:!z-40'}`}
+						className={`w-full max-w-[856px] max-md:opacity-0 max-md:-z-10 max-md:fixed max-md:left-0 
+							 max-md:bottom-0 max-md:top-0 max-md:bg-bg 
+							${questIsOpen && '!flex max-md:opacity-100 flex-col overflow-y-auto max-md:!z-40'}`}
 					>
 						{questIsOpen && (
 							<div className=' py-2 border-b border-border'>
@@ -60,8 +59,8 @@ export const QuestPageView: FC<IQuestPageViewProps> = props => {
 						<div
 							className={`w-full relative flex bg-absolute/800 
 								h-[728px] rounded-[32px] px-[82px] justify-center
-						 		items-center text-center max-lg:p-6
-								max-[680px]:top-0 max-[680px]:bg-transparent 
+						 		items-center text-center max-pc:p-6
+								max-md:top-0 max-md:bg-transparent 
 								${questIsOpen && 'custom-container'}
 							`}
 						>
@@ -71,27 +70,30 @@ export const QuestPageView: FC<IQuestPageViewProps> = props => {
 								fill
 								className='!left-0 !right-0 !top-0 !bottom-auto m-auto !h-fit object-contain absolute'
 							/>
-							<div className='max-[900px]:w-full'>
-								<div className='flex items-center max-[900px]:flex-col'>
-									<div className='pr-[52px] border-r border-absolute/100 border-opacity-15 max-[900px]:pr-0 max-[900px]:border-none'>
+							<div className='max-lg:w-full'>
+								<div className='flex items-center max-lg:flex-col'>
+									<div className='pr-[52px] border-r border-absolute/100 border-opacity-15 max-lg:pr-0 max-lg:border-none'>
 										<div className='relative w-[200px] h-[200px]'>
 											<PolygonImage className='absolute inset-0 object-cover w-full h-full' />
 											<CupIcon className='w-[62px] h-[62px] absolute z-10 inset-0 m-auto' />
 										</div>
 									</div>
-									<div className='pl-6  max-[900px]:pl-0 max-[900px]:mt-2'>
+									<div className='pl-6  max-lg:pl-0 max-lg:mt-2'>
 										<H1 className='text-4xl mb-6'>Reward</H1>
-										<div className='max-[900px]:flex max-[900px]:flex-col max-[900px]:items-center '>
+										<div className='max-lg:flex max-lg:flex-col max-lg:items-center '>
 											<div className='flex gap-2 bg-absolute/100 bg-opacity-[0.07] p-[6px] pr-4 items-center rounded-[100px] w-fit'>
 												<CoinIcon /> <span>Blockchain</span>
 											</div>
-											<Button className='bg-green/400 py-[6px] px-4 !rounded-[100px] text-sm mt-2'>
+											<Button
+												buttonStyle='green'
+												className='py-[6px] px-4 !rounded-[100px] text-sm mt-2'
+											>
 												Default address
 											</Button>
 										</div>
 									</div>
 								</div>
-								<ul className='mt-8 flex flex-col gap-2 max-[900px]:w-full max-[900px]:[&>li]:w-full'>
+								<ul className='mt-8 flex flex-col gap-2 max-lg:w-full max-lg:[&>li]:w-full'>
 									<li className='flex justify-between bg-absolute/100 bg-opacity-[0.07] py-[14px] px-3 rounded-2xl'>
 										<span className='font-semibold text-base'>Credential</span>
 										<PolygonImage className='w-6 h-6' />
@@ -131,18 +133,19 @@ export const QuestPageView: FC<IQuestPageViewProps> = props => {
 						</div>
 						<div
 							className={`w-full mt-6 flex gap-6 
-						items-center max-lg:grid max-lg:grid-cols-2 
-						max-lg:grid-rows-2 max-lg:gap-0  max-lg:mt-0
-						max-lg:auto-rows-min max-[680px]:mt-auto pb-3 ${questIsOpen && 'custom-container'}`}
+						items-center max-pc:grid max-pc:grid-cols-2 
+						max-pc:grid-rows-2 max-pc:gap-0  max-pc:mt-0
+						max-pc:auto-rows-min max-md:mt-auto pb-3 ${questIsOpen && 'custom-container'}`}
 						>
 							<Button
+								buttonStyle='gray'
 								onClick={prevStep}
-								className='!bg-absolute/100 !bg-opacity-[0.07]  flex items-center gap-2 !max-w-[175px] w-full max-lg:row-start-2 max-[900px]:w-fit'
+								className='  flex items-center gap-2 !max-w-[175px] w-full max-pc:row-start-2 max-lg:w-fit'
 							>
 								<ArrowIcon />
 								<span>Back</span>
 							</Button>
-							<div className='flex w-full gap-2 max-lg:col-span-2'>
+							<div className='flex w-full gap-2 max-pc:col-span-2'>
 								{Array.from(Array(steps).keys()).map(index => (
 									<span
 										className={`h-2 w-full block bg-absolute/100 opacity-[0.07] rounded-[50px] ${
@@ -151,7 +154,7 @@ export const QuestPageView: FC<IQuestPageViewProps> = props => {
 									/>
 								))}
 							</div>
-							<div className='flex gap-2 !max-w-[175px] w-full max-lg:row-start-2 ml-auto max-[900px]:w-fit'>
+							<div className='flex gap-2 !max-w-[175px] w-full max-pc:row-start-2 ml-auto max-lg:w-fit'>
 								{/* <Button
 								onClick={prevStep}
 								className='!bg-absolute/100 !bg-opacity-[0.07]  flex items-center gap-2 !max-w-[175px] w-full'
@@ -159,15 +162,16 @@ export const QuestPageView: FC<IQuestPageViewProps> = props => {
 								<span>Skip</span>
 							</Button> */}
 								<Button
+									buttonStyle='purple'
 									onClick={nextStep}
-									className='flex items-center gap-2 !max-w-[175px] w-full max-[900px]:w-fit max'
+									className='flex items-center gap-2 !max-w-[175px] w-full max-lg:w-fit max'
 								>
 									Mint
 								</Button>
 							</div>
 						</div>
 					</div>
-					<div className=' w-full max-w-[416px] max-[680px]:max-w-none'>
+					<div className=' w-full max-w-[416px] max-md:max-w-none'>
 						<div className='flex gap-4 items-start'>
 							<H2>Subterra Ordinals 50 Whitelisting Giveaway</H2>
 							<LikeButton className='min-w-[40px] min-h-[40px] [&>svg]:w-5 [&>svg]:h-w-5' />
@@ -214,7 +218,10 @@ export const QuestPageView: FC<IQuestPageViewProps> = props => {
 									topLabel={{ className: 'text-xs font-medium' }}
 									bottomLabel={{ className: 'text-sm' }}
 								/>
-								<Button className='flex gap-2 !bg-absolute/100 !bg-opacity-[0.07]'>
+								<Button
+									buttonStyle='gray'
+									className='flex gap-2'
+								>
 									<span className='font-semibold text-sm'>Follow</span>
 									<PlusCircle />
 								</Button>
@@ -301,12 +308,18 @@ export const QuestPageView: FC<IQuestPageViewProps> = props => {
 							Share this Quest with your friends and earn for every completion.
 						</P>
 
-						<div className='flex gap-2 mt-3 max-[900px]:flex-col'>
-							<Button className='w-full flex items-center gap-2'>
+						<div className='flex gap-2 mt-3 max-lg:flex-col'>
+							<Button
+								buttonStyle='purple'
+								className='w-full flex items-center gap-2'
+							>
 								<TelegramIcon />
 								<span>Share to TG</span>
 							</Button>
-							<Button className='w-full !bg-absolute/800 flex items-center gap-2'>
+							<Button
+								buttonStyle='gray'
+								className='w-full flex items-center gap-2'
+							>
 								<CopyIcon />
 								<span>Copy link</span>
 							</Button>
@@ -314,10 +327,11 @@ export const QuestPageView: FC<IQuestPageViewProps> = props => {
 					</div>
 				</div>
 			</div>
-			<div className='hidden fixed left-0 right-0 bottom-0 p-3 bg-bg bg-opacity-80 custom-container z-10 max-[680px]:block'>
+			<div className='hidden sticky left-0 right-0 bottom-0 p-3 bg-bg bg-opacity-80  z-10 max-md:block'>
 				<Button
+					buttonStyle='purple'
 					onClick={() => setQuestIsOpen(true)}
-					className=' !bg-blue/400 !bg-opacity-100 font-semibold text-base w-full flex items-center gap-2'
+					className=' !bg-blue/400 custom-container !bg-opacity-100 font-semibold text-base w-full flex items-center gap-2'
 				>
 					<span>Start Quest </span>
 					<ArrowIcon className='rotate-180' />

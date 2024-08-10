@@ -9,13 +9,13 @@ const UserStats: FC<IUserStatsProps> = props => {
 
 	return (
 		<div className='custom-container mt-[42px]'>
-			<div className='border-b border-border pb-[42px] flex justify-between items-center'>
+			<div className='border-b border-absolute/100 border-opacity-15 pb-[42px] flex justify-between items-center'>
 				<div className='flex gap-[24px] items-center'>
 					<Avatar
 						className='w-[86px] h-[86px]'
 						contentClassName='w-[86px] h-[86px]'
 						hideLevelLine
-						levelClassName='w-[32px] h-[32px] !right-0 !bottom-0 border-4 border-bg'
+						levelClassName='!w-[40px] !h-[40px] !-right-[6px] !-bottom-[6px] !border-4 border-bg [&>span]:text-base'
 					/>
 					<div className='w-[196px]'>
 						<span className='block font-semibold text-lg pb-1 border-b border-border mb-1'>
@@ -38,10 +38,13 @@ const UserStats: FC<IUserStatsProps> = props => {
 							</span>
 						</div>
 						<div className='ml-4 flex gap-2'>
-							<IconBox className='max-md:hidden'>
+							<IconBox className='max-lg:hidden'>
 								<FireIcon />
 							</IconBox>
-							<Button className='bg-green/400'>
+							<Button
+								buttonStyle='green'
+								className=''
+							>
 								<span>GM</span>{' '}
 								<Image
 									className='ml-2'
@@ -58,13 +61,13 @@ const UserStats: FC<IUserStatsProps> = props => {
 							<span className='font-semibold text-sm opacity-50'>Quests</span>
 							<span className='font-bold text-lg '>12</span>
 						</div>
-						<div className='ml-4 flex gap-2 max-[840px]:hidden'>
+						<div className='ml-4 flex gap-2 max-lg:hidden'>
 							<IconBox>
 								<StarIcon />
 							</IconBox>
 						</div>
 					</div>
-					<div className='bg-absolute/800 p-4 rounded-[18px] flex max-lg:hidden'>
+					<div className='bg-absolute/800 p-4 rounded-[18px] flex max-pc:hidden'>
 						<div className='flex  items-end flex-col gap-[2px]'>
 							<span className='font-semibold text-sm opacity-50'>Rewards</span>
 							<span className='font-bold text-lg '>$ 125.09</span>

@@ -11,11 +11,15 @@ const LikeButton: FC<LikeButtonProps> = ({ className }) => {
 
 	return (
 		<button
-			onClick={() => setLiked(value => !value)}
-			className={`${className}`}
+			onClick={e => {
+				e.stopPropagation();
+				e.preventDefault();
+				setLiked(value => !value);
+			}}
+			className={`${className} bg-absolute/100 hover:bg-opacity-[0.07] p-[6px] rounded-full transition-colors bg-opacity-0 max-md:p-[2px]	`}
 		>
 			<HeartIcon
-				className='w-5 h-5'
+				className='w-5 h-5 '
 				pathClassName={`fill-absolute/100 ${liked ? 'fill-red' : ''}`}
 			/>
 		</button>

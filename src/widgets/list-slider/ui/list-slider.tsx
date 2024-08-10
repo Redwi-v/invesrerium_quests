@@ -21,23 +21,23 @@ export const ListSlider: FC<ListSliderProps> = ({ mainTitle, className }) => {
 
 	const settings: Settings = {
 		dots: false,
-		infinite: true,
+		infinite: false,
 		arrows: false,
 		speed: 500,
 		slidesToShow: 4,
-		slidesToScroll: 3,
+		slidesToScroll: 2,
 		afterChange: () => setUpdateCount(updateCount + 1),
 		beforeChange: (current, next) => setSlideIndex(next),
 		responsive: [
 			{
-				breakpoint: 1260,
+				breakpoint: 1296,
 				settings: {
 					slidesToShow: 3,
 					slidesToScroll: 2,
 				},
 			},
 			{
-				breakpoint: 998,
+				breakpoint: 1024,
 				settings: {
 					slidesToShow: 2,
 					slidesToScroll: 1,
@@ -50,28 +50,31 @@ export const ListSlider: FC<ListSliderProps> = ({ mainTitle, className }) => {
 	const sliderPrev = () => sliderRef.current && sliderRef.current.slickPrev();
 	const sliderGoTo = (index: number) => sliderRef.current && sliderRef.current.slickGoTo(index);
 
-	const windowSize = useWindowSize();
+	console.log(sliderRef);
 
 	const title = 'Celosphere Summer: Mint “Ego” by Mad in Pixel';
 
 	return (
-		<div className={`custom-container pb-16 max-[670px]:pb-8 ${className}`}>
+		<div className={`custom-container pb-16 max-md:pb-8 ${className}`}>
 			<div className='flex justify-between'>
 				<H2>{mainTitle}</H2>
 				<div className='flex'>
-					<button
+					<Button
+						buttonStyle='gray'
 						onClick={sliderPrev}
-						className='bg-tone/200 rounded-xl p-[10px] max-[670px]:hidden'
+						className='bg-tone/200 rounded-xl !p-[10px] min-w-0 max-md:hidden'
 					>
 						<ArrowIcon />
-					</button>
-					<button
+					</Button>
+					<Button
+						buttonStyle='gray'
 						onClick={sliderNext}
-						className='bg-tone/200 rounded-xl p-[10px] ml-1 max-[670px]:hidden'
+						className='bg-tone/200 rounded-xl !p-[10px] ml-1 min-w-0 max-md:hidden'
 					>
 						<ArrowIcon className='rotate-180' />
-					</button>
+					</Button>
 					<Button
+						buttonStyle='purple'
 						size='small'
 						className='flex items-center gap-1 px-3 py-[10px] ml-2'
 						href='/quests'
@@ -82,12 +85,20 @@ export const ListSlider: FC<ListSliderProps> = ({ mainTitle, className }) => {
 				</div>
 			</div>
 			<Slider
-				className='mt-8 overflow-hidden -ml-6 max-[670px]:-ml-3  max-[670px]:mt-6'
+				className='mt-8 overflow-hidden -ml-6 max-md:-ml-3  max-md:mt-6 cursor-pointer'
 				{...settings}
 				ref={sliderRef}
 			>
 				{Array.from(Array(10).keys()).map(index => {
-					return <QuestCard title={title + index.toString()} />;
+					return (
+						<li className='pl-6 max-md:pl-3'>
+							<QuestCard
+								level={index === 2 ? 2 : null}
+								day={index === 1 ? 2 : null}
+								title={title + index.toString()}
+							/>
+						</li>
+					);
 				})}
 			</Slider>
 		</div>

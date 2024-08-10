@@ -2,15 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+  box-sizing: border-box;
+  outline: none !important;
+}
+
 .custom-container {
 
   @apply
 
-    mx-auto max-w-[1328px] px-4
-    max-lg:max-w-none max-lg:px-11
-    max-md:px-9
-    max-xs:!px-3
-    w-full
+    mx-auto px-4 w-[1296px]
+    max-pc:w-[936px]
+    max-pc:!px-0
+    max-lg:w-[696px]
+    max-md:w-[351px]
 
   ;
 
@@ -25,7 +30,7 @@ html, body {
   min-height: 100%;
 }
 .main {
-  @apply pt-[84px] max-sm:pt-[60px] flex flex-col w-full h-full;
+  @apply pt-[84px] max-md:pt-[60px] flex flex-col w-full h-full;
   
   .content {
     display: block;

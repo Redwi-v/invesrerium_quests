@@ -1,3 +1,7 @@
+import { ExclamationMark } from './ui/exclamation-mark';
+
+export { InviteIcon } from './ui/invite';
+
 export { DiscordIcon } from './ui/discord';
 export { GitHubIcon } from './ui/github';
 export { TwitterIcon } from './ui/twitter';
@@ -7,7 +11,6 @@ export { CopyIcon } from './ui/copy';
 export { ReferralsIcon } from './ui/referrals';
 
 export { TelegramIcon } from './ui/telegarm';
-
 export { PlusCircle } from './ui/plus-circle';
 export { BaseIcon } from './ui/base';
 
