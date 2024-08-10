@@ -1,4 +1,7 @@
-import { ExclamationMark } from './ui/exclamation-mark';
+export { FireAnimateIcon } from './ui/fire-animate';
+export { HandAnimateIcon } from './ui/hand-animate';
+
+export { ExclamationMark } from './ui/exclamation-mark';
 
 export { InviteIcon } from './ui/invite';
 

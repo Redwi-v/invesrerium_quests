@@ -16,6 +16,7 @@
 		"@emotion/react": "^11.13.0",
 		"@emotion/styled": "^11.13.0",
 		"@fotonjs/core": "^0.0.8",
+		"@lottiefiles/react-lottie-player": "^3.5.4",
 		"@mui/material": "^5.16.6",
 		"@types/react-slick": "^0.23.13",
 		"investerium_quests": "file:",

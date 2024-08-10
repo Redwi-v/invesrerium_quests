@@ -1,4 +1,4 @@
-import { CupIcon, FireIcon, StarIcon } from '@/shared/images';
+import { CupIcon, FireIcon, HandAnimateIcon, StarIcon } from '@/shared/images';
 import { Avatar, Button, IconBox } from '@/shared/ui-kit';
 import Image from 'next/image';
 import { FC } from 'react';
@@ -45,14 +45,7 @@ const UserStats: FC<IUserStatsProps> = props => {
 								buttonStyle='green'
 								className=''
 							>
-								<span>GM</span>{' '}
-								<Image
-									className='ml-2'
-									src={'/gif/hand.gif'}
-									alt='hand'
-									width={24}
-									height={24}
-								/>
+								<span className='mr-2'>GM</span> <HandAnimateIcon />
 							</Button>
 						</div>
 					</div>

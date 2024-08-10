@@ -1,5 +1,5 @@
 'use client';
-import { CrossIcon } from '@/shared/images';
+import { CrossIcon, FireAnimateIcon, HandAnimateIcon } from '@/shared/images';
 import { Button, P } from '@/shared/ui-kit';
 import FullPageSlider from '@/widgets/full-page-slider/ui/full-page-slider';
 import { ListSlider } from '@/widgets/list-slider';
@@ -86,12 +86,7 @@ export default function BasicModal() {
 			>
 				<div className='flex justify-between items-center'>
 					<div className='flex gap-2 items-center'>
-						<Image
-							alt='fire'
-							src={'/gif/fire.gif'}
-							width={40}
-							height={40}
-						/>
+						<FireAnimateIcon className='w-[40px] h-[40px]' />
 						<span className='font-bold text-4xl'>
 							6 <span className='opacity-50'>d</span>
 						</span>
@@ -115,12 +110,7 @@ export default function BasicModal() {
 					onClick={handleClose}
 				>
 					<span className='mr-2 font-semibold text-base'>GM</span>
-					<Image
-						alt='fire'
-						src={'/gif/hand.gif'}
-						width={24}
-						height={24}
-					/>
+					<HandAnimateIcon />
 				</Button>
 			</Box>
 		</Modal>

@@ -1,7 +1,7 @@
 'use client';
 import { FC, useState } from 'react';
 import LeftSide from './left-side';
-import { CircleIcon, FireIcon } from '@/shared/images';
+import { CircleIcon, FireAnimateIcon, FireIcon } from '@/shared/images';
 import Image from 'next/image';
 import { Avatar } from '@/shared/ui-kit';
 import { DesktopMenu } from './menu/desktop-menu';
@@ -18,12 +18,8 @@ const ConnectedHeaderContent: FC<ConnectedHeaderContentProps> = ({}) => {
 				<div className='max-md:hidden flex items-center'>
 					<div className='flex gap-2 mr-[30px] max-md:mr-[22px] '>
 						<span className='font-semibold text-base'>6</span>
-						<Image
-							alt='fire'
-							src={'/gif/fire.gif'}
-							width={24}
-							height={24}
-						/>
+
+						<FireAnimateIcon />
 					</div>
 					<span className='block h-4 w-[1px] mr-[32px] max-md:mr-[22px] bg-absolute/100 opacity-15' />
 					<div className='flex items-center'>

@@ -1,5 +1,12 @@
 'use client';
-import { BurgerMenu, CrossIcon, CupIcon, FireIcon, StarIcon } from '@/shared/images';
+import {
+	BurgerMenu,
+	CrossIcon,
+	CupIcon,
+	FireIcon,
+	HandAnimateIcon,
+	StarIcon,
+} from '@/shared/images';
 import { Avatar, Button } from '@/shared/ui-kit';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -127,12 +134,7 @@ export const MobileMenu: FC<MobileMenuProps> = () => {
 							className='w-full mt-6'
 						>
 							<span className='mr-2'>GM</span>
-							<Image
-								src={'/gif/hand.gif'}
-								alt='hand'
-								width={24}
-								height={24}
-							/>
+							<HandAnimateIcon />
 						</Button>
 					</div>
 				</div>

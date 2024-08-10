@@ -1,4 +1,6 @@
+import { FireAnimateIcon } from '@/shared/images/ui/fire-animate';
 import { Button } from '@/shared/ui-kit';
+import { LinkWithBorder } from '@/shared/ui-kit/link';
 import { FC } from 'react';
 interface IPageProps {}
 
@@ -53,6 +55,11 @@ const Page: FC<IPageProps> = props => {
 					</li>
 				))}
 			</ul>
+
+			<div className='mt-4 max-w-[100px]'>
+				<LinkWithBorder />
+			</div>
+			<FireAnimateIcon />
 		</div>
 	);
 };
