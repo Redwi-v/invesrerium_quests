@@ -91,14 +91,14 @@ const FullPageSlider: FC<FullPageSliderProps> = () => {
 						return (
 							<div
 								key={index}
-								className='h-[482px] bg-tone/200 max-md:h-[553px]'
+								className='h-[482px] bg-absolute/800 max-md:h-[553px]'
 							>
 								<div className='flex h-full max-md:flex-col-reverse'>
 									<div className='max-pc:px-[32px] w-1/2 px-[62px] pt-[106px] max-lg:py-20 max-lg:px-6 max-md:p-4 max-md:w-full'>
 										<div className='flex justify-between border-b border-border pb-3 items-center'>
 											<div className='p-[6px] pr-[16px] bg-absolute/100 bg-opacity-[.07] flex items-center rounded-[100px]'>
 												<CoinIcon />
-												<span className='ml-2 text-sm'>Blockchain</span>
+												<span className='ml-2 text-sm font-medium'>Blockchain</span>
 											</div>
 
 											<div className='flex items-center gap-2 font-medium text-sm text-blue/400'>
@@ -108,7 +108,9 @@ const FullPageSlider: FC<FullPageSliderProps> = () => {
 										</div>
 
 										<div className='mt-3'>
-											<h2 className='text-5xl font-bold max-lg:text-4xl'>Bridge to Taiko</h2>
+											<h2 className='text-5xl leading-[60px] font-bold max-lg:text-4xl'>
+												Bridge to Taiko
+											</h2>
 											<p className='opacity-50 mt-4 text-base'>
 												Start your Taiko journey by bridging ETH to its permissionless,
 												Ethereum-based rollup.
