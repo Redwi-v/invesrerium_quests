@@ -66,13 +66,13 @@ export const CheckmarksAccordionSelect: React.FC<CheckmarksAccordionSelectProps>
 								</button>
 							)}
 							<ArrowIcon
-								className={`rotate-90 transition-transform ${expanded && '!rotate-[270deg]'}`}
+								className={`-rotate-90 opacity-50 ${expanded && '!-rotate-[270deg]  !opacity-100'}`}
 							/>
 						</span>
 					</Typography>
 				</AccordionSummary>
 				<AccordionDetails
-					className={`mt-1 w-full z-20 bg-tone/200 rounded-xl p-[10px] max-[1200px]:absolute max-md-xs:static`}
+					className={`mt-1 w-full z-[120] bg-tone/200 rounded-xl p-[10px] max-pc:absolute max-md-xs:static`}
 				>
 					{items.map(item => (
 						<FormControlLabel

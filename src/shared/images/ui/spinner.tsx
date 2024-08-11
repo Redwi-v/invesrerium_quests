@@ -1,9 +1,10 @@
+import { cssIf } from '@/shared/utils';
 import { FC } from 'react';
 
 export const SpinnerIcon: FC<{ className?: string }> = ({ className }) => {
 	return (
 		<svg
-			className={className}
+			className={cssIf(className)}
 			width='42'
 			height='42'
 			viewBox='0 0 42 42'

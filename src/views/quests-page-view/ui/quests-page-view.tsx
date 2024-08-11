@@ -122,8 +122,8 @@ export const QuestsPageView: FC<IQuestsPageViewProps> = props => {
 							className={`w-[306px] 
                 flex flex-col gap-4 max-pc:grid 
                 max-pc:grid-cols-3 max-pc:w-full 
-                max-md:fixed max-md:left-0 max-[620px]:right-0 
-                max-md:top-0 max-md:bottom-0 max-md:z-30 max-md:bg-bg max-md:!flex-col max-md:!flex
+                max-md:fixed max-md:left-0 max-md:right-0 
+                max-md:top-0 max-md:bottom-0 max-md:z-[1200] max-md:bg-bg max-md:!flex-col max-md:!flex
                 ${windowSizes.width < 768 && 'px-3'}`}
 						>
 							<div className='hidden max-md:flex justify-between pt-3 mb-2 items-center'>
@@ -161,7 +161,7 @@ export const QuestsPageView: FC<IQuestsPageViewProps> = props => {
 								]}
 							/>
 							<CheckmarksAccordionSelect
-								mainLabel={'Reward'}
+								mainLabel={'Difficulty'}
 								clearState={() => setStateDifficulty(clearBooleanState(stateReward))}
 								setChecked={e => handleChange(e, stateDifficulty, setStateDifficulty)}
 								items={[
@@ -216,7 +216,7 @@ export const QuestsPageView: FC<IQuestsPageViewProps> = props => {
 						</Button>
 					)}
 					<div className='w-full'>
-						<ul className='grid w-full grid-cols-3 gap-6 max-[1000px]:grid-cols-2'>
+						<ul className='grid w-full grid-cols-3 gap-6 max-lg:grid-cols-2'>
 							{Array.from(Array(9).keys()).map(index => {
 								return (
 									<QuestCard

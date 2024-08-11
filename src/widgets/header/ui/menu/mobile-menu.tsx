@@ -10,7 +10,7 @@ import {
 import { Avatar, Button } from '@/shared/ui-kit';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FC, useState } from 'react';
+import { FC, useCallback, useEffect, useState } from 'react';
 
 interface MobileMenuProps {}
 
@@ -18,7 +18,7 @@ export const MobileMenu: FC<MobileMenuProps> = () => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	return (
-		<div className='hidden max-pc:block max-pc:!hidden'>
+		<div className='max-pc:block hidden'>
 			<button
 				onClick={() => setIsOpen(value => !value)}
 				className='p-3 bg-tone/200 rounded-xl ml-3 max-md:p-[10px] max-md:ml-3'
@@ -131,7 +131,7 @@ export const MobileMenu: FC<MobileMenuProps> = () => {
 						</ul>
 						<Button
 							buttonStyle='green'
-							className='w-full mt-6'
+							className='w-full mt-6 py-[14px]'
 						>
 							<span className='mr-2'>GM</span>
 							<HandAnimateIcon />

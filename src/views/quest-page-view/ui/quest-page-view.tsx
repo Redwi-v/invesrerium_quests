@@ -41,7 +41,7 @@ export const QuestPageView: FC<IQuestPageViewProps> = props => {
 					<div
 						className={`w-full max-w-[856px] max-md:opacity-0 max-md:-z-10 max-md:fixed max-md:left-0 
 							 max-md:bottom-0 max-md:top-0 max-md:bg-bg 
-							${questIsOpen && '!flex max-md:opacity-100 flex-col overflow-y-auto max-md:!z-40'}`}
+							${questIsOpen && '!flex max-md:opacity-100 flex-col overflow-y-auto max-md:!z-[2000]'}`}
 					>
 						{questIsOpen && (
 							<div className=' py-2 border-b border-border'>
@@ -140,7 +140,7 @@ export const QuestPageView: FC<IQuestPageViewProps> = props => {
 							<Button
 								buttonStyle='gray'
 								onClick={prevStep}
-								className='  flex items-center gap-2 !max-w-[175px] w-full max-pc:row-start-2 max-lg:w-fit'
+								className='  flex items-center gap-2 !max-w-[175px] w-full max-pc:!max-w-[120px] max-pc:row-start-2 '
 							>
 								<ArrowIcon />
 								<span>Back</span>
@@ -154,7 +154,7 @@ export const QuestPageView: FC<IQuestPageViewProps> = props => {
 									/>
 								))}
 							</div>
-							<div className='flex gap-2 !max-w-[175px] w-full max-pc:row-start-2 ml-auto max-lg:w-fit'>
+							<div className='flex gap-2 !max-w-[175px] w-full justify-end max-pc:row-start-2 ml-auto'>
 								{/* <Button
 								onClick={prevStep}
 								className='!bg-absolute/100 !bg-opacity-[0.07]  flex items-center gap-2 !max-w-[175px] w-full'
@@ -164,7 +164,7 @@ export const QuestPageView: FC<IQuestPageViewProps> = props => {
 								<Button
 									buttonStyle='purple'
 									onClick={nextStep}
-									className='flex items-center gap-2 !max-w-[175px] w-full max-lg:w-fit max'
+									className='flex items-center gap-2 !max-w-[175px] w-full max-pc:!max-w-[120px]'
 								>
 									Mint
 								</Button>
@@ -220,7 +220,7 @@ export const QuestPageView: FC<IQuestPageViewProps> = props => {
 								/>
 								<Button
 									buttonStyle='gray'
-									className='flex gap-2'
+									className='flex gap-2 !p-[10px] !pl-[14px]'
 								>
 									<span className='font-semibold text-sm'>Follow</span>
 									<PlusCircle />
@@ -311,14 +311,14 @@ export const QuestPageView: FC<IQuestPageViewProps> = props => {
 						<div className='flex gap-2 mt-3 max-lg:flex-col'>
 							<Button
 								buttonStyle='purple'
-								className='w-full flex items-center gap-2'
+								className='w-full flex items-center gap-2 py-[14px]'
 							>
 								<TelegramIcon />
 								<span>Share to TG</span>
 							</Button>
 							<Button
 								buttonStyle='gray'
-								className='w-full flex items-center gap-2'
+								className='w-full flex items-center gap-2 py-[14px]'
 							>
 								<CopyIcon />
 								<span>Copy link</span>

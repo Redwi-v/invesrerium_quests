@@ -1,1 +1,1 @@
-export { LinkWithBorder } from './ui';
+export * from './ui';

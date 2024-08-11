@@ -1,9 +1,10 @@
+import { cssIf } from '@/shared/utils';
 import { FC } from 'react';
 
 export const CircleCross: FC<{ className?: string }> = ({ className }) => {
 	return (
 		<svg
-			className={className}
+			className={cssIf(className)}
 			width='14'
 			height='14'
 			viewBox='0 0 14 14'

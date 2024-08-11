@@ -1,9 +1,10 @@
+import { cssIf } from '@/shared/utils';
 import { FC } from 'react';
 
 export const PolygonImage: FC<{ className?: string }> = ({ className }) => {
 	return (
 		<svg
-			className={className}
+			className={cssIf(className)}
 			width='174'
 			height='192'
 			viewBox='0 0 174 192'

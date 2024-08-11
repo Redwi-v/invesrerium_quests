@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { Participants } from '@/shared/ui-kit';
 import { KeyIcon } from '@/shared/images/ui/key';
 import { ExclamationMark } from '@/shared/images/ui/exclamation-mark';
+import { cssIf } from '@/shared/utils';
 interface IQuestCardProps {
 	title: string;
 	className?: string;
@@ -24,15 +25,17 @@ export const QuestCard: FC<IQuestCardProps> = props => {
 
 	const gradient1 =
 		'linear-gradient(0deg, rgba(46,46,46,1) 0%, rgba(46,46,46,1) 60%, rgba(255,255,255,0) 100%)';
-	const gradient2 = 'linear-gradient(0deg, #444444 0%, #444444 60%, rgba(255,255,255,0) 100%)';
+	const gradient2 = 'linear-gradient(0deg, #444444 0%, #444444 30%, rgba(255,255,255,0) 100%)';
 
-	const [activeGradient, setActiveGradient] = useState(gradient1);
+	const [isHover, setIsHover] = useState(false);
 
 	return (
 		<div
-			onMouseEnter={() => setActiveGradient(gradient2)}
-			onMouseLeave={() => setActiveGradient(gradient1)}
-			className={` ${className} relative hover rounded-3xl max-md:rounded-[18px] overflow-hidden`}
+			onMouseEnter={() => setIsHover(true)}
+			onMouseLeave={() => setIsHover(false)}
+			className={` ${cssIf(
+				className,
+			)} relative hover rounded-3xl max-md:rounded-[18px] overflow-hidden`}
 		>
 			<LikeButton className='absolute z-50 right-3 top-3 left-auto max-md:h-6 max-md:w-6' />
 			{level && (
@@ -48,27 +51,30 @@ export const QuestCard: FC<IQuestCardProps> = props => {
 			)}
 			<Link
 				href={'/quests/slug'}
+				draggable={false}
 				className='h-[486px] block rounded-3xl overflow-hidden max-md:h-auto max-md:rounded-[18px]'
 			>
 				<div
 					style={{
 						background: gradient1,
-						transition: 'all .2s',
-						opacity: activeGradient === gradient1 && !level ? 1 : 0,
 					}}
 					className={`absolute inset-0 left-0 z-40`}
 				/>
 				<div
 					style={{
 						background: gradient2,
-						transition: 'all .2s',
-						opacity: activeGradient === gradient2 && !level ? 1 : 0,
+						transition: 'all .5s',
+						opacity: isHover && !level ? 1 : 0,
 					}}
 					className={`absolute inset-0 left-0 z-40`}
 				/>
 
 				{day && (
 					<div
+						style={{
+							transition: 'opacity .5s',
+							opacity: isHover ? 0 : 1,
+						}}
 						className='absolute z-50 left-0 right-0 mx-auto w-fit 
 					mt-[154px] p-[6px] bg-red flex gap-2 rounded-[100px] 
 					items-center pr-3 font-semibold text-sm max-md:mt-[72px] max-md:text-xs'
@@ -78,8 +84,8 @@ export const QuestCard: FC<IQuestCardProps> = props => {
 					</div>
 				)}
 
+				<CoinIcon className='z-[100] absolute w-8 h-8 top-3 left-3 max-md:h-6 max-md:w-6' />
 				<div className='relative w-full h-[200px] max-md:h-[104px] z-30'>
-					<CoinIcon className='z-10 absolute w-8 h-8 top-3 left-3 max-md:h-6 max-md:w-6' />
 					<Image
 						src={'/images/cardBg.jpg'}
 						alt='bg'
@@ -103,7 +109,7 @@ export const QuestCard: FC<IQuestCardProps> = props => {
 						{title.length > 37 ? title.split('', 37).join('') + '...' : title}
 					</h3>
 
-					<Participants borderColor={activeGradient === gradient1 ? '#2E2E2E' : '#444444'} />
+					<Participants borderColor={!isHover ? '#2E2E2E' : '#444444'} />
 					<div className='flex gap-2 mt-4 max-md:hidden'>
 						{Array.from(Array(10).keys()).map(index => {
 							return (
@@ -118,25 +124,27 @@ export const QuestCard: FC<IQuestCardProps> = props => {
 					<div className='mt-6 flex gap-2 max-md:mt-3'>
 						<div
 							className={`p-3 bg-blue/400 rounded-xl w-fit max-md:hidden ${
-								completed && '!bg-green/400'
+								completed ? '!bg-green/400' : ''
 							}`}
 						>
 							<CupIcon />
 						</div>
 						<div
 							className={`bg-absolute/100 bg-opacity-[0.07] rounded-xl w-full flex justify-center py-3 gap-3 max-md:px-2 ${
-								completed && '!bg-green/400 !bg-opacity-20'
+								completed ? '!bg-green/400 !bg-opacity-20' : ''
 							}`}
 						>
 							<Image
 								src={'/icons/nft1.png'}
 								alt='nft'
+								quality={100}
 								width={windowSize.width < 768 ? 20 : 24}
 								height={windowSize.width < 768 ? 20 : 24}
 							/>
 							<Image
 								src={'/icons/nft2.png'}
 								alt='nft'
+								quality={100}
 								width={windowSize.width < 768 ? 20 : 24}
 								height={windowSize.width < 768 ? 20 : 24}
 							/>

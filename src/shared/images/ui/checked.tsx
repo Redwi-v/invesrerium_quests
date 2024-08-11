@@ -1,9 +1,10 @@
+import { cssIf } from '@/shared/utils';
 import { FC } from 'react';
 
 export const CheckedIcon: FC<{ className?: string }> = ({ className }) => {
 	return (
 		<svg
-			className={className}
+			className={cssIf(className)}
 			width='16'
 			height='12'
 			viewBox='0 0 16 12'

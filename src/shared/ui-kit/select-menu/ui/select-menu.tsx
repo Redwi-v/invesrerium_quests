@@ -7,6 +7,7 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Button from '@mui/material/Button';
 import { OutlinedInput } from '@mui/material';
 import { ArrowIcon } from '@/shared/images';
+import { cssIf } from '@/shared/utils';
 
 interface SelectMenuProps {
 	items: FC<{ isActive: boolean }>[];
@@ -33,7 +34,7 @@ export const SelectMenu: React.FC<SelectMenuProps> = ({ items, className, classe
 	};
 
 	return (
-		<div className={className}>
+		<div className={cssIf(className)}>
 			<FormControl
 				className={`min-w-[196px] border-0 bg-absolute/100  bg-opacity-[0.07] rounded-xl !p-0 transform ${classes?.formControl}`}
 			>
@@ -43,15 +44,18 @@ export const SelectMenu: React.FC<SelectMenuProps> = ({ items, className, classe
 						'.MuiOutlinedInput-notchedOutline': { border: 'none', outline: 'none' },
 						'.MuiOutlinedInput-input': {
 							'padding': '12px 10px',
+							'left': 'auto !important',
+							'right': '0 !important',
+
 							'div': { padding: 0 },
 							'.check': { display: 'none !important' },
 						},
 					}}
 					MenuProps={{
 						classes: {
-							list: 'p-0',
+							list: 'p-0 !right-0 !left-auto',
 							paper:
-								'shadow-[0 0 25px 0 rgba(0, 0, 0, 0.5)] bg-absolute/800 rounded-3xl overflow-hidden w-[306px] right-0 !-translate-x-[52px] !translate-y-[8px] max-md-xs:!translate-x-0',
+								'shadow-[0 0 25px 0 rgba(0, 0, 0, 0.5)] bg-absolute/800 rounded-3xl overflow-hidden w-[306px] !right-0 !-translate-x-[52px] !translate-y-[8px] max-md-xs:!translate-x-0',
 						},
 					}}
 					id='demo-controlled-open-select'
@@ -59,8 +63,10 @@ export const SelectMenu: React.FC<SelectMenuProps> = ({ items, className, classe
 					open={open}
 					onClose={handleClose}
 					IconComponent={({ className }) => (
-						<div className={className}>
-							<ArrowIcon className={`rotate-90 w-[30px] h-[18px]`} />
+						<div className={cssIf(className)}>
+							<ArrowIcon
+								className={`-rotate-90 w-[30px] h-[18px] opacity-50 ${cssIf('!opacity-100', open)}`}
+							/>
 						</div>
 					)}
 					onOpen={handleOpen}

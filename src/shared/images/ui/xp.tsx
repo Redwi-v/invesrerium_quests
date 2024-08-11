@@ -1,9 +1,10 @@
+import { cssIf } from '@/shared/utils';
 import { FC } from 'react';
 
 export const XpIcon: FC<{ className?: string }> = ({ className }) => {
 	return (
 		<svg
-			className={className}
+			className={cssIf(className)}
 			width='24'
 			height='24'
 			viewBox='0 0 24 24'
@@ -26,15 +27,6 @@ export const XpIcon: FC<{ className?: string }> = ({ className }) => {
 					fill-opacity='0.72'
 				/>
 			</g>
-			<defs>
-				<clipPath id='clip0_1_2970'>
-					<rect
-						width='24'
-						height='24'
-						fill='white'
-					/>
-				</clipPath>
-			</defs>
 		</svg>
 	);
 };

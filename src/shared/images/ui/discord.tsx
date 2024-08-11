@@ -1,3 +1,4 @@
+import { cssIf } from '@/shared/utils';
 import { FC } from 'react';
 
 export const DiscordIcon: FC<{ className?: string }> = ({ className }) => {
@@ -7,7 +8,7 @@ export const DiscordIcon: FC<{ className?: string }> = ({ className }) => {
 			height='19'
 			viewBox='0 0 25 19'
 			fill='none'
-			className={className}
+			className={cssIf(className)}
 		>
 			<g clip-path='url(#clip0_1_5609)'>
 				<path

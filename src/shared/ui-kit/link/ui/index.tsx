@@ -1,6 +1,7 @@
 'use client';
-import Link from 'next/link';
-import { FC, useState } from 'react';
+import { cssIf } from '@/shared/utils';
+import Link, { LinkProps } from 'next/link';
+import { FC, PropsWithChildren, useState } from 'react';
 interface ILinkWithBorderProps {}
 
 export const LinkWithBorder: FC<ILinkWithBorderProps> = props => {
@@ -39,6 +40,24 @@ export const LinkWithBorder: FC<ILinkWithBorderProps> = props => {
 					/>
 				</span>
 			))}
+		</Link>
+	);
+};
+interface ISipleLinkProps {
+	className?: string;
+}
+
+export const SipleLink: FC<ISipleLinkProps & LinkProps & PropsWithChildren> = ({
+	children,
+	className,
+	...props
+}) => {
+	return (
+		<Link
+			{...props}
+			className={`${cssIf(className)} font-medium opacity-50 text-sm hover:opacity-100 transition`}
+		>
+			{children}
 		</Link>
 	);
 };

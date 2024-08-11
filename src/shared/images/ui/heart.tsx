@@ -1,3 +1,4 @@
+import { cssIf } from '@/shared/utils';
 import { FC } from 'react';
 
 export const HeartIcon: FC<{ className?: string; pathClassName?: string }> = ({
@@ -6,7 +7,7 @@ export const HeartIcon: FC<{ className?: string; pathClassName?: string }> = ({
 }) => {
 	return (
 		<svg
-			className={className}
+			className={cssIf(className)}
 			width='24'
 			height='24'
 			viewBox='0 0 24 24'
@@ -18,7 +19,7 @@ export const HeartIcon: FC<{ className?: string; pathClassName?: string }> = ({
 				fill='#717171'
 				stroke='#717171'
 				stroke-width='0.125'
-				className={pathClassName}
+				className={cssIf(pathClassName)}
 			/>
 		</svg>
 	);

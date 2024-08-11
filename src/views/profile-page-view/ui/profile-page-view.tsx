@@ -65,9 +65,9 @@ const ProfilePageView: FC<IProfilePageViewProps> = props => {
 		<div>
 			<div className='custom-container relative'>
 				<Button
-					buttonStyle='purple'
+					buttonStyle='gray'
 					href='/profile/edit'
-					className='flex  items-center gap-2 absolute top-[42px] right-[14px] max-pc:hidden'
+					className='flex items-center gap-2 absolute top-[42px] right-[14px] max-pc:hidden !py-[14px] !pl-[12px] !pr-5'
 				>
 					<PlusCircle />
 					<span>Edit Profile</span>
@@ -76,8 +76,13 @@ const ProfilePageView: FC<IProfilePageViewProps> = props => {
 				<div className='flex flex-col items-center pt-[42px]'>
 					<div className='block absolute -top-[160px] -z-[1] bg-blue/400 blur-[150px] w-[300px] h-[300px] rounded-full' />
 					<Avatar className='w-[196px] h-[196px] max-pc:w-[136px] max-pc:h-[136px]' />
-					<IconBox className='!bg-absolute/100 !bg-opacity-[0.07] mt-6 flex items-center gap-[6px]'>
-						<CopyIcon />
+					<IconBox className='!bg-absolute/100 !rounded-2xl !p-[4px] !pr-3 !bg-opacity-[0.07] mt-6 flex items-center gap-[6px]'>
+						<Button
+							buttonStyle='gray'
+							className='!bg-opacity-[0] !p-[10px] min-w-0 hover:!bg-opacity-[0.07] !rounded-xl'
+						>
+							<CopyIcon className='w-5 h-5' />
+						</Button>
 						<span className='font-bold text-base opacity-50'>OxB046...0a4b</span>
 					</IconBox>
 

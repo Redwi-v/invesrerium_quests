@@ -1,5 +1,6 @@
 'use state';
 import { HeartIcon } from '@/shared/images';
+import { cssIf } from '@/shared/utils';
 import { FC, useState } from 'react';
 
 interface LikeButtonProps {
@@ -16,7 +17,9 @@ const LikeButton: FC<LikeButtonProps> = ({ className }) => {
 				e.preventDefault();
 				setLiked(value => !value);
 			}}
-			className={`${className} bg-absolute/100 hover:bg-opacity-[0.07] p-[6px] rounded-full transition-colors bg-opacity-0 max-md:p-[2px]	`}
+			className={`${cssIf(
+				className,
+			)} bg-absolute/100 hover:bg-opacity-[0.07] p-[6px] flex items-center justify-center rounded-full transition-colors bg-opacity-0 max-md:p-[2px]	`}
 		>
 			<HeartIcon
 				className='w-5 h-5 '

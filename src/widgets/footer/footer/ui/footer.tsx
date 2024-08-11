@@ -1,6 +1,5 @@
 'use client';
 import { Accordion } from '@mui/material';
-import Link from 'next/link';
 import { FC } from 'react';
 
 import * as React from 'react';
@@ -10,6 +9,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import Fade from '@mui/material/Fade';
 import { ArrowIcon } from '@/shared/images';
+import { SipleLink } from '@/shared/ui-kit/link';
 
 interface FooterProps {}
 
@@ -31,36 +31,36 @@ export const Footer: FC<FooterProps> = () => {
 							<h5 className='font-medium text-sm mb-3'>Navigations</h5>
 							<ul className='flex flex-col gap-2'>
 								<li>
-									<Link
+									<SipleLink
 										className='font-medium text-sm opacity-50 max-lg:text-xs max-md:text-sm'
 										href={'/'}
 									>
 										Quests
-									</Link>
+									</SipleLink>
 								</li>
 								<li>
-									<Link
+									<SipleLink
 										className='font-medium text-sm opacity-50 max-lg:text-xs max-md:text-sm'
 										href={'/'}
 									>
 										NFTs
-									</Link>
+									</SipleLink>
 								</li>
 								<li>
-									<Link
+									<SipleLink
 										className='font-medium text-sm opacity-50 max-lg:text-xs max-md:text-sm'
 										href={'/'}
 									>
 										Blockchains
-									</Link>
+									</SipleLink>
 								</li>
 								<li>
-									<Link
+									<SipleLink
 										className='font-medium text-sm opacity-50 max-lg:text-xs max-md:text-sm'
 										href={'/'}
 									>
 										Communities
-									</Link>
+									</SipleLink>
 								</li>
 							</ul>
 						</div>
@@ -68,36 +68,36 @@ export const Footer: FC<FooterProps> = () => {
 							<h5 className='font-medium text-sm mb-3'>Community</h5>
 							<ul className='flex flex-col gap-2'>
 								<li>
-									<Link
+									<SipleLink
 										className='font-medium text-sm opacity-50 max-lg:text-xs max-md:text-sm'
 										href={'/'}
 									>
 										Blog
-									</Link>
+									</SipleLink>
 								</li>
 								<li>
-									<Link
+									<SipleLink
 										className='font-medium text-sm opacity-50 max-lg:text-xs max-md:text-sm'
 										href={'/'}
 									>
 										X
-									</Link>
+									</SipleLink>
 								</li>
 								<li>
-									<Link
+									<SipleLink
 										className='font-medium text-sm opacity-50 max-lg:text-xs max-md:text-sm'
 										href={'/'}
 									>
 										Telegram
-									</Link>
+									</SipleLink>
 								</li>
 								<li>
-									<Link
+									<SipleLink
 										className='font-medium text-sm opacity-50 max-lg:text-xs max-md:text-sm'
 										href={'/'}
 									>
 										Discord
-									</Link>
+									</SipleLink>
 								</li>
 							</ul>
 						</div>
@@ -105,28 +105,28 @@ export const Footer: FC<FooterProps> = () => {
 							<h5 className='font-medium text-sm mb-3'>About</h5>
 							<ul className='flex flex-col gap-2'>
 								<li>
-									<Link
+									<SipleLink
 										className='font-medium text-sm opacity-50 max-lg:text-xs max-md:text-sm'
 										href={'/'}
 									>
 										Help Center
-									</Link>
+									</SipleLink>
 								</li>
 								<li>
-									<Link
+									<SipleLink
 										className='font-medium text-sm opacity-50 max-lg:text-xs max-md:text-sm'
 										href={'/'}
 									>
 										Support
-									</Link>
+									</SipleLink>
 								</li>
 								<li>
-									<Link
+									<SipleLink
 										className='font-medium text-sm opacity-50 max-lg:text-xs max-md:text-sm'
 										href={'/'}
 									>
 										Career
-									</Link>
+									</SipleLink>
 								</li>
 							</ul>
 						</div>
@@ -134,28 +134,28 @@ export const Footer: FC<FooterProps> = () => {
 							<h5 className='font-medium text-sm mb-3'>Developers</h5>
 							<ul className='flex flex-col gap-2'>
 								<li>
-									<Link
+									<SipleLink
 										className='font-medium text-sm opacity-50 max-lg:text-xs max-md:text-sm'
 										href={'/'}
 									>
 										Analiytics
-									</Link>
+									</SipleLink>
 								</li>
 								<li>
-									<Link
+									<SipleLink
 										className='font-medium text-sm opacity-50 max-lg:text-xs max-md:text-sm'
 										href={'/'}
 									>
 										Documentation
-									</Link>
+									</SipleLink>
 								</li>
 								<li>
-									<Link
+									<SipleLink
 										className='font-medium text-sm opacity-50 max-lg:text-xs max-md:text-sm'
 										href={'/'}
 									>
 										Github
-									</Link>
+									</SipleLink>
 								</li>
 							</ul>
 						</div>
@@ -167,18 +167,18 @@ export const Footer: FC<FooterProps> = () => {
 						© {new Date().getFullYear()} Stephen King. All rights reserved.
 					</span>
 					<div className='flex mr-auto justify-between max-lg:w-full max-md:mt-[18px] '>
-						<Link
+						<SipleLink
 							href={'/'}
 							className='font-medium max-md:!text-left max-lg:text-right text-sm opacity-50 max-lg:text-xs max-md:text-sm max ml-6 text-nowrap w-[196px] max-pc:w-[136px] max-lg:w-[100%] max-md:ml-0'
 						>
 							Terms of Service
-						</Link>
-						<Link
+						</SipleLink>
+						<SipleLink
 							href={'/'}
 							className='font-medium max-md:!text-left max-lg:text-right max-lg:mr-6 text-sm opacity-50 max-lg:text-xs max-md:text-sm ml-6 text-nowrap w-[196px] max-pc:w-[136px] max-lg:w-[100%]'
 						>
 							Privacy Policy
-						</Link>
+						</SipleLink>
 					</div>
 				</div>
 			</div>
@@ -196,7 +196,7 @@ const MobileAccordion = () => {
 		<div className='hidden max-md:block'>
 			<Accordion
 				expanded={accordion1}
-				className='bg-inherit shadow-none p-0 min-h-0 !border-0 !shadow-none'
+				className='bg-inherit p-0 min-h-0 !border-0 !shadow-none'
 				sx={{ 'boxShadow': 'none', '.MuiOutlinedInput-notchedOutline': { border: 0 } }}
 				onChange={() => {
 					setAccordion1(value => !value);
@@ -211,6 +211,7 @@ const MobileAccordion = () => {
 					className='bg-inherit p-0 m-0 text-absolute/100 !min-h-0'
 					classes={{
 						content: '!m-0',
+						expandIconWrapper: '!transition-none',
 					}}
 				>
 					<Typography className='bg-inherit !m-0 min-h-0 text-sm font-medium'>
@@ -220,43 +221,43 @@ const MobileAccordion = () => {
 				<AccordionDetails className='bg-inherit text-absolute/100 p-0'>
 					<ul className='pt-[12px]'>
 						<li>
-							<Link
+							<SipleLink
 								className='font-medium opacity-50 text-sm'
 								href={'/'}
 							>
 								Quests
-							</Link>
+							</SipleLink>
 						</li>
 						<li>
-							<Link
+							<SipleLink
 								className='font-medium opacity-50 pt-2 text-sm'
 								href={'/'}
 							>
 								NFTs
-							</Link>
+							</SipleLink>
 						</li>
 						<li>
-							<Link
+							<SipleLink
 								className='font-medium opacity-50 pt-2 text-sm'
 								href={'/'}
 							>
 								Blockchains
-							</Link>
+							</SipleLink>
 						</li>
 						<li>
-							<Link
+							<SipleLink
 								className='font-medium opacity-50 pt-2 text-sm'
 								href={'/'}
 							>
 								Communities
-							</Link>
+							</SipleLink>
 						</li>
 					</ul>
 				</AccordionDetails>
 			</Accordion>
 			<Accordion
 				expanded={accordion2}
-				className='bg-inherit shadow-none p-0 min-h-0 before:opacity-0 mt-[18px]'
+				className='bg-inherit shadow-none p-0 min-h-0 before:opacity-0 !mt-[18px]'
 				sx={{ 'boxShadow': 'none', '.MuiOutlinedInput-notchedOutline': { border: 0 } }}
 				onChange={() => {
 					setAccordion2(value => !value);
@@ -271,6 +272,7 @@ const MobileAccordion = () => {
 					className='bg-inherit p-0 m-0 text-absolute/100 !min-h-0'
 					classes={{
 						content: '!m-0',
+						expandIconWrapper: '!transition-none',
 					}}
 				>
 					<Typography className='bg-inherit !m-0 min-h-0 text-sm font-medium'>Community</Typography>
@@ -278,43 +280,43 @@ const MobileAccordion = () => {
 				<AccordionDetails className='bg-inherit text-absolute/100 p-0'>
 					<ul className='pt-[12px]'>
 						<li>
-							<Link
+							<SipleLink
 								className='font-medium opacity-50 text-sm'
 								href={'/'}
 							>
 								Blog
-							</Link>
+							</SipleLink>
 						</li>
 						<li>
-							<Link
+							<SipleLink
 								className='font-medium opacity-50 pt-2 text-sm'
 								href={'/'}
 							>
 								X
-							</Link>
+							</SipleLink>
 						</li>
 						<li>
-							<Link
+							<SipleLink
 								className='font-medium opacity-50 pt-2 text-sm'
 								href={'/'}
 							>
 								Telegram
-							</Link>
+							</SipleLink>
 						</li>
 						<li>
-							<Link
+							<SipleLink
 								className='font-medium opacity-50 pt-2 text-sm'
 								href={'/'}
 							>
 								Discord
-							</Link>
+							</SipleLink>
 						</li>
 					</ul>
 				</AccordionDetails>
 			</Accordion>
 			<Accordion
 				expanded={accordion3}
-				className='bg-inherit shadow-none p-0 min-h-0 before:opacity-0 mt-[18px]'
+				className='bg-inherit shadow-none p-0 min-h-0 before:opacity-0 !mt-[18px]'
 				sx={{ 'boxShadow': 'none', '.MuiOutlinedInput-notchedOutline': { border: 0 } }}
 				onChange={() => {
 					setAccordion3(value => !value);
@@ -329,6 +331,7 @@ const MobileAccordion = () => {
 					className='bg-inherit p-0 m-0 text-absolute/100 !min-h-0'
 					classes={{
 						content: '!m-0',
+						expandIconWrapper: '!transition-none'
 					}}
 				>
 					<Typography className='bg-inherit !m-0 min-h-0 text-sm font-medium'>About</Typography>
@@ -336,35 +339,35 @@ const MobileAccordion = () => {
 				<AccordionDetails className='bg-inherit text-absolute/100 p-0'>
 					<ul className='pt-[12px]'>
 						<li>
-							<Link
+							<SipleLink
 								className='font-medium opacity-50 text-sm'
 								href={'/'}
 							>
 								Help Center
-							</Link>
+							</SipleLink>
 						</li>
 						<li>
-							<Link
+							<SipleLink
 								className='font-medium opacity-50 pt-2 text-sm'
 								href={'/'}
 							>
 								Support
-							</Link>
+							</SipleLink>
 						</li>
 						<li>
-							<Link
+							<SipleLink
 								className='font-medium opacity-50 pt-2 text-sm'
 								href={'/'}
 							>
 								Career
-							</Link>
+							</SipleLink>
 						</li>
 					</ul>
 				</AccordionDetails>
 			</Accordion>
 			<Accordion
 				expanded={accordion4}
-				className='bg-inherit shadow-none p-0 min-h-0 before:opacity-0 mt-[18px]'
+				className='bg-inherit shadow-none p-0 min-h-0 before:opacity-0 !mt-[18px]'
 				sx={{ 'boxShadow': 'none', '.MuiOutlinedInput-notchedOutline': { border: 0 } }}
 				onChange={() => {
 					setAccordion4(value => !value);
@@ -372,13 +375,17 @@ const MobileAccordion = () => {
 			>
 				<AccordionSummary
 					expandIcon={
-						<ArrowIcon className={`-rotate-90  opacity-15 ${accordion4 && '!opacity-100'}`} />
+						<ArrowIcon
+							className={`-rotate-90 !transition-none opacity-15 ${accordion4 && '!opacity-100'}`}
+						/>
 					}
 					aria-controls='panel1-content'
 					id='panel1-header'
 					className='bg-inherit p-0 m-0 text-absolute/100 !min-h-0'
 					classes={{
 						content: '!m-0',
+						expandIconWrapper: '!transition-none',
+						
 					}}
 				>
 					<Typography className='bg-inherit !m-0 min-h-0 text-sm font-medium'>
@@ -388,28 +395,28 @@ const MobileAccordion = () => {
 				<AccordionDetails className='bg-inherit text-absolute/100 p-0'>
 					<ul className='pt-[12px]'>
 						<li>
-							<Link
+							<SipleLink
 								className='font-medium opacity-50 text-sm'
 								href={'/'}
 							>
 								Analiytics
-							</Link>
+							</SipleLink>
 						</li>
 						<li>
-							<Link
+							<SipleLink
 								className='font-medium opacity-50 pt-2 text-sm'
 								href={'/'}
 							>
 								Documentation
-							</Link>
+							</SipleLink>
 						</li>
 						<li>
-							<Link
+							<SipleLink
 								className='font-medium opacity-50 pt-2 text-sm'
 								href={'/'}
 							>
 								Github
-							</Link>
+							</SipleLink>
 						</li>
 					</ul>
 				</AccordionDetails>

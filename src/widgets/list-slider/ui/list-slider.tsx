@@ -4,6 +4,7 @@ import LikeButton from '@/features/like-button/ui/like-button';
 import { useWindowSize } from '@/shared/hooks';
 import { ArrowIcon, CoinIcon, CupIcon, XpIcon } from '@/shared/images';
 import { Button, H2 } from '@/shared/ui-kit';
+import { cssIf } from '@/shared/utils';
 import { Avatar, AvatarGroup } from '@mui/material';
 import Image from 'next/image';
 import { FC, useRef, useState } from 'react';
@@ -37,7 +38,7 @@ export const ListSlider: FC<ListSliderProps> = ({ mainTitle, className }) => {
 				},
 			},
 			{
-				breakpoint: 1024,
+				breakpoint: 1023,
 				settings: {
 					slidesToShow: 2,
 					slidesToScroll: 1,
@@ -55,7 +56,7 @@ export const ListSlider: FC<ListSliderProps> = ({ mainTitle, className }) => {
 	const title = 'Celosphere Summer: Mint “Ego” by Mad in Pixel';
 
 	return (
-		<div className={`custom-container pb-16 max-md:pb-8 ${className}`}>
+		<div className={`custom-container pb-16 max-md:pb-8 ${cssIf(className)}`}>
 			<div className='flex justify-between'>
 				<H2>{mainTitle}</H2>
 				<div className='flex'>
@@ -76,7 +77,7 @@ export const ListSlider: FC<ListSliderProps> = ({ mainTitle, className }) => {
 					<Button
 						buttonStyle='purple'
 						size='small'
-						className='flex items-center gap-1 px-3 py-[10px] ml-2'
+						className='flex items-center gap-1 px-3 py-[10px] pl-[12px] pr-[8px] ml-2'
 						href='/quests'
 					>
 						<span className='text-sm font-semibold'>Show all</span>

@@ -14,6 +14,8 @@ import { HeartIcon } from '@/shared/images';
 import { SwitchIcon } from '@/shared/images';
 import { DisconnectIcon } from '@/shared/images';
 import Link from 'next/link';
+import { cssIf } from '@/shared/utils';
+import { Button } from '@/shared/ui-kit';
 
 interface IDesktopMenuProps {
 	isOpen: boolean;
@@ -23,71 +25,79 @@ interface IDesktopMenuProps {
 export const DesktopMenu: React.FC<IDesktopMenuProps> = ({ isOpen, className }) => {
 	return (
 		<Paper
-			className={`absolute right-0 top-[77px] bg-absolute/800 text-left text-absolute/100 p-[12px] shadow-none rounded-3xl ${className} ${
+			className={`absolute right-0 top-[77px] 
+				bg-absolute/800 !shadow-[0px_0px_20px_0px_rgba(0,_0,_0,_0.25)]
+				 text-left text-absolute/100 p-[12px]  rounded-3xl max-md:top-[60px] ${cssIf(className)} ${
 				isOpen ? '' : 'hidden'
 			}`}
 			sx={{ width: 245 }}
 		>
 			<MenuList className='flex flex-col gap-1 p-0 '>
-				<Link
+				<Button
+					buttonStyle='gray'
 					href={'/profile'}
-					className={`bg-[#3d3d3d] rounded-2xl px-[10px] py-[12px] text-base flex items-center h-12`}
+					className={` rounded-2xl !px-[10px] !py-[12px] text-base flex items-center h-12`}
 				>
 					<ListItemIcon className='mr-2 w-fit !min-w-0'>
 						<ProfileIcon />
 					</ListItemIcon>
 					<ListItemText className='text-sm'>My Profile</ListItemText>
-				</Link>
+				</Button>
 
-				<Link
+				<Button
+					buttonStyle='gray'
 					href={'/profile'}
-					className={`bg-[#3d3d3d] rounded-2xl px-[10px] py-[12px] text-base flex items-center h-12`}
+					className={` rounded-2xl !px-[10px] !py-[12px] text-base flex items-center h-12`}
 				>
 					<ListItemIcon className='mr-2 w-fit !min-w-0'>
 						<SettingsIcon />
 					</ListItemIcon>
 					<ListItemText className='text-sm'>Settings</ListItemText>
-				</Link>
+				</Button>
 
-				<Link
+				<Button
+					buttonStyle='gray'
 					href={'/profile'}
-					className={`bg-[#3d3d3d] rounded-2xl px-[10px] py-[12px] text-base flex items-center h-12`}
+					className={` rounded-2xl !px-[10px] !py-[12px] text-base flex items-center h-12`}
 				>
 					<ListItemIcon className='mr-2 w-fit !min-w-0'>
 						<PeoplesIcon />
 					</ListItemIcon>
 					<ListItemText className='text-sm'>Referral</ListItemText>
-				</Link>
+				</Button>
 
-				<Link
+				<Button
+					buttonStyle='gray'
 					href={'/profile'}
-					className={`bg-[#3d3d3d] rounded-2xl px-[10px] py-[12px] text-base flex items-center h-12`}
+					className={` rounded-2xl !px-[10px] !py-[12px] text-base flex items-center h-12`}
 				>
 					<ListItemIcon className='mr-2 w-fit !min-w-0'>
 						<HeartIcon />
 					</ListItemIcon>
 					<ListItemText className='text-sm'>Favorite</ListItemText>
-				</Link>
+				</Button>
 
-				<Link
+				<Button
+					buttonStyle='gray'
 					href={'/profile'}
-					className={`bg-[#3d3d3d] rounded-2xl px-[10px] py-[12px] text-base flex items-center h-12`}
+					className={` rounded-2xl !px-[10px] !py-[12px] text-base flex items-center h-12`}
 				>
 					<ListItemIcon className='mr-2 w-fit !min-w-0'>
 						<SwitchIcon />
 					</ListItemIcon>
 					<ListItemText className='text-sm'>Switch to a company</ListItemText>
-				</Link>
+				</Button>
 
-				<Link
+				<Button
+					buttonStyle='gray'
 					href={'/profile'}
-					className={`bg-[#3d3d3d] rounded-2xl px-[10px] py-[12px] text-base flex items-center h-12`}
+					className={` rounded-2xl !px-[10px] !py-[12px] text-base flex items-center h-12`}
 				>
 					<ListItemIcon className='mr-2 w-fit !min-w-0'>
 						<DisconnectIcon />
 					</ListItemIcon>
 					<ListItemText className='text-sm'>Disconnect</ListItemText>
-				</Link>
+				</Button>
 			</MenuList>
 		</Paper>
 	);

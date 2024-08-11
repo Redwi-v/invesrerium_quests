@@ -1,3 +1,4 @@
+import { cssIf } from '@/shared/utils';
 import { DetailedHTMLProps, FC, InputHTMLAttributes, ReactElement } from 'react';
 
 interface IInputProps {
@@ -12,11 +13,15 @@ export const Input: FC<IInputProps> = props => {
 
 	return (
 		<div
-			className={`${containerClassName} flex gap-2 p-3 bg-absolute/100 bg-opacity-[.07] rounded-xl min-w-[404px] max-lg:min-w-0 max-lg:!max-w-[244px]`}
+			className={`${cssIf(
+				containerClassName,
+			)} flex gap-2 p-3 bg-absolute/100 bg-opacity-[.07] rounded-xl min-w-[404px] max-lg:min-w-0 max-lg:!max-w-[244px]`}
 		>
 			<div className='w-fit'>{icon}</div>
 			<input
-				className={`${className} bg-transparent outline-none text-base font-semibold placeholder:text-absolute/100 placeholder:text-opacity-50 w-full`}
+				className={`${cssIf(
+					className,
+				)} bg-transparent outline-none text-base font-semibold placeholder:text-absolute/100 placeholder:text-opacity-50 w-full`}
 				{...inputParams}
 			/>
 		</div>

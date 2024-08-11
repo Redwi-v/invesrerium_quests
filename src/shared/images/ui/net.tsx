@@ -1,3 +1,4 @@
+import { cssIf } from '@/shared/utils';
 import { FC } from 'react';
 
 export const NetIcon: FC<{ className?: string; signal: 0 | 1 | 2 | 3 }> = ({
@@ -6,7 +7,7 @@ export const NetIcon: FC<{ className?: string; signal: 0 | 1 | 2 | 3 }> = ({
 }) => {
 	return (
 		<svg
-			className={className}
+			className={cssIf(className)}
 			width='24'
 			height='24'
 			viewBox='0 0 24 24'

@@ -42,7 +42,7 @@ const FullPageSlider: FC<FullPageSliderProps> = () => {
 						<Button
 							buttonStyle='gray'
 							onClick={sliderPrev}
-							className='bg-tone/200 min-w-0 rounded-xl !p-[10px] max-md:hidden'
+							className='bg-tone/200 min-w-0 rounded-xl !p-[10px] max-md:hidden '
 						>
 							<ArrowIcon />
 						</Button>
@@ -120,7 +120,7 @@ const FullPageSlider: FC<FullPageSliderProps> = () => {
 										<div className='mt-[42px] flex items-center justify-between max-lg:flex-col-reverse max-lg:gap-3 max-lg:mt-6'>
 											<Button
 												buttonStyle='purple'
-												className='flex gap-2 items-center max-lg:w-full !px-[10px] !rounded-xl'
+												className='flex gap-2 items-center max-lg:w-full !px-[10px] !pl-[18px] !rounded-xl'
 											>
 												<span className='text-base font-semibold'>Begin</span>
 												<ArrowIcon className='rotate-180' />

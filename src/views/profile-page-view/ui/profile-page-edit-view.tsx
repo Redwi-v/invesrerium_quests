@@ -38,14 +38,14 @@ const ProfilePageEditView: FC<IProfilePageEditViewProps> = props => {
 								</span>
 							</label>
 						</div>
-						<div className='p-[4px] pr-[12px] !bg-absolute/100 !bg-opacity-[0.07] flex items-center gap-4 !rounded-2xl'>
+						<div className='p-[4px] pr-[12px] !bg-absolute/100 !bg-opacity-[0.07] flex items-center gap-[6px] !rounded-2xl'>
 							<Button
 								buttonStyle='gray'
-								className='!p-[10px] !min-w-0 !bg-opacity-0'
+								className='!p-[10px] !bg-opacity-[0] !min-w-0 hover:!bg-opacity-[0.07]'
 							>
 								<CopyIcon className='w-5 h-5' />
 							</Button>
-							<span className='text-base opacity-50'>OxB046...0a4b</span>
+							<span className='text-base opacity-50 font-bold'>OxB046...0a4b</span>
 						</div>
 					</div>
 					<Button

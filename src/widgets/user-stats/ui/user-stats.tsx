@@ -43,7 +43,7 @@ const UserStats: FC<IUserStatsProps> = props => {
 							</IconBox>
 							<Button
 								buttonStyle='green'
-								className=''
+								className=' !px-3 !py-[14px] !pl-[20px]'
 							>
 								<span className='mr-2'>GM</span> <HandAnimateIcon />
 							</Button>
