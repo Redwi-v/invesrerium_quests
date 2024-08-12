@@ -101,9 +101,11 @@ const FullPageSlider: FC<FullPageSliderProps> = () => {
 												<span className='ml-2 text-sm font-medium'>Blockchain</span>
 											</div>
 
-											<div className='flex items-center gap-2 font-medium text-sm text-blue/400'>
+											<div className='flex max-w-[54.5%] max-lg:max-w-[45%] truncate items-center gap-2 font-medium text-sm text-blue/400'>
 												<Avatar className='w-6 h-6' />
-												<span>Сompany name{index}</span>
+												<span className='truncate'>
+													Company name {index !== 0 ? index : 'name Company name'}
+												</span>
 											</div>
 										</div>
 
