@@ -1,6 +1,13 @@
 'use client';
 import LikeButton from '@/features/like-button/ui/like-button';
-import { CoinIcon, CupIcon, XpIcon } from '@/shared/images';
+import {
+	CoinIcon,
+	CompanyName,
+	CupIcon,
+	PolygonImage,
+	PolygonImage2,
+	XpIcon,
+} from '@/shared/images';
 import { Avatar } from '@mui/material';
 import Image from 'next/image';
 import { FC, useState } from 'react';
@@ -31,11 +38,11 @@ export const QuestCard: FC<IQuestCardProps> = props => {
 
 	return (
 		<div
-			onMouseEnter={() => setIsHover(true)}
+			onMouseEnter={() => {
+				windowSize.width > 768 && setIsHover(true);
+			}}
 			onMouseLeave={() => setIsHover(false)}
-			className={` ${cssIf(
-				className,
-			)} relative hover rounded-3xl max-md:rounded-[18px] overflow-hidden`}
+			className={` ${cssIf(className)} relative rounded-3xl max-md:rounded-[18px] overflow-hidden`}
 		>
 			<LikeButton className='absolute z-50 right-3 top-3 left-auto max-md:h-6 max-md:w-6' />
 			{level && (
@@ -84,7 +91,10 @@ export const QuestCard: FC<IQuestCardProps> = props => {
 					</div>
 				)}
 
-				<CoinIcon className='z-[100] absolute w-8 h-8 top-3 left-3 max-md:h-6 max-md:w-6' />
+				<div className='z-[100] flex gap-2 absolute top-3 left-3'>
+					<CoinIcon className=' w-8 h-8  max-md:h-6 max-md:w-6' />
+					<CompanyName className=' w-8 h-8  max-md:h-6 max-md:w-6' />
+				</div>
 				<div className='relative w-full h-[200px] max-md:h-[104px] z-30'>
 					<Image
 						src={'/images/cardBg.jpg'}
@@ -130,24 +140,12 @@ export const QuestCard: FC<IQuestCardProps> = props => {
 							<CupIcon />
 						</div>
 						<div
-							className={`bg-absolute/100 bg-opacity-[0.07] rounded-xl w-full flex justify-center py-3 gap-3 max-md:px-2 ${
+							className={`bg-absolute/100 bg-opacity-[0.07] rounded-xl w-full flex justify-center py-3 gap-3 max-md:gap-2 max-md:px-2 ${
 								completed ? '!bg-green/400 !bg-opacity-20' : ''
 							}`}
 						>
-							<Image
-								src={'/icons/nft1.png'}
-								alt='nft'
-								quality={100}
-								width={windowSize.width < 768 ? 20 : 24}
-								height={windowSize.width < 768 ? 20 : 24}
-							/>
-							<Image
-								src={'/icons/nft2.png'}
-								alt='nft'
-								quality={100}
-								width={windowSize.width < 768 ? 20 : 24}
-								height={windowSize.width < 768 ? 20 : 24}
-							/>
+							<PolygonImage className='max-md:w-5 max-md:h-5 w-6 h-6 ' />
+							<PolygonImage2 className='max-md:w-5 max-md:h-5 w-6 h-6 ' />
 						</div>
 					</div>
 				</div>

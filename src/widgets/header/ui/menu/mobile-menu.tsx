@@ -21,7 +21,7 @@ export const MobileMenu: FC<MobileMenuProps> = () => {
 		<div className='max-pc:block hidden'>
 			<button
 				onClick={() => setIsOpen(value => !value)}
-				className='p-3 bg-tone/200 rounded-xl ml-3 max-md:p-[10px] max-md:ml-3'
+				className='p-3 bg-absolute/100 bg-opacity-[0.07] rounded-xl ml-3 max-md:p-[10px] max-md:ml-3'
 			>
 				{isOpen ? (
 					<CrossIcon className='max-md:w-5 max-md:h-5' />

@@ -7,8 +7,10 @@ import { Button, H2 } from '@/shared/ui-kit';
 import { cssIf } from '@/shared/utils';
 import { Avatar, AvatarGroup } from '@mui/material';
 import Image from 'next/image';
-import { FC, useRef, useState } from 'react';
-import Slider, { Settings } from 'react-slick';
+import { FC, useCallback, useEffect, useRef, useState } from 'react';
+
+import { Controller } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 interface ListSliderProps {
 	mainTitle: string;
@@ -16,69 +18,34 @@ interface ListSliderProps {
 }
 
 export const ListSlider: FC<ListSliderProps> = ({ mainTitle, className }) => {
-	const [slideIndex, setSlideIndex] = useState(0);
-	const [updateCount, setUpdateCount] = useState(0);
-	let sliderRef = useRef<Slider | null>(null);
-
-	const settings: Settings = {
-		dots: false,
-		infinite: false,
-		arrows: false,
-		speed: 500,
-		slidesToShow: 4,
-		slidesToScroll: 2,
-		afterChange: () => setUpdateCount(updateCount),
-		beforeChange: (current, next) => setSlideIndex(next),
-
-		responsive: [
-			{
-				breakpoint: 1296,
-				settings: {
-					slidesToShow: 3,
-					slidesToScroll: 2,
-				},
-			},
-			{
-				breakpoint: 1023,
-				settings: {
-					slidesToShow: 2,
-					slidesToScroll: 2,
-				},
-			},
-			{
-				breakpoint: 768,
-				settings: {
-					slidesToShow: 2.15,
-					slidesToScroll: 2,
-				},
-			},
-		],
-	};
-
-	const sliderNext = () => sliderRef.current && slideIndex + 2 < 9 && sliderRef.current.slickNext();
-	const sliderPrev = () =>
-		sliderRef.current && slideIndex - 2 >= 0 && sliderRef.current.slickPrev();
-	const sliderGoTo = (index: number) => sliderRef.current && sliderRef.current.slickGoTo(index);
-
-	console.log(sliderRef);
-
 	const title = 'Celosphere Summer: Mint “Ego” by Mad in Pixel';
+	const swiperRef = useRef<any>(null);
+
+	const handlePrev = useCallback(() => {
+		swiperRef.current.swiper.slideTo(swiperRef.current.swiper.activeIndex - 2);
+	}, [swiperRef, swiperRef?.current?.activeIndex]);
+
+	const handleNext = useCallback(() => {
+		swiperRef.current.swiper.slideTo(swiperRef.current.swiper.activeIndex + 2);
+	}, [swiperRef, swiperRef?.current?.activeIndex]);
 
 	return (
 		<div className={`custom-container pb-16 max-md:pb-8 ${cssIf(className)}`}>
-			<div className='flex justify-between'>
+			<div className='flex justify-between items-center'>
 				<H2>{mainTitle}</H2>
 				<div className='flex'>
 					<Button
 						buttonStyle='gray'
-						onClick={sliderPrev}
+						onClick={() => {
+							handlePrev();
+						}}
 						className='bg-tone/200 rounded-xl !p-[10px] min-w-0 max-md:hidden'
 					>
 						<ArrowIcon />
 					</Button>
 					<Button
 						buttonStyle='gray'
-						onClick={sliderNext}
+						onClick={() => handleNext()}
 						className='bg-tone/200 rounded-xl !p-[10px] ml-1 min-w-0 max-md:hidden'
 					>
 						<ArrowIcon className='rotate-180' />
@@ -94,23 +61,38 @@ export const ListSlider: FC<ListSliderProps> = ({ mainTitle, className }) => {
 					</Button>
 				</div>
 			</div>
-			<Slider
+			<Swiper
 				className='mt-8 overflow-hidden -ml-6 max-md:-ml-3  max-md:mt-6 cursor-pointer'
-				{...settings}
-				ref={sliderRef}
+				ref={swiperRef}
+				slidesPerView={2.12}
+				spaceBetween={12}
+				breakpoints={{
+					1296: {
+						slidesPerView: 4,
+						spaceBetween: 24,
+					},
+					1024: {
+						slidesPerView: 3,
+						spaceBetween: 24,
+					},
+					768: {
+						slidesPerView: 2,
+						spaceBetween: 24,
+					},
+				}}
 			>
 				{Array.from(Array(10).keys()).map(index => {
 					return (
-						<li className='pl-6 max-md:pl-3'>
+						<SwiperSlide className=''>
 							<QuestCard
 								level={index === 2 ? 2 : null}
 								day={index === 1 ? 2 : null}
 								title={title + index.toString()}
 							/>
-						</li>
+						</SwiperSlide>
 					);
 				})}
-			</Slider>
+			</Swiper>
 		</div>
 	);
 };

@@ -5,5 +5,7 @@ export const H1: FC<PropsWithChildren & { className?: string }> = ({ children, c
 	<h1 className={`font-bold text-3xl ${cssIf(className)}`}>{children}</h1>
 );
 export const H2: FC<PropsWithChildren & { className?: string }> = ({ children, className }) => (
-	<h2 className={`font-bold text-3xl max-md:text-2xl  ${cssIf(className)}`}>{children}</h2>
+	<h2 className={`font-bold text-3xl leading-10 max-md:text-2xl  ${cssIf(className)}`}>
+		{children}
+	</h2>
 );

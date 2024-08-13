@@ -1,34 +1,29 @@
 'use client';
-import { FC, useRef, useState } from 'react';
+import { FC, useCallback, useEffect, useRef, useState } from 'react';
 import Slider, { Settings } from 'react-slick';
 import { ArrowIcon } from '../../../shared/images/ui/arrow';
 import Image from 'next/image';
 import { Avatar } from '@mui/material';
 import { Button, H1 } from '@/shared/ui-kit';
 import { CoinIcon, CupIcon, Spiral, XpIcon } from '@/shared/images';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
 
 interface FullPageSliderProps {}
 
 const FullPageSlider: FC<FullPageSliderProps> = () => {
-	const [slideIndex, setSlideIndex] = useState(0);
-	const [updateCount, setUpdateCount] = useState(0);
-	let sliderRef = useRef<Slider | null>(null);
+	const swiperRef = useRef<any>(null);
+	const [activeIndex, setActiveIndex] = useState(0);
 
-	const settings: Settings = {
-		dots: false,
-		infinite: true,
-		arrows: false,
-		speed: 140,
-		slidesToShow: 1,
-		slidesToScroll: 1,
-		afterChange: () => setUpdateCount(updateCount + 1),
-		beforeChange: (current, next) => setSlideIndex(next),
-		fade: true,
-	};
+	const handlePrev = useCallback(() => {
+		swiperRef.current.swiper.slideTo(swiperRef.current.swiper.activeIndex - 1);
+	}, [swiperRef, swiperRef?.current?.activeIndex]);
 
-	const sliderNext = () => sliderRef.current && sliderRef.current.slickNext();
-	const sliderPrev = () => sliderRef.current && sliderRef.current.slickPrev();
-	const sliderGoTo = (index: number) => sliderRef.current && sliderRef.current.slickGoTo(index);
+	const handleNext = useCallback(() => {
+		swiperRef.current.swiper.slideTo(swiperRef.current.swiper.activeIndex + 1);
+	}, [swiperRef, swiperRef?.current?.activeIndex]);
+
+	const handleGoTo = (index: number) => swiperRef?.current?.swiper?.slideTo(index);
 
 	return (
 		<div className='overflow-hidden relative'>
@@ -41,60 +36,68 @@ const FullPageSlider: FC<FullPageSliderProps> = () => {
 					<div className='flex'>
 						<Button
 							buttonStyle='gray'
-							onClick={sliderPrev}
-							className='bg-tone/200 min-w-0 rounded-xl !p-[10px] max-md:hidden '
+							onClick={handlePrev}
+							className='bg-absolute/100 bg-opacity-[0.07] min-w-0 rounded-xl !p-[10px] max-md:hidden '
 						>
 							<ArrowIcon />
 						</Button>
 						<Button
 							buttonStyle='gray'
-							onClick={sliderNext}
-							className='bg-tone/200 min-w-0 rounded-xl !p-[10px] ml-1 max-md:hidden'
+							onClick={handleNext}
+							className='bg-absolute/100 bg-opacity-[0.07] min-w-0 rounded-xl !p-[10px] ml-1 max-md:hidden'
 						>
 							<ArrowIcon className='rotate-180' />
 						</Button>
 
-						<div className='ml-2 bg-tone/200 py-4 px-6 rounded-[50px] flex gap-2'>
+						<div className='ml-2 bg-absolute/100 bg-opacity-[0.07] py-4 px-6 rounded-[50px] flex gap-2'>
 							<button
-								className={`w-2 h-2 bg-absolute/100 rounded-full opacity-[0.65] ${
-									slideIndex === 0 ? '!opacity-100 scale-[1.1]' : ''
+								className={`w-2 h-2 bg-absolute/100 rounded-full transition-all bg-opacity-[0.72] ${
+									activeIndex === 0 ? '!bg-opacity-100 scale-[1.1]' : ''
 								}`}
-								onClick={() => sliderGoTo(0)}
+								onClick={() => handleGoTo(0)}
 							/>
 							<button
-								className={`w-2 h-2 bg-absolute/100 rounded-full opacity-[.65] ${
-									slideIndex === 1 ? '!opacity-100 scale-[1.1]' : ''
+								className={`w-2 h-2 bg-absolute/100 rounded-full transition-all bg-opacity-[.72] ${
+									activeIndex === 1 ? '!bg-opacity-100 scale-[1.1]' : ''
 								}`}
-								onClick={() => sliderGoTo(1)}
+								onClick={() => handleGoTo(1)}
 							/>
 							<button
-								className={`w-2 h-2 bg-absolute/100 rounded-full opacity-[.65] ${
-									slideIndex === 2 ? '!opacity-100 scale-[1.1]' : ''
+								className={`w-2 h-2 bg-absolute/100 rounded-full transition-all bg-opacity-[.72] ${
+									activeIndex === 2 ? '!bg-opacity-100 scale-[1.1]' : ''
 								}`}
-								onClick={() => sliderGoTo(2)}
+								onClick={() => handleGoTo(2)}
 							/>
 							<button
-								className={`w-2 h-2 bg-absolute/100 rounded-full opacity-[.65] ${
-									slideIndex === 3 ? '!opacity-100 scale-[1.1]' : ''
+								className={`w-2 h-2 bg-absolute/100 rounded-full transition-all bg-opacity-[.72] ${
+									activeIndex === 3 ? '!bg-opacity-100 scale-[1.1]' : ''
 								}`}
-								onClick={() => sliderGoTo(3)}
+								onClick={() => handleGoTo(3)}
 							/>
 						</div>
 					</div>
 				</div>
-				<Slider
+				<Swiper
+					ref={swiperRef}
 					className='mt-8 rounded-3xl overflow-hidden max-md:mt-6 cursor-pointer'
-					{...settings}
-					ref={sliderRef}
+					autoHeight
+					modules={[Autoplay]}
+					autoplay={{
+						delay: 6000,
+						disableOnInteraction: false,
+					}}
+					onActiveIndexChange={() => {
+						setActiveIndex(swiperRef?.current?.swiper?.activeIndex);
+					}}
 				>
 					{Array.from(Array(4).keys()).map(index => {
 						return (
-							<div
+							<SwiperSlide
 								key={index}
-								className='h-[482px] bg-absolute/800 max-md:h-[553px]'
+								className='bg-absolute/800 rounded-3xl h-full'
 							>
 								<div className='flex h-full max-md:flex-col-reverse'>
-									<div className='max-pc:px-[32px] w-1/2 px-[62px] pt-[106px] max-lg:py-20 max-lg:px-6 max-md:p-4 max-md:w-full'>
+									<div className='max-pc:px-[32px] w-1/2 px-[62px] pb-[106px] pt-[106px] max-lg:py-20 max-lg:px-6 max-md:p-4 max-md:w-full'>
 										<div className='flex justify-between border-b border-border pb-3 items-center'>
 											<div className='p-[6px] pr-[16px] bg-absolute/100 bg-opacity-[.07] flex items-center rounded-[100px]'>
 												<CoinIcon />
@@ -110,12 +113,14 @@ const FullPageSlider: FC<FullPageSliderProps> = () => {
 										</div>
 
 										<div className='mt-3'>
-											<h2 className='text-5xl leading-[60px] font-bold max-lg:text-4xl'>
+											<h2 className='text-5xl leading-[60px] max-lg:leading-[45px] font-bold max-lg:text-4xl'>
 												Bridge to Taiko
 											</h2>
 											<p className='opacity-50 mt-4 text-base'>
 												Start your Taiko journey by bridging ETH to its permissionless,
-												Ethereum-based rollup.
+												Ethereum-based rollup.{' '}
+												{index === 0 &&
+													'dfkdjfldk jfdlkf jdlkfj dlkfjd lkfj dklfj dklfj dlfkjd lkfjd lkfjdlf kjdfkld jfl'}
 											</p>
 										</div>
 
@@ -156,7 +161,7 @@ const FullPageSlider: FC<FullPageSliderProps> = () => {
 											</div>
 										</div>
 									</div>
-									<div className='w-1/2 relative max-md:w-full max-md:h-full'>
+									<div className='w-1/2 relative max-md:w-full max-md:h-full max-md:min-h-[200px]'>
 										<Image
 											src={'/images/Banner.jpg'}
 											alt='banner'
@@ -166,10 +171,10 @@ const FullPageSlider: FC<FullPageSliderProps> = () => {
 										/>
 									</div>
 								</div>
-							</div>
+							</SwiperSlide>
 						);
 					})}
-				</Slider>
+				</Swiper>
 			</div>
 		</div>
 	);

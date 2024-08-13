@@ -1,6 +1,9 @@
+export { PolygonImage2 } from './ui/polygon2';
+
+export { CompanyName } from './ui/company-icon';
+
 export { FireAnimateIcon } from './ui/fire-animate';
 export { HandAnimateIcon } from './ui/hand-animate';
-
 export { ExclamationMark } from './ui/exclamation-mark';
 
 export { InviteIcon } from './ui/invite';
@@ -8,7 +11,6 @@ export { InviteIcon } from './ui/invite';
 export { DiscordIcon } from './ui/discord';
 export { GitHubIcon } from './ui/github';
 export { TwitterIcon } from './ui/twitter';
-
 export { ImageIcon } from './ui/image';
 export { CopyIcon } from './ui/copy';
 export { ReferralsIcon } from './ui/referrals';

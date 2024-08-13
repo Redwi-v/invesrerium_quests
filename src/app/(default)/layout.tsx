@@ -4,6 +4,7 @@ import { Footer } from '@/widgets/footer';
 import { Header } from '@/widgets/header';
 import { StyledEngineProvider } from '@mui/material';
 import '../globals.css';
+import 'swiper/css';
 
 import 'react-circular-progressbar/dist/styles.css';
 
