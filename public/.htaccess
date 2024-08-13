@@ -1,0 +1,14 @@
+AddDefaultCharset UTF-8
+
+ Header set Cache-Control "no-cache, public"
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-l
+  RewriteCond %{SERVER_POPT} !^58839$
+  RewriteRule . /index.html [L]
+</IfModule>
