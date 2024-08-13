@@ -27,8 +27,9 @@ export const ListSlider: FC<ListSliderProps> = ({ mainTitle, className }) => {
 		speed: 500,
 		slidesToShow: 4,
 		slidesToScroll: 2,
-		afterChange: () => setUpdateCount(updateCount + 1),
+		afterChange: () => setUpdateCount(updateCount),
 		beforeChange: (current, next) => setSlideIndex(next),
+
 		responsive: [
 			{
 				breakpoint: 1296,
@@ -41,14 +42,22 @@ export const ListSlider: FC<ListSliderProps> = ({ mainTitle, className }) => {
 				breakpoint: 1023,
 				settings: {
 					slidesToShow: 2,
-					slidesToScroll: 1,
+					slidesToScroll: 2,
+				},
+			},
+			{
+				breakpoint: 768,
+				settings: {
+					slidesToShow: 2.15,
+					slidesToScroll: 2,
 				},
 			},
 		],
 	};
 
-	const sliderNext = () => sliderRef.current && sliderRef.current.slickNext();
-	const sliderPrev = () => sliderRef.current && sliderRef.current.slickPrev();
+	const sliderNext = () => sliderRef.current && slideIndex + 2 < 9 && sliderRef.current.slickNext();
+	const sliderPrev = () =>
+		sliderRef.current && slideIndex - 2 >= 0 && sliderRef.current.slickPrev();
 	const sliderGoTo = (index: number) => sliderRef.current && sliderRef.current.slickGoTo(index);
 
 	console.log(sliderRef);

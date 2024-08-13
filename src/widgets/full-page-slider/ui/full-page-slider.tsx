@@ -18,7 +18,7 @@ const FullPageSlider: FC<FullPageSliderProps> = () => {
 		dots: false,
 		infinite: true,
 		arrows: false,
-		speed: 500,
+		speed: 140,
 		slidesToShow: 1,
 		slidesToScroll: 1,
 		afterChange: () => setUpdateCount(updateCount + 1),
