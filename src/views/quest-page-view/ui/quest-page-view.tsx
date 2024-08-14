@@ -327,11 +327,11 @@ export const QuestPageView: FC<IQuestPageViewProps> = props => {
 					</div>
 				</div>
 			</div>
-			<div className='hidden sticky left-0 right-0 bottom-0 p-3 bg-bg bg-opacity-80  z-10 max-md:block'>
+			<div className='hidden sticky left-0 max-md:flex justify-center right-0 bottom-0 p-3 bg-bg bg-opacity-80  z-10 '>
 				<Button
 					buttonStyle='purple'
 					onClick={() => setQuestIsOpen(true)}
-					className=' !bg-blue/400 custom-container !bg-opacity-100 font-semibold text-base w-full flex items-center gap-2'
+					className=' !bg-blue/400 max-w-[351px] !bg-opacity-100 font-semibold text-base w-full flex items-center gap-2'
 				>
 					<span>Start Quest </span>
 					<ArrowIcon className='rotate-180' />

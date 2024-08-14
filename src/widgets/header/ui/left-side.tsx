@@ -13,9 +13,9 @@ const LeftSide: FC<LeftSideProps> = () => {
 				Investerium <br /> Quests
 			</Link>
 
-			<span className='w-[1px] h-4 bg-absolute/100 opacity-15 mr-8 max-md:hidden' />
+			<span className='w-[1px] h-4 bg-absolute/100 opacity-15 mr-8 max-pc:hidden' />
 			<Link
-				className='text-sm max-md:hidden font-semibold'
+				className='text-sm max-pc:hidden font-semibold'
 				href={'/quests'}
 			>
 				Quests

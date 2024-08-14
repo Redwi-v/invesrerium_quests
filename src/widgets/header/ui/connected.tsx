@@ -55,9 +55,9 @@ const ConnectedHeaderContent: FC<ConnectedHeaderContentProps> = ({}) => {
 						e.stopPropagation();
 						setMenuIsOpen(value => !value);
 					}}
-					className='flex items-center relative'
+					className='flex items-center relative ml-[34px]'
 				>
-					<Avatar contentClassName='ml-[34px] hover:scale-105 transition' />
+					<Avatar contentClassName=' hover:scale-105 transition' />
 					<DesktopMenu isOpen={menuIsOpen} />
 				</button>
 				<MobileMenu />

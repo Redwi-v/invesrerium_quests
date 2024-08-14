@@ -26,8 +26,7 @@ export const Button: FC<ButtonProps & MuiButtonProps> = ({ children, ...muiProps
         ${cssIf(className)}
        text-absolute/100
       	normal-case rounded-xl px-[18px] 
-       	py-3 hover:opacity-90 
-        text-base max-md:text-sm max-md:px-3 max-md:py-[10px]
+       	py-3 text-base max-md:text-sm max-md:px-3 max-md:py-[10px]
        	font-semibold 
        `}
 			{...props}

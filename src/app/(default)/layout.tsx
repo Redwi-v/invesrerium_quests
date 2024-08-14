@@ -12,19 +12,33 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { inter } from '../fonts';
 import Providers from '../progress.bar';
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 
 export default function RootLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
+	const router = useRouter();
+	const path = usePathname();
+
 	useEffect(() => {
 		if (!window && !WebApp?.initData) return;
 		WebApp.ready();
 		WebApp.expand();
-		WebApp.BackButton.show();
+		WebApp.BackButton.onClick(() => {
+			router.back();
+		});
 	}, []);
+
+	useEffect(() => {
+		if (path === '/') {
+			WebApp.BackButton.hide();
+		} else {
+			WebApp.BackButton.show();
+		}
+	}, [path]);
 
 	return (
 		<html lang='en'>

@@ -16,11 +16,11 @@ const FullPageSlider: FC<FullPageSliderProps> = () => {
 	const [activeIndex, setActiveIndex] = useState(0);
 
 	const handlePrev = useCallback(() => {
-		swiperRef.current.swiper.slideTo(swiperRef.current.swiper.activeIndex - 1);
+		swiperRef.current.swiper.slidePrev();
 	}, [swiperRef, swiperRef?.current?.activeIndex]);
 
 	const handleNext = useCallback(() => {
-		swiperRef.current.swiper.slideTo(swiperRef.current.swiper.activeIndex + 1);
+		swiperRef.current.swiper.slideNext();
 	}, [swiperRef, swiperRef?.current?.activeIndex]);
 
 	const handleGoTo = (index: number) => swiperRef?.current?.swiper?.slideTo(index);
@@ -51,26 +51,26 @@ const FullPageSlider: FC<FullPageSliderProps> = () => {
 
 						<div className='ml-2 bg-absolute/100 bg-opacity-[0.07] py-4 px-6 rounded-[50px] flex gap-2'>
 							<button
-								className={`w-2 h-2 bg-absolute/100 rounded-full transition-all bg-opacity-[0.72] ${
-									activeIndex === 0 ? '!bg-opacity-100 scale-[1.1]' : ''
+								className={`w-2 h-2 bg-absolute/100 rounded-full transition-all bg-opacity-[0.72] opacity-[.3] ${
+									activeIndex === 0 ? '!bg-opacity-100 scale-[1.1] !opacity-100' : ''
 								}`}
 								onClick={() => handleGoTo(0)}
 							/>
 							<button
-								className={`w-2 h-2 bg-absolute/100 rounded-full transition-all bg-opacity-[.72] ${
-									activeIndex === 1 ? '!bg-opacity-100 scale-[1.1]' : ''
+								className={`w-2 h-2 bg-absolute/100 rounded-full transition-all bg-opacity-[.72] opacity-[.3] ${
+									activeIndex === 1 ? '!bg-opacity-100 scale-[1.1] !opacity-100' : ''
 								}`}
 								onClick={() => handleGoTo(1)}
 							/>
 							<button
-								className={`w-2 h-2 bg-absolute/100 rounded-full transition-all bg-opacity-[.72] ${
-									activeIndex === 2 ? '!bg-opacity-100 scale-[1.1]' : ''
+								className={`w-2 h-2 bg-absolute/100 rounded-full transition-all bg-opacity-[.72] opacity-[.3] ${
+									activeIndex === 2 ? '!bg-opacity-100 scale-[1.1] !opacity-100' : ''
 								}`}
 								onClick={() => handleGoTo(2)}
 							/>
 							<button
-								className={`w-2 h-2 bg-absolute/100 rounded-full transition-all bg-opacity-[.72] ${
-									activeIndex === 3 ? '!bg-opacity-100 scale-[1.1]' : ''
+								className={`w-2 h-2 bg-absolute/100 rounded-full transition-all bg-opacity-[.72] opacity-[.3] ${
+									activeIndex === 3 ? '!bg-opacity-100 scale-[1.1] !opacity-100' : ''
 								}`}
 								onClick={() => handleGoTo(3)}
 							/>
@@ -79,9 +79,11 @@ const FullPageSlider: FC<FullPageSliderProps> = () => {
 				</div>
 				<Swiper
 					ref={swiperRef}
-					className='mt-8 rounded-3xl overflow-hidden max-md:mt-6 cursor-pointer'
-					autoHeight
+					className='mt-8 overflow-hidden !rounded-3xl max-md:mt-6 active:cursor-grabbing'
 					modules={[Autoplay]}
+					spaceBetween={24}
+					rewind
+					speed={600}
 					autoplay={{
 						delay: 6000,
 						disableOnInteraction: false,
@@ -94,10 +96,14 @@ const FullPageSlider: FC<FullPageSliderProps> = () => {
 						return (
 							<SwiperSlide
 								key={index}
-								className='bg-absolute/800 rounded-3xl h-full'
+								className='bg-absolute/800 !rounded-3xl overflow-hidden !h-auto'
 							>
-								<div className='flex h-full max-md:flex-col-reverse'>
-									<div className='max-pc:px-[32px] w-1/2 px-[62px] pb-[106px] pt-[106px] max-lg:py-20 max-lg:px-6 max-md:p-4 max-md:w-full'>
+								<div className='flex h-full max-md:flex-col-reverse max-md:max-md:h-[100%]'>
+									<div
+										className='max-pc:px-[32px] w-1/2 px-[62px] 
+									pb-[106px] pt-[106px] max-lg:py-20 
+									max-lg:px-6 max-md:p-4 max-md:w-full max-md:flex max-md:flex-col max-md:h-[100%]'
+									>
 										<div className='flex justify-between border-b border-border pb-3 items-center'>
 											<div className='p-[6px] pr-[16px] bg-absolute/100 bg-opacity-[.07] flex items-center rounded-[100px]'>
 												<CoinIcon />
@@ -112,7 +118,7 @@ const FullPageSlider: FC<FullPageSliderProps> = () => {
 											</div>
 										</div>
 
-										<div className='mt-3'>
+										<div className='mt-3 mb-auto '>
 											<h2 className='text-5xl leading-[60px] max-lg:leading-[45px] font-bold max-lg:text-4xl'>
 												Bridge to Taiko
 											</h2>
@@ -161,7 +167,7 @@ const FullPageSlider: FC<FullPageSliderProps> = () => {
 											</div>
 										</div>
 									</div>
-									<div className='w-1/2 relative max-md:w-full max-md:h-full max-md:min-h-[200px]'>
+									<div className='w-1/2 relative max-md:w-full  max-md:!min-h-[200px]'>
 										<Image
 											src={'/images/Banner.jpg'}
 											alt='banner'

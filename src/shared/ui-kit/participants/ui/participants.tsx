@@ -57,7 +57,7 @@ export const Avatars = ({
 			}}
 			className={` ${cssIf(
 				className,
-			)} w-[43px] h-[43px] border-[3px] -ml-[3px] border-absolute/800 max-md:w-[34px] max-md:h-[34px]`}
+			)} w-[46px] h-[46px] border-[3px] -ml-[3px] border-absolute/800 max-md:w-[40px] max-md:h-[40px]`}
 		/>
 		<Avatar
 			style={{
@@ -66,7 +66,7 @@ export const Avatars = ({
 			}}
 			className={` ${cssIf(
 				className,
-			)} w-[43px] h-[43px] border-[3px] -ml-5 border-absolute/800 max-md:w-[34px] max-md:h-[34px]`}
+			)} w-[46px] h-[46px] border-[3px] -ml-[21px] border-absolute/800 max-md:w-[40px] max-md:h-[40px]`}
 		/>
 	</div>
 );

@@ -30,8 +30,8 @@ export const ListSlider: FC<ListSliderProps> = ({ mainTitle, className }) => {
 	}, [swiperRef, swiperRef?.current?.activeIndex]);
 
 	return (
-		<div className={`custom-container pb-16 max-md:pb-8 ${cssIf(className)}`}>
-			<div className='flex justify-between items-center'>
+		<div className={` pb-16 max-md:pb-8 ${cssIf(className)}`}>
+			<div className='flex justify-between items-center custom-container'>
 				<H2>{mainTitle}</H2>
 				<div className='flex'>
 					<Button
@@ -62,10 +62,11 @@ export const ListSlider: FC<ListSliderProps> = ({ mainTitle, className }) => {
 				</div>
 			</div>
 			<Swiper
-				className='mt-8 overflow-hidden -ml-6 max-md:-ml-3  max-md:mt-6 cursor-pointer'
+				className='mt-8 overflow-hidden -ml-6 max-md:-ml-3 custom-container max-md:!pl-[12px] max-md:!w-auto max-md:mt-6 active:cursor-grabbing'
 				ref={swiperRef}
 				slidesPerView={2.12}
 				spaceBetween={12}
+				wrapperClass='!w-fit'
 				breakpoints={{
 					1296: {
 						slidesPerView: 4,
@@ -78,6 +79,10 @@ export const ListSlider: FC<ListSliderProps> = ({ mainTitle, className }) => {
 					768: {
 						slidesPerView: 2,
 						spaceBetween: 24,
+					},
+					520: {
+						slidesPerView: 3.12,
+						spaceBetween: 12,
 					},
 				}}
 			>

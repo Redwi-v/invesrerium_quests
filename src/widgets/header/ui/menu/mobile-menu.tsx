@@ -1,4 +1,5 @@
 'use client';
+import { useWindowSize } from '@/shared/hooks';
 import {
 	BurgerMenu,
 	CrossIcon,
@@ -10,12 +11,35 @@ import {
 import { Avatar, Button } from '@/shared/ui-kit';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 import { FC, useCallback, useEffect, useState } from 'react';
 
 interface MobileMenuProps {}
 
 export const MobileMenu: FC<MobileMenuProps> = () => {
 	const [isOpen, setIsOpen] = useState(false);
+	const path = usePathname();
+
+	useEffect(() => {
+		setIsOpen(false);
+	}, [path]);
+
+	useEffect(() => {
+		const closeModal = () => {
+			setIsOpen(false);
+		};
+		const closeModalScroll = () => {
+			if (window?.innerWidth < 768) return;
+			setIsOpen(false);
+		};
+		window.addEventListener('scroll', closeModalScroll);
+		window.addEventListener('resize', closeModal);
+
+		return () => {
+			window.removeEventListener('scroll', closeModalScroll);
+			window.removeEventListener('resize', closeModal);
+		};
+	}, []);
 
 	return (
 		<div className='max-pc:block hidden'>
@@ -29,6 +53,11 @@ export const MobileMenu: FC<MobileMenuProps> = () => {
 					<BurgerMenu className='max-md:w-5 max-md:h-5' />
 				)}
 			</button>
+
+			<div
+				onClick={() => setIsOpen(false)}
+				className={` left-0 right-0 bottom-0 top-0 fixed -z-10 hidden ${isOpen ? '!block' : ''}`}
+			/>
 
 			<div
 				className={`fixed left-0 ring-0 w-full bg-absolute/800 top-[84px] hidden max-md:bottom-[0] max-md:top-[0] overflow-auto ${
@@ -50,7 +79,7 @@ export const MobileMenu: FC<MobileMenuProps> = () => {
 					</div>
 					<button
 						onClick={() => setIsOpen(value => !value)}
-						className='p-3 bg-tone/200 rounded-xl ml-3 max-md:p-[10px] max-md:ml-3 '
+						className='p-3 bg-absolute/100 bg-opacity-[0.07] rounded-xl ml-3 max-md:p-[10px] max-md:ml-3 '
 					>
 						{isOpen ? (
 							<CrossIcon className='max-md:w-5 max-md:h-5' />
@@ -62,8 +91,9 @@ export const MobileMenu: FC<MobileMenuProps> = () => {
 				<div className='flex gap-6 custom-container py-6 max-md:flex-col-reverse max-md:gap-0'>
 					<div className='flex flex-col w-full'>
 						<Link
-							href={'/questions'}
-							className='py-[14px] px-5 bg-tone/200 rounded-xl w-full block'
+							href={'/quests'}
+							replace
+							className='py-[14px] px-5 bg-absolute/100 bg-opacity-[0.07] rounded-xl w-full block'
 						>
 							Quests
 						</Link>
@@ -72,7 +102,7 @@ export const MobileMenu: FC<MobileMenuProps> = () => {
 					<div className='flex flex-col w-full max-md:mb-6 max-md:pb-6 max-md:border-b max-md:border-border'>
 						<ul className='flex flex-col gap-6 max-md:flex-row max-md:gap-2'>
 							<li className='flex gap-4 max-md:hidden'>
-								<span className='p-[14px] max-w-fit rounded-xl block bg-tone/200'>
+								<span className='p-[14px] max-w-fit rounded-xl block bg-absolute/100 bg-opacity-[0.07]'>
 									<Image
 										src={'/icons/gradientCircle.png'}
 										alt='circle'
@@ -87,7 +117,7 @@ export const MobileMenu: FC<MobileMenuProps> = () => {
 								</div>
 							</li>
 							<li
-								className='flex gap-4 max-md:bg-tone/200 max-md:w-full
+								className='flex gap-4 max-md:bg-absolute/100 max-md:bg-opacity-[0.07] max-md:w-full
                 max-md:justify-center max-md:items-center
                 max-md:text-center max-md:gap-[2px] max-md:py-[14px] rounded-2xl'
 							>
@@ -103,7 +133,7 @@ export const MobileMenu: FC<MobileMenuProps> = () => {
 								</div>
 							</li>
 							<li
-								className='flex gap-4 max-md:bg-tone/200 max-md:w-full
+								className='flex gap-4 max-md:bg-absolute/100 max-md:bg-opacity-[0.07] max-md:w-full
                 max-md:justify-center max-md:items-center
                 max-md:text-center max-md:gap-[2px] max-md:py-[14px] rounded-2xl'
 							>
@@ -116,7 +146,7 @@ export const MobileMenu: FC<MobileMenuProps> = () => {
 								</div>
 							</li>
 							<li
-								className='flex gap-4 max-md:bg-tone/200 max-md:w-full
+								className='flex gap-4 max-md:bg-absolute/100 max-md:bg-opacity-[0.07] max-md:w-full
                 max-md:justify-center max-md:items-center
                 max-md:text-center max-md:gap-[2px] max-md:py-[14px] rounded-2xl'
 							>

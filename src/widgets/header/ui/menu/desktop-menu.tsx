@@ -32,6 +32,9 @@ export const DesktopMenu: React.FC<IDesktopMenuProps> = ({ isOpen, className }) 
 			}`}
 			sx={{ width: 245 }}
 		>
+			<div
+				className={` left-0 right-0 bottom-0 top-0 fixed -z-10 hidden ${isOpen ? '!block' : ''}`}
+			/>
 			<MenuList className='flex flex-col gap-1 p-0 '>
 				<Button
 					buttonStyle='gray'

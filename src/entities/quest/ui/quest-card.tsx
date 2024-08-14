@@ -92,8 +92,8 @@ export const QuestCard: FC<IQuestCardProps> = props => {
 				)}
 
 				<div className='z-[100] flex gap-2 absolute top-3 left-3'>
+					<CompanyName className='w-8 h-8 hidden max-md:block  max-md:h-6 max-md:w-6' />
 					<CoinIcon className=' w-8 h-8  max-md:h-6 max-md:w-6' />
-					<CompanyName className=' w-8 h-8  max-md:h-6 max-md:w-6' />
 				</div>
 				<div className='relative w-full h-[200px] max-md:h-[104px] z-30'>
 					<Image

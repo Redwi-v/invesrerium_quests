@@ -9,6 +9,9 @@
 
 body {
   overflow-x: hidden;
+  @apply max-md:min-w-[375px]
+
+  
 }
 
 .custom-container {
@@ -19,7 +22,8 @@ body {
     max-pc:w-[936px]
     max-pc:!px-0
     max-lg:w-[696px]
-    max-md:w-[351px]
+    max-md:w-[375px]
+    max-md:!px-[12px]
 
   ;
 
