@@ -107,7 +107,9 @@ export const QuestCard: FC<IQuestCardProps> = props => {
 					<div className='flex justify-between items-center max-md:hidden'>
 						<div className='flex gap-2'>
 							<Avatar className='w-5 h-5' />
-							<span className='text-blue/400 font-medium text-sm'>Сompany name</span>
+							<span className='text-blue/400 font-medium text-sm line-clamp-1 mr-6'>
+								Сompany name
+							</span>
 						</div>
 						<div className='flex'>
 							<span className='font-semibold text-base'>190</span>
@@ -115,9 +117,7 @@ export const QuestCard: FC<IQuestCardProps> = props => {
 						</div>
 					</div>
 
-					<h3 className='mt-2 font-semibold text-2xl max-md:text-xs'>
-						{title.length > 37 ? title.split('', 37).join('') + '...' : title}
-					</h3>
+					<h3 className='mt-2 font-semibold text-2xl max-md:text-xs line-clamp-2'>{title}</h3>
 
 					<Participants borderColor={!isHover ? '#2E2E2E' : '#444444'} />
 					<div className='flex gap-2 mt-4 max-md:hidden'>

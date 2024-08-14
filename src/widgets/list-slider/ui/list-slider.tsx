@@ -31,7 +31,7 @@ export const ListSlider: FC<ListSliderProps> = ({ mainTitle, className }) => {
 
 	return (
 		<div className={` pb-16 max-md:pb-8 ${cssIf(className)}`}>
-			<div className='flex justify-between items-center custom-container'>
+			<div className='flex justify-between items-center custom-container max-md:w-auto max-md:px-3'>
 				<H2>{mainTitle}</H2>
 				<div className='flex'>
 					<Button

@@ -84,10 +84,10 @@ const FullPageSlider: FC<FullPageSliderProps> = () => {
 					spaceBetween={24}
 					rewind
 					speed={600}
-					autoplay={{
-						delay: 6000,
-						disableOnInteraction: false,
-					}}
+					// autoplay={{
+					// 	delay: 6000,
+					// 	disableOnInteraction: false,
+					// }}
 					onActiveIndexChange={() => {
 						setActiveIndex(swiperRef?.current?.swiper?.activeIndex);
 					}}
@@ -101,8 +101,8 @@ const FullPageSlider: FC<FullPageSliderProps> = () => {
 								<div className='flex h-full max-md:flex-col-reverse max-md:max-md:h-[100%]'>
 									<div
 										className='max-pc:px-[32px] w-1/2 px-[62px] 
-									pb-[106px] pt-[106px] max-lg:py-20 
-									max-lg:px-6 max-md:p-4 max-md:w-full max-md:flex max-md:flex-col max-md:h-[100%]'
+										pb-[106px] pt-[106px] max-lg:py-20 flex
+										max-lg:px-6 max-md:p-4 max-md:w-full flex-col max-md:h-[100%]'
 									>
 										<div className='flex justify-between border-b border-border pb-3 items-center'>
 											<div className='p-[6px] pr-[16px] bg-absolute/100 bg-opacity-[.07] flex items-center rounded-[100px]'>
