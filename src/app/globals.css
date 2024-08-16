@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import 'animate.css';
 
 *{
   box-sizing: border-box;
@@ -14,11 +15,36 @@ body {
   
 }
 
+.rnc__notification-container--top-right {
+  width: fit-content !important;
+  min-width: auto !important;
+}
+.rnc__notification {
+
+  animation: animateNoti 1s !important;
+  width: fit-content !important;
+
+}
+
+.rnc__notification-item {
+  box-shadow: none !important;
+}
+
+@keyframes animateNoti {
+  0%{
+    opacity: 0;
+  }
+
+  100%{
+    opacity: 1;
+  }
+}
+
 .custom-container {
 
   @apply
 
-    mx-auto px-4 w-[1296px]
+    mx-auto px-4 w-[1328px]
     max-pc:w-[936px]
     max-pc:!px-0
     max-lg:w-[696px]

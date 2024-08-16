@@ -1,5 +1,6 @@
+'use client';
 import { cssIf } from '@/shared/utils';
-import { DetailedHTMLProps, FC, InputHTMLAttributes, ReactElement } from 'react';
+import { DetailedHTMLProps, FC, InputHTMLAttributes, ReactElement, useState } from 'react';
 
 interface IInputProps {
 	inputParas: DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
@@ -10,14 +11,25 @@ interface IInputProps {
 export const Input: FC<IInputProps> = props => {
 	const { inputParas: AllInputParams, icon, containerClassName } = props;
 	const { className, ...inputParams } = AllInputParams;
+	const [isHovered, setIsHovered] = useState(false);
 
 	return (
 		<div
-			className={`${cssIf(
-				containerClassName,
-			)} flex gap-2 p-3 bg-absolute/100 bg-opacity-[.07] rounded-xl min-w-[404px] max-lg:min-w-0 max-lg:!max-w-[244px]`}
+			onMouseEnter={() => setIsHovered(true)}
+			onMouseLeave={() => setIsHovered(false)}
+			className={`${cssIf(containerClassName)} flex gap-2 p-3 bg-absolute/100 ${cssIf(
+				'!bg-opacity-15',
+				isHovered,
+			)} bg-opacity-[.07] rounded-xl w-min min-w-[424px] transition-colors duration-700 max-lg:min-w-[244px] max-pc:min-w-[404px]`}
 		>
-			<div className='w-fit'>{icon}</div>
+			<div
+				className={`w-fit [&>*>path]:transition-all [&>*>path]:duration-700 ${cssIf(
+					'[&>*>path]:!stroke-absolute/100 ',
+					isHovered,
+				)}`}
+			>
+				{icon}
+			</div>
 			<input
 				className={`${cssIf(
 					className,

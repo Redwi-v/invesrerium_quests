@@ -9,6 +9,7 @@ import {
 	StarIcon,
 } from '@/shared/images';
 import { Avatar, Button } from '@/shared/ui-kit';
+import { useRewardPopupStore } from '@/widgets/reward-popup';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
@@ -19,6 +20,7 @@ interface MobileMenuProps {}
 export const MobileMenu: FC<MobileMenuProps> = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const path = usePathname();
+	const { setOpen: openRewardPopup } = useRewardPopupStore(state => state);
 
 	useEffect(() => {
 		setIsOpen(false);
@@ -45,7 +47,7 @@ export const MobileMenu: FC<MobileMenuProps> = () => {
 		<div className='max-pc:block hidden'>
 			<button
 				onClick={() => setIsOpen(value => !value)}
-				className='p-3 bg-absolute/100 bg-opacity-[0.07] rounded-xl ml-3 max-md:p-[10px] max-md:ml-3'
+				className='p-3 bg-absolute/100 bg-opacity-[0.07] duration-500 hover:bg-opacity-15 rounded-xl ml-3 max-md:p-[10px] max-md:ml-3'
 			>
 				{isOpen ? (
 					<CrossIcon className='max-md:w-5 max-md:h-5' />
@@ -93,7 +95,7 @@ export const MobileMenu: FC<MobileMenuProps> = () => {
 						<Link
 							href={'/quests'}
 							replace
-							className='py-[14px] px-5 bg-absolute/100 bg-opacity-[0.07] rounded-xl w-full block'
+							className='py-[14px] px-5 bg-absolute/100 bg-opacity-[0.07] rounded-xl w-full block active:bg-opacity-15'
 						>
 							Quests
 						</Link>
@@ -160,6 +162,7 @@ export const MobileMenu: FC<MobileMenuProps> = () => {
 							</li>
 						</ul>
 						<Button
+							onClick={() => openRewardPopup(true)}
 							buttonStyle='green'
 							className='w-full mt-6 py-[14px]'
 						>

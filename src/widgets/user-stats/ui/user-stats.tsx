@@ -1,11 +1,13 @@
+'use client';
 import { CupIcon, FireIcon, HandAnimateIcon, StarIcon } from '@/shared/images';
 import { Avatar, Button, IconBox } from '@/shared/ui-kit';
-import Image from 'next/image';
+import { useRewardPopupStore } from '@/widgets/reward-popup';
 import { FC } from 'react';
 interface IUserStatsProps {}
 
 const UserStats: FC<IUserStatsProps> = props => {
 	const {} = props;
+	const { isOpen, setOpen } = useRewardPopupStore(state => state);
 
 	return (
 		<div className='custom-container mt-[42px]'>
@@ -34,7 +36,7 @@ const UserStats: FC<IUserStatsProps> = props => {
 						<div className='flex  items-end flex-col gap-[2px]'>
 							<span className='font-semibold text-sm opacity-50'>GM Streak</span>
 							<span className='font-bold text-lg '>
-								6 <span className='pl-1 opacity-50 font-medium text-lg'>d</span>
+								6<span className='pl-1 opacity-50 font-medium text-lg'>d</span>
 							</span>
 						</div>
 						<div className='ml-4 flex gap-2'>
@@ -42,6 +44,7 @@ const UserStats: FC<IUserStatsProps> = props => {
 								<FireIcon />
 							</IconBox>
 							<Button
+								onClick={() => setOpen(true)}
 								buttonStyle='green'
 								className=' !px-3 !py-[14px] !pl-[20px]'
 							>

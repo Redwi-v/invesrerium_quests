@@ -14,6 +14,9 @@ import { inter } from '../fonts';
 import Providers from '../progress.bar';
 import { Suspense, useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
+import { ReactNotifications } from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css';
+import Popups from './popups';
 
 export default function RootLayout({
 	children,
@@ -43,9 +46,12 @@ export default function RootLayout({
 	return (
 		<html lang='en'>
 			<StyledEngineProvider injectFirst>
+				<Providers />
+
 				<body className={inter.className}>
-					<Providers />
 					<main className='main'>
+						<ReactNotifications />
+						<Popups />
 						<Header />
 						<div className='content'>{children}</div>
 						<Footer />

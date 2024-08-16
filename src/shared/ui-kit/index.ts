@@ -11,3 +11,4 @@ export { P } from './titles/ui/paragraph';
 export * from './icon-box/icon-box';
 export { Avatar } from './avatar/ui/avatar';
 export { Button } from './button/ui/button';
+export * from './popup/ui/popup';

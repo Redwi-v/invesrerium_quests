@@ -49,7 +49,7 @@ export const DesktopMenu: React.FC<IDesktopMenuProps> = ({ isOpen, className }) 
 
 				<Button
 					buttonStyle='gray'
-					href={'/profile'}
+					href={'/profile/edit'}
 					className={` rounded-2xl !px-[10px] !py-[12px] text-base flex items-center h-12`}
 				>
 					<ListItemIcon className='mr-2 w-fit !min-w-0'>

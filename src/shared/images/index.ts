@@ -1,3 +1,5 @@
+export { CheckedIconCircle } from './ui/checked-icon-ricle';
+
 export { PolygonImage2 } from './ui/polygon2';
 
 export { CompanyName } from './ui/company-icon';

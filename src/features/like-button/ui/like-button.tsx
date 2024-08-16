@@ -5,10 +5,11 @@ import { FC, useState } from 'react';
 
 interface LikeButtonProps {
 	className?: string;
+	isLiked?: boolean;
 }
 
-const LikeButton: FC<LikeButtonProps> = ({ className }) => {
-	const [liked, setLiked] = useState(false);
+const LikeButton: FC<LikeButtonProps> = ({ className, isLiked }) => {
+	const [liked, setLiked] = useState(isLiked || false);
 
 	return (
 		<button
@@ -19,7 +20,7 @@ const LikeButton: FC<LikeButtonProps> = ({ className }) => {
 			}}
 			className={`${cssIf(
 				className,
-			)} bg-absolute/100 md:hover:bg-opacity-[0.07] active:bg-opacity-[0.07] p-[6px] flex items-center justify-center rounded-full transition-colors bg-opacity-0 max-md:p-[2px]	`}
+			)} bg-absolute/100 md:hover:bg-opacity-[0.07]  active:!bg-opacity-[0.15] p-[6px] flex items-center justify-center rounded-full duration-700 transition-colors bg-opacity-0 max-md:p-[2px]	`}
 		>
 			<HeartIcon
 				className='w-5 h-5 '

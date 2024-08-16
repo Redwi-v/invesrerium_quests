@@ -57,7 +57,7 @@ const ConnectedHeaderContent: FC<ConnectedHeaderContentProps> = ({}) => {
 					}}
 					className='flex items-center relative ml-[34px]'
 				>
-					<Avatar contentClassName=' hover:scale-105 transition' />
+					<Avatar contentClassName='' />
 					<DesktopMenu isOpen={menuIsOpen} />
 				</button>
 				<MobileMenu />

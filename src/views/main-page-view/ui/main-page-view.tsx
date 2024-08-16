@@ -8,6 +8,8 @@ import { Box, Modal } from '@mui/material';
 import Image from 'next/image';
 import { FC, useEffect, useState } from 'react';
 import moment from 'moment';
+import Popup from '@/shared/ui-kit/popup/ui/popup';
+import { useRewardPopupStore } from '@/widgets/reward-popup';
 
 interface MainPageViewProps {}
 
@@ -31,17 +33,12 @@ export const MainPageView: FC<MainPageViewProps> = () => {
 	);
 };
 
-const style = {
-	position: 'absolute' as 'absolute',
-	top: '50%',
-	left: '50%',
-	transform: 'translate(-50%, -50%)',
-};
-
 export default function BasicModal() {
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
+
+	const { setOpen: setOpenRewardPopup } = useRewardPopupStore(state => state);
 
 	const [needOpen, setNeedOpen] = useState(false);
 
@@ -67,23 +64,11 @@ export default function BasicModal() {
 	}, []);
 
 	return (
-		<Modal
+		<Popup
+			handleClose={handleClose}
 			open={open}
-			onClose={handleClose}
-			aria-labelledby='modal-modal-title'
-			aria-describedby='modal-modal-description'
-			classes={{
-				backdrop: 'backdrop-blur-sm',
-			}}
 		>
-			<Box
-				sx={style}
-				className='bg-absolute/800 p-6 rounded-3xl 
-				max-w-[416px] w-full max-md:max-w-none max-md:rounded-none 
-				max-md:!inset-0 max-md:translate-x-0 max-md:translate-y-0 
-				max-md:flex max-md:justify-center max-md:items-center max-md:flex-col max-md:text-center
-				'
-			>
+			<div className='max-md:flex max-md:justify-center max-md:items-center max-md:flex-col max-md:text-center h-full'>
 				<div className='flex justify-between items-center'>
 					<div className='flex gap-2 items-center'>
 						<FireAnimateIcon className='w-[40px] h-[40px]' />
@@ -91,13 +76,6 @@ export default function BasicModal() {
 							6 <span className='opacity-50'>d</span>
 						</span>
 					</div>
-					<Button
-						onClick={handleClose}
-						buttonStyle='gray'
-						className='!p-[10px] min-w-0 max-md:absolute max-md:top-3 max-md:right-3'
-					>
-						<CrossIcon />
-					</Button>
 				</div>
 				<div className='mt-6'>
 					<span className='font-bold text-4xl'>GM Streak</span>
@@ -107,12 +85,15 @@ export default function BasicModal() {
 				<Button
 					buttonStyle='green'
 					className='flex items-center !w-full mt-6 !py-[14px]'
-					onClick={handleClose}
+					onClick={() => {
+						handleClose();
+						setOpenRewardPopup(true);
+					}}
 				>
 					<span className='mr-2 font-semibold text-base'>GM</span>
 					<HandAnimateIcon />
 				</Button>
-			</Box>
-		</Modal>
+			</div>
+		</Popup>
 	);
 }

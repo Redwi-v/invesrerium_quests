@@ -64,15 +64,15 @@ export const ListSlider: FC<ListSliderProps> = ({ mainTitle, className }) => {
 			<Swiper
 				className='mt-8 overflow-hidden -ml-6 max-md:-ml-3 custom-container max-md:!pl-[12px] max-md:!w-auto max-md:mt-6 active:cursor-grabbing'
 				ref={swiperRef}
-				slidesPerView={2.12}
+				slidesPerView={2.09}
 				spaceBetween={12}
 				wrapperClass='!w-fit'
 				breakpoints={{
-					1296: {
+					1328: {
 						slidesPerView: 4,
 						spaceBetween: 24,
 					},
-					1024: {
+					1140: {
 						slidesPerView: 3,
 						spaceBetween: 24,
 					},
@@ -81,14 +81,14 @@ export const ListSlider: FC<ListSliderProps> = ({ mainTitle, className }) => {
 						spaceBetween: 24,
 					},
 					520: {
-						slidesPerView: 3.12,
+						slidesPerView: 'auto',
 						spaceBetween: 12,
 					},
 				}}
 			>
 				{Array.from(Array(10).keys()).map(index => {
 					return (
-						<SwiperSlide className=''>
+						<SwiperSlide className='max-md:max-w-[164px]'>
 							<QuestCard
 								level={index === 2 ? 2 : null}
 								day={index === 1 ? 2 : null}

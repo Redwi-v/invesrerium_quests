@@ -5,6 +5,7 @@ interface ParticipantsProps {
 	avatars?: {
 		className?: string;
 	};
+	lastAvatarName?: string;
 
 	topLabel?: {
 		className?: string;
@@ -15,16 +16,18 @@ interface ParticipantsProps {
 
 	className?: string;
 	borderColor?: string;
+	text?: string;
 }
 
 export const Participants: FC<ParticipantsProps> = props => {
-	const { avatars, bottomLabel, topLabel, className, borderColor } = props;
+	const { avatars, bottomLabel, topLabel, className, borderColor, lastAvatarName, text } = props;
 
 	return (
 		<div className={`flex gap-2 mt-6 max-md:mt-3 ${cssIf(className)}`}>
 			<Avatars
 				className={avatars?.className}
 				borderColor={borderColor}
+				lastAvatarName={lastAvatarName}
 			/>
 			<div className='flex flex-col gap-[2px]'>
 				<span
@@ -35,7 +38,7 @@ export const Participants: FC<ParticipantsProps> = props => {
 				<span
 					className={` ${cssIf(bottomLabel?.className)} font-semibold text-base max-md:text-xs`}
 				>
-					126K / 256K
+					{text || '126K / 256K'}
 				</span>
 			</div>
 		</div>
@@ -45,9 +48,11 @@ export const Participants: FC<ParticipantsProps> = props => {
 export const Avatars = ({
 	className,
 	borderColor,
+	lastAvatarName,
 }: {
 	className?: string;
 	borderColor?: string;
+	lastAvatarName?: string;
 }) => (
 	<div className='flex items-center'>
 		<Avatar
@@ -57,7 +62,7 @@ export const Avatars = ({
 			}}
 			className={` ${cssIf(
 				className,
-			)} w-[46px] h-[46px] border-[3px] -ml-[3px] border-absolute/800 max-md:w-[40px] max-md:h-[40px]`}
+			)} w-[46px] h-[46px] border-[3px] -ml-[3px] border-absolute/800 max-md:w-[40px] max-md:h-[40px] `}
 		/>
 		<Avatar
 			style={{
@@ -66,7 +71,7 @@ export const Avatars = ({
 			}}
 			className={` ${cssIf(
 				className,
-			)} w-[46px] h-[46px] border-[3px] -ml-[21px] border-absolute/800 max-md:w-[40px] max-md:h-[40px]`}
+			)} w-[46px] h-[46px] border-[3px] -ml-[24px] border-absolute/800 max-md:w-[40px] max-md:h-[40px] ${lastAvatarName}`}
 		/>
 	</div>
 );

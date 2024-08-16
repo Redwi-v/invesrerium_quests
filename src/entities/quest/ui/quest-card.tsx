@@ -23,10 +23,11 @@ interface IQuestCardProps {
 	completed?: boolean;
 	level?: number | null;
 	day?: number | null;
+	liked?: boolean;
 }
 
 export const QuestCard: FC<IQuestCardProps> = props => {
-	const { title, className, completed, level, day } = props;
+	const { title, className, completed, level, day, liked } = props;
 
 	const windowSize = useWindowSize();
 
@@ -41,10 +42,15 @@ export const QuestCard: FC<IQuestCardProps> = props => {
 			onMouseEnter={() => {
 				windowSize.width > 768 && setIsHover(true);
 			}}
+			onTouchStart={() => setIsHover(true)}
+			onTouchEnd={() => setIsHover(false)}
 			onMouseLeave={() => setIsHover(false)}
 			className={` ${cssIf(className)} relative rounded-3xl max-md:rounded-[18px] overflow-hidden`}
 		>
-			<LikeButton className='absolute z-50 right-3 top-3 left-auto max-md:h-6 max-md:w-6' />
+			<LikeButton
+				isLiked={liked}
+				className='absolute z-50 right-3 top-3 left-auto max-md:h-6 max-md:w-6'
+			/>
 			{level && (
 				<div className='bg-absolute/800 bg-opacity-70 absolute z-50 inset-0 rounded-3xl max-md:rounded-[18px]'>
 					<div
@@ -59,7 +65,7 @@ export const QuestCard: FC<IQuestCardProps> = props => {
 			<Link
 				href={'/quests/slug'}
 				draggable={false}
-				className='h-[486px] block rounded-3xl overflow-hidden max-md:h-auto max-md:rounded-[18px]'
+				className='h-[486px]  block rounded-3xl overflow-hidden max-md:h-auto max-md:rounded-[18px]'
 			>
 				<div
 					style={{
@@ -95,12 +101,13 @@ export const QuestCard: FC<IQuestCardProps> = props => {
 					<CompanyName className='w-8 h-8 hidden max-md:block  max-md:h-6 max-md:w-6' />
 					<CoinIcon className=' w-8 h-8  max-md:h-6 max-md:w-6' />
 				</div>
-				<div className='relative w-full h-[200px] max-md:h-[104px] z-30'>
+				<div className='relative w-full h-[200px] max-md:h-[104px] object-cover z-30'>
 					<Image
 						src={'/images/cardBg.jpg'}
 						alt='bg'
 						fill
-						className='z-[1] '
+						quality={100}
+						className='z-[1] object-cover'
 					/>
 				</div>
 				<div className='p-5 pt-[4px] max-md:pt-[2px] max-md:p-[8px] z-40 relative'>

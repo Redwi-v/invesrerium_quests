@@ -4,6 +4,8 @@ import { useWindowSize } from '@/shared/hooks';
 import {
 	ChartIcon,
 	ChartIconDown,
+	CheckedIcon,
+	CheckedIconCircle,
 	CoinIcon,
 	CrossIcon,
 	NetIcon,
@@ -11,7 +13,7 @@ import {
 	SpinnerIcon,
 	XpIcon,
 } from '@/shared/images';
-import { Button, Checkbox, H2, Input } from '@/shared/ui-kit';
+import { Button, Checkbox, H2, Input, P } from '@/shared/ui-kit';
 import { CheckmarksAccordionSelect } from '@/shared/ui-kit/checkmarks-accordion-select';
 import { SelectMenu } from '@/shared/ui-kit/select-menu/ui/select-menu';
 import { FC, PropsWithChildren, ReactElement, useState } from 'react';
@@ -34,8 +36,6 @@ export const QuestsPageView: FC<IQuestsPageViewProps> = props => {
 		intermediante: false,
 		advanced: false,
 	});
-
-	console.log(filtersIsOpen);
 
 	const clearBooleanState = (object1: { [key: string]: boolean }) => {
 		const object: any = {};
@@ -62,7 +62,7 @@ export const QuestsPageView: FC<IQuestsPageViewProps> = props => {
 					<H2 className='max-md:w-full max-md:mb-[26px]'>Quests</H2>
 					<div className='flex gap-4 items-center max-md:w-full max-md:!grid max-md:grid-cols-2 '>
 						<Input
-							containerClassName='max-md:!min-w-min '
+							containerClassName='max-md:min-w-[167.5px]'
 							icon={<SearchIcon />}
 							inputParas={{ placeholder: 'Search' }}
 						/>
@@ -117,13 +117,14 @@ export const QuestsPageView: FC<IQuestsPageViewProps> = props => {
 					</div>
 				</div>
 				<div className='flex gap-6 mt-6 pb-[62px] max-pc:flex-col max-lg:mt-4'>
-					{((windowSizes.width < 768 && filtersIsOpen) || windowSizes.width > 768) && (
+					{((windowSizes.width < 768 && filtersIsOpen) || windowSizes.width >= 768) && (
 						<div
-							className={`w-[306px] 
+							className={`min-w-[306px] 
                 flex flex-col gap-4 max-pc:grid 
                 max-pc:grid-cols-3 max-pc:w-full 
                 max-md:fixed max-md:left-0 max-md:right-0 
                 max-md:top-0 max-md:bottom-0 max-md:z-[1200] max-md:bg-bg max-md:!flex-col max-md:!flex
+								max-md:overflow-auto max-md:pb-8
                 ${windowSizes.width < 768 && 'px-3'}`}
 						>
 							<div className='hidden max-md:flex justify-between pt-3 mb-2 items-center'>
@@ -162,7 +163,7 @@ export const QuestsPageView: FC<IQuestsPageViewProps> = props => {
 							/>
 							<CheckmarksAccordionSelect
 								mainLabel={'Difficulty'}
-								clearState={() => setStateDifficulty(clearBooleanState(stateReward))}
+								clearState={() => setStateDifficulty(clearBooleanState(stateDifficulty))}
 								setChecked={e => handleChange(e, stateDifficulty, setStateDifficulty)}
 								items={[
 									{
@@ -216,7 +217,7 @@ export const QuestsPageView: FC<IQuestsPageViewProps> = props => {
 						</Button>
 					)}
 					<div className='w-full'>
-						<ul className='grid w-full grid-cols-3 gap-6 max-lg:grid-cols-2'>
+						<ul className='grid w-full grid-cols-3 gap-6 max-lg:grid-cols-2 max-md:gap-3'>
 							{Array.from(Array(9).keys()).map(index => {
 								return (
 									<QuestCard
@@ -226,9 +227,22 @@ export const QuestsPageView: FC<IQuestsPageViewProps> = props => {
 								);
 							})}
 						</ul>
+						{/* <NothingFind /> */}
 						<SpinnerIcon className='mt-[42px] block mx-auto animate-spin' />
 					</div>
 				</div>
+			</div>
+		</div>
+	);
+};
+
+const NothingFind = () => {
+	return (
+		<div className='bg-gradient-to-b from-[#282828] rounded-3xl  min-h-[356px]'>
+			<div className='flex flex-col items-center pt-[42px]'>
+				<SearchIcon className='w-[42px] h-[42px] [&>path]:stroke-[#717171]' />
+				<P className='!font-bold !text-3xl mt-3 !leading-10 !text-absolute/100'>Nothing found</P>
+				<P className='mt-1 !text-center'>Try changing the filter and repeating the search.</P>
 			</div>
 		</div>
 	);
@@ -244,7 +258,7 @@ const ListItem: FC<{ isActive: boolean; icon: ReactElement; text: string }> = ({
 			{icon}
 			<span className='font-semibold text-base text-absolute/100'>{text}</span>
 			{isActive && (
-				<span className='check bloc ml-auto w-[20px] h-[20px] bg-absolute/100 rounded-full' />
+				<CheckedIconCircle className='ml-auto check' />
 			)}
 		</div>
 	);

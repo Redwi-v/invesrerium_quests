@@ -17,6 +17,8 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { QuestCard } from '@/entities/quest';
 import { useWindowSize } from '../../../shared/hooks/scripts/use-window-size';
+import { Store } from 'react-notifications-component';
+import { SuccessNotification } from '@/shared/ui-kit/notifications/indext';
 
 interface IProfilePageViewProps {}
 
@@ -59,6 +61,24 @@ const ProfilePageView: FC<IProfilePageViewProps> = props => {
 		setValue(newValue);
 	};
 
+	const copyAddress = (e: any) => {
+		e.stopPropagation();
+		navigator.clipboard.writeText('адрес кошелька полный').then(() => {
+			Store.addNotification({
+				insert: 'top',
+				title: 'Copied',
+				container: 'top-right',
+				content: SuccessNotification,
+				animationIn: ['animate__animated animate__bounceInRight'], // `animate.css v4` classes
+				animationOut: [''],
+				dismiss: {
+					duration: 5000,
+					click: false,
+				},
+			});
+		});
+	};
+
 	const windowWidth = useWindowSize();
 
 	return (
@@ -67,7 +87,7 @@ const ProfilePageView: FC<IProfilePageViewProps> = props => {
 				<Button
 					buttonStyle='gray'
 					href='/profile/edit'
-					className='flex items-center gap-2 absolute top-[42px] right-[14px] max-pc:hidden !py-[14px] !pl-[12px] !pr-5'
+					className='flex items-center gap-2 absolute top-[42px] right-[14px] max-pc:hidden !py-[12px] !pl-[12px] !pr-5'
 				>
 					<PlusCircle />
 					<span>Edit Profile</span>
@@ -76,22 +96,25 @@ const ProfilePageView: FC<IProfilePageViewProps> = props => {
 				<div className='flex flex-col items-center pt-[42px]'>
 					<div className='block absolute -top-[160px] -z-[1] bg-blue/400 blur-[150px] w-[300px] h-[300px] rounded-full' />
 					<Avatar className='w-[196px] h-[196px] max-pc:w-[136px] max-pc:h-[136px]' />
-					<IconBox className='!bg-absolute/100 !rounded-2xl !p-[4px] !pr-3 !bg-opacity-[0.07] mt-6 flex items-center gap-[6px]'>
-						<Button
-							buttonStyle='gray'
-							className='!bg-opacity-[0] !p-[10px] min-w-0 hover:!bg-opacity-[0.07] !rounded-xl'
-						>
-							<CopyIcon className='w-5 h-5' />
-						</Button>
-						<span className='font-bold text-base opacity-50'>OxB046...0a4b</span>
-					</IconBox>
+					<button onClick={copyAddress}>
+						<IconBox className='!bg-absolute/100 !rounded-2xl !p-[4px] !pr-3 !bg-opacity-[0.07] mt-6 flex items-center gap-[6px]'>
+							<Button
+								onClick={copyAddress}
+								buttonStyle='gray'
+								className='!bg-opacity-[0] !p-[10px] min-w-0 hover:!bg-opacity-[0.07] !rounded-xl'
+							>
+								<CopyIcon className='w-5 h-5' />
+							</Button>
+							<span className='font-bold text-base opacity-50'>OxB046...0a4b</span>
+						</IconBox>
+					</button>
 
 					<div className='mt-2 w-[416px] max-md:w-full'>
 						<div className='flex items-center'>
-							<div className=' relative z-10 min-w-[38px] h-[38px] bg-blue/400 flex justify-center items-center font-bold text-lg rounded-full border-[4px] border-bg'>
+							<div className=' relative z-10 min-w-[44px] h-[44px] bg-blue/400 flex justify-center items-center font-bold text-lg rounded-full border-[4px] border-bg'>
 								6
 							</div>
-							<div className='relative bg-absolute/800 rounded-[100px] w-[416px] h-3 -ml-3 overflow-hidden max-md:w-full'>
+							<div className='relative bg-absolute/700 rounded-[100px] w-[416px] h-3 -ml-3 overflow-hidden max-md:w-full'>
 								<span className='absolute left-0 w-[40%] bg-blue/400 h-full' />
 							</div>
 						</div>
@@ -102,7 +125,7 @@ const ProfilePageView: FC<IProfilePageViewProps> = props => {
 				</div>
 
 				<div className='flex w-full gap-[24px] mt-[24px] max-lg:grid max-lg:grid-cols-2 max-lg:grid-rows-2 max-md:grid-cols-1 max-md:gap-2'>
-					<IconBox className='!bg-absolute/100 !bg-opacity-[0.07] flex items-center w-full !p-[12px] !rounded-2xl '>
+					<IconBox className='!bg-absolute/800 flex items-center w-full !p-[12px] !rounded-2xl '>
 						<IconBox className='flex justify-center items-center !w-[52px] !h-[52px] !rounded-2xl'>
 							<FireIcon />
 						</IconBox>
@@ -113,7 +136,7 @@ const ProfilePageView: FC<IProfilePageViewProps> = props => {
 							</span>
 						</div>
 					</IconBox>
-					<IconBox className='!bg-absolute/100 !bg-opacity-[0.07] flex items-center w-full !p-[12px] !rounded-2xl '>
+					<IconBox className='!bg-absolute/800 flex items-center w-full !p-[12px] !rounded-2xl '>
 						<IconBox className='flex justify-center items-center !w-[52px] !h-[52px] !rounded-2xl'>
 							<StarIcon />
 						</IconBox>
@@ -122,7 +145,7 @@ const ProfilePageView: FC<IProfilePageViewProps> = props => {
 							<span className='font-bold text-lg'>124</span>
 						</div>
 					</IconBox>
-					<IconBox className='!bg-absolute/100 !bg-opacity-[0.07] flex items-center w-full !p-[12px] !rounded-2xl '>
+					<IconBox className='!bg-absolute/800 flex items-center w-full !p-[12px] !rounded-2xl '>
 						<IconBox className='flex justify-center items-center !w-[52px] !h-[52px] !rounded-2xl'>
 							<CupIcon />
 						</IconBox>
@@ -131,7 +154,7 @@ const ProfilePageView: FC<IProfilePageViewProps> = props => {
 							<span className='font-bold text-lg'>$ 125.09</span>
 						</div>
 					</IconBox>
-					<IconBox className='!bg-absolute/100 !bg-opacity-[0.07] flex items-center w-full !p-[12px] !rounded-2xl '>
+					<IconBox className='!bg-absolute/800 flex items-center w-full !p-[12px] !rounded-2xl '>
 						<IconBox className='flex justify-center items-center !w-[52px] !h-[52px] !rounded-2xl'>
 							<ReferralsIcon />
 						</IconBox>
@@ -162,10 +185,10 @@ const ProfilePageView: FC<IProfilePageViewProps> = props => {
 							}}
 							className='rounded-xl max-md:bg-absolute/100 max-md:bg-opacity-[0.07] text-base font-semibold text-absolute/100 text-opacity-50 normal-case'
 							label={
-								<span className='flex gap-2 '>
+								<span className='flex gap-2 items-center'>
 									<HeartIcon className='' />{' '}
 									<span className='font-semibold text-base'>Favorite</span>{' '}
-									<span className='count !bg-blue/400 !bg-opacity-100 px-[9px] py-[2px] rounded-[100px] font-bold text-xs flex justify-center items-center text-absolute/100'>
+									<span className='count max-h-[20px] !bg-blue/400 !bg-opacity-100 px-[9px] py-[2px] rounded-[100px] font-bold text-xs flex justify-center items-center text-absolute/100'>
 										8
 									</span>
 								</span>
@@ -179,10 +202,10 @@ const ProfilePageView: FC<IProfilePageViewProps> = props => {
 							}}
 							className='rounded-xl max-md:bg-absolute/100 max-md:bg-opacity-[0.07] max-md:ml-4 text-base font-semibold text-absolute/100 text-opacity-50 normal-case'
 							label={
-								<span className='flex gap-2 '>
+								<span className='flex gap-2 items-center'>
 									<StarIcon className='' />{' '}
 									<span className='font-semibold text-base'>Completed Quest</span>{' '}
-									<span className='count !bg-blue/400 !bg-opacity-100 px-[9px] py-[2px] rounded-[100px] font-bold text-xs flex justify-center items-center text-absolute/100'>
+									<span className='count max-h-[20px] !bg-blue/400 !bg-opacity-100 px-[9px] py-[2px] rounded-[100px] font-bold text-xs flex justify-center items-center text-absolute/100'>
 										52
 									</span>
 								</span>
@@ -203,6 +226,7 @@ const ProfilePageView: FC<IProfilePageViewProps> = props => {
 									className='!pl-0'
 									title={'Celosphere Summer: Mint “Ego” by Mad in Pixel' + index.toString()}
 									completed
+									liked
 								/>
 							);
 						})}

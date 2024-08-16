@@ -1,5 +1,5 @@
 'use client';
-import React, { FC, ReactElement } from 'react';
+import React, { FC, ReactElement, useEffect } from 'react';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -33,10 +33,26 @@ export const SelectMenu: React.FC<SelectMenuProps> = ({ items, className, classe
 		setOpen(true);
 	};
 
+	useEffect(() => {
+		const closeModal = () => {
+			setOpen(false);
+		};
+		const closeModalScroll = () => {
+			setOpen(false);
+		};
+		window.addEventListener('scroll', closeModalScroll);
+		// window.addEventListener('resize', closeModal);
+
+		return () => {
+			window.removeEventListener('scroll', closeModalScroll);
+			window.removeEventListener('resize', closeModal);
+		};
+	}, []);
+
 	return (
 		<div className={cssIf(className)}>
 			<FormControl
-				className={`min-w-[196px] border-0 bg-absolute/100  bg-opacity-[0.07] rounded-xl !p-0 transform ${classes?.formControl}`}
+				className={`min-w-[196px] border-0 bg-absolute/100  bg-opacity-[0.07] hover:bg-opacity-15 duration-700 rounded-xl !p-0 transform ${classes?.formControl}`}
 			>
 				<Select
 					labelId='demo-controlled-open-select-label'
@@ -47,25 +63,41 @@ export const SelectMenu: React.FC<SelectMenuProps> = ({ items, className, classe
 							'left': 'auto !important',
 							'right': '0 !important',
 
-							'div': { padding: 0 },
+							'div': {
+								padding: 0,
+								background: 'none',
+							},
 							'.check': { display: 'none !important' },
 						},
 					}}
 					MenuProps={{
 						classes: {
-							list: 'p-0 !right-0 !left-auto',
+							list: 'p-0 !right-0 !translate-x-0 !left-auto',
 							paper:
-								'shadow-[0 0 25px 0 rgba(0, 0, 0, 0.5)] bg-absolute/800 rounded-3xl overflow-hidden w-[306px] !right-0 !-translate-x-[52px] !translate-y-[8px] max-md-xs:!translate-x-0',
+								'shadow-[0 0 25px 0 rgba(0, 0, 0, 0.5)] p-[12px]  w-[306px] bg-absolute/800 rounded-3xl overflow-hidden !translate-y-[56px]',
 						},
+						anchorOrigin: {
+							vertical: 'top',
+							horizontal: 'right',
+						},
+						transformOrigin: {
+							vertical: 'top',
+							horizontal: 'right',
+						},
+						disableScrollLock: true,
 					}}
+					autoWidth
 					id='demo-controlled-open-select'
-					className='text-absolute/100 !p-0'
+					className='text-absolute/100 !p-0 '
 					open={open}
 					onClose={handleClose}
 					IconComponent={({ className }) => (
 						<div className={cssIf(className)}>
 							<ArrowIcon
-								className={`-rotate-90 w-[30px] h-[18px] opacity-50 ${cssIf('!opacity-100', open)}`}
+								className={`-rotate-90 w-[30px] h-[18px] opacity-50 ${cssIf(
+									'!opacity-100',
+									open,
+								)} `}
 							/>
 						</div>
 					)}
@@ -76,10 +108,15 @@ export const SelectMenu: React.FC<SelectMenuProps> = ({ items, className, classe
 				>
 					{items.map((item, index) => (
 						<MenuItem
-							className=''
+							className='!bg-transparent w-full !p-0'
 							value={index}
+							classes={{
+								selected: '!bg-transparent',
+							}}
 						>
-							{item({ isActive: value === index })}
+							<div className='w-full hover:bg-absolute/100 hover:bg-opacity-15 duration-700 rounded-xl'>
+								{item({ isActive: value === index })}
+							</div>
 						</MenuItem>
 					))}
 				</Select>

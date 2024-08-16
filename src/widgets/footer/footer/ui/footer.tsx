@@ -163,7 +163,7 @@ export const Footer: FC<FooterProps> = () => {
 					<MobileAccordion />
 				</div>
 				<div className='flex max-md:flex-col max-md:justify-start'>
-					<span className='font-medium w-[416px] max-pc:w-[296px] text-sm opacity-50 max-lg:text-xs max-md:text-sm block text-nowrap'>
+					<span className='font-medium w-[384px] max-pc:w-[296px] text-sm opacity-50 max-lg:text-xs max-md:text-sm block text-nowrap'>
 						© {new Date().getFullYear()} Stephen King. All rights reserved.
 					</span>
 					<div className='flex mr-auto justify-between max-lg:w-full max-md:mt-[18px] '>

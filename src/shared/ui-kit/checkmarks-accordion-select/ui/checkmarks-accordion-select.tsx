@@ -5,7 +5,9 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import { Checkbox, FormControlLabel } from '@mui/material';
-import { ArrowIcon, CircleCross, CrossIcon } from '@/shared/images';
+import { ArrowIcon, CheckedIconCircle, CircleCross, CrossIcon } from '@/shared/images';
+import { useWindowSize } from '@/shared/hooks';
+import { cssIf } from '@/shared/utils';
 
 interface CheckmarksAccordionSelectProps {
 	items: {
@@ -34,20 +36,45 @@ export const CheckmarksAccordionSelect: React.FC<CheckmarksAccordionSelectProps>
 
 	const activeItems = items.reduce((value, item) => (item.checked ? value + 1 : value), 0);
 
+	const windowSize = useWindowSize();
+
+	React.useEffect(() => {
+		const closeModal = () => {
+			if (window?.innerWidth > 1328 || window?.innerWidth < 768) return;
+			setExpanded(false);
+		};
+
+		window.addEventListener('scroll', closeModal);
+		window.addEventListener('resize', closeModal);
+
+		return () => {
+			window.removeEventListener('scroll', closeModal);
+			window.removeEventListener('resize', closeModal);
+		};
+	}, []);
+
 	return (
 		<div>
+			<div
+				onClick={() => setExpanded(false)}
+				className={`left-0 right-0 bottom-0 top-0 !fixed z-[1001] hidden ${
+					expanded && windowSize.width < 1328 && windowSize.width > 768 ? '!block' : ''
+				}`}
+			/>
 			<Accordion
 				expanded={expanded === 'panel1'}
 				onChange={handleChange('panel1')}
-				className='!bg-transparent shadow-none !w-full'
+				classes={{
+					root: 'before:!hidden',
+				}}
+				className={`!bg-transparent ${cssIf('z-[1001]', !!expanded)} !mt-0 shadow-none !w-full`}
 			>
 				<AccordionSummary
 					aria-controls='panel1d-content'
 					id='panel1d-header'
-					className='m-0 !min-h-fit bg-absolute/100 bg-opacity-[0.07] py-3 px-[10px] rounded-xl '
+					className='m-0 !min-h-fit bg-absolute/100 bg-opacity-[0.07] hover:bg-opacity-15 transition duration-700 py-3 px-[10px] rounded-xl '
 					classes={{
 						content: '!m-0',
-						root: '',
 					}}
 				>
 					<Typography className='text-absolute/100 text-base font-semibold  pl-2 flex justify-between w-full items-center'>
@@ -59,7 +86,7 @@ export const CheckmarksAccordionSelect: React.FC<CheckmarksAccordionSelectProps>
 										clearState();
 										e.stopPropagation();
 									}}
-									className='bg-blue/400 py-1 px-2 flex gap-1 items-center rounded-[100px]'
+									className='bg-blue/400 py-1 px-2 flex gap-[2px] items-center rounded-[100px] h-[22px]'
 								>
 									<span className='font-bold text-xs'>{activeItems}</span>
 									<CircleCross />
@@ -72,14 +99,14 @@ export const CheckmarksAccordionSelect: React.FC<CheckmarksAccordionSelectProps>
 					</Typography>
 				</AccordionSummary>
 				<AccordionDetails
-					className={`mt-1 w-full z-[120] bg-tone/200 rounded-xl p-[10px] max-pc:absolute max-md-xs:static`}
+					className={`mt-1 w-full z-[120] bg-tone/200 rounded-xl p-[10px] max-pc:absolute max-md:static`}
 				>
 					{items.map(item => (
 						<FormControlLabel
 							control={
 								<Checkbox
 									icon={<span className='hidden' />}
-									checkedIcon={<span className='w-[20px] h-[20px] rounded-full bg-absolute/100' />}
+									checkedIcon={<CheckedIconCircle />}
 									className='ml-auto'
 									name={item.name}
 									onChange={setChecked}

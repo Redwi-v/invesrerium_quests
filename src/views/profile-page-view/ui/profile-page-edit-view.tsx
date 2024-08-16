@@ -1,3 +1,4 @@
+'use client';
 import {
 	ArrowIcon,
 	CopyIcon,
@@ -8,12 +9,55 @@ import {
 	TwitterIcon,
 } from '@/shared/images';
 import { Button, H2 } from '@/shared/ui-kit';
+import { SuccessNotification } from '@/shared/ui-kit/notifications/indext';
 import { Avatar } from '@mui/material';
-import { FC } from 'react';
+import { FC, useRef, useState } from 'react';
+import { Store } from 'react-notifications-component';
 interface IProfilePageEditViewProps {}
 
 const ProfilePageEditView: FC<IProfilePageEditViewProps> = props => {
 	const {} = props;
+
+	const copyAddress = (e: any) => {
+		e.stopPropagation();
+		navigator.clipboard.writeText('адрес кошелька полный').then(() => {
+			Store.addNotification({
+				insert: 'top',
+				title: 'Copied',
+				container: 'top-right',
+				content: SuccessNotification,
+				animationIn: ['animate__animated animate__bounceInRight'], // `animate.css v4` classes
+				animationOut: [''],
+				dismiss: {
+					duration: 5000,
+					click: false,
+				},
+			});
+		});
+	};
+
+	const [image, setImage] = useState('');
+	const imageRef = useRef(null);
+
+	function useDisplayImage() {
+		const [result, setResult] = useState<any>('');
+
+		function uploader(e: any) {
+			if (!e) return;
+			const imageFile = e.target.files[0];
+
+			const reader = new FileReader();
+			reader.addEventListener('load', e => {
+				setResult(e?.target?.result);
+			});
+
+			reader.readAsDataURL(imageFile);
+		}
+
+		return { result, uploader };
+	}
+
+	const { result, uploader } = useDisplayImage();
 
 	return (
 		<div className='mt-[42px] bottom-[62px] max-pc:bottom-[42px] max-md:mt-[24px]'>
@@ -21,39 +65,50 @@ const ProfilePageEditView: FC<IProfilePageEditViewProps> = props => {
 				<div className='flex justify-between items-center max-md:flex-col max-md:items-stretch'>
 					<div className='flex items-center gap-[24px] max-md:order-2'>
 						<div className='relative w-[112px] h-[112px] max-md:w-[82px] max-md:h-[82px]'>
-							<Avatar className='w-full h-full' />
+							<Avatar
+								className='w-full h-full'
+								src={result}
+							/>
 							<label
 								className='flex justify-center items-center w-[53px] h-[53px] bg-blue/400 
                 rounded-full absolute -right-[5px] -bottom-[5px]
-                border-bg border-[5px] max-md:w-[36px] max-md:h-[36px] max-md:border-[4px]
+                border-bg border-[5px] max-md:w-[36px] max-md:h-[36px] max-md:border-[4px] cursor-pointer duration-500 hover:bg-blue/500 active:bg-blue/600
               '
 							>
 								<input
 									className='hidden'
 									accept='image/png, image/gif, image/jpeg'
 									type='file'
+									onChange={(e: any) => {
+										if (!e) return;
+										setImage(e.target.files[0]);
+										uploader(e);
+									}}
 								/>
 								<span className=''>
 									<ImageIcon className='max-md:w-[16px] max-md:h-[16px]' />
 								</span>
 							</label>
 						</div>
-						<div className='p-[4px] pr-[12px] !bg-absolute/100 !bg-opacity-[0.07] flex items-center gap-[6px] !rounded-2xl'>
-							<Button
-								buttonStyle='gray'
-								className='!p-[10px] !bg-opacity-[0] !min-w-0 hover:!bg-opacity-[0.07]'
-							>
-								<CopyIcon className='w-5 h-5' />
-							</Button>
-							<span className='text-base opacity-50 font-bold'>OxB046...0a4b</span>
-						</div>
+						<button onClick={copyAddress}>
+							<div className='p-[4px] pr-[12px] !bg-absolute/100 !bg-opacity-[0.07] flex items-center gap-[6px] !rounded-2xl'>
+								<Button
+									onClick={copyAddress}
+									buttonStyle='gray'
+									className='!p-[10px] !bg-opacity-[0] !min-w-0 hover:!bg-opacity-[0.07]'
+								>
+									<CopyIcon className='w-5 h-5' />
+								</Button>
+								<span className='text-base opacity-50 font-bold'>OxB046...0a4b</span>
+							</div>
+						</button>
 					</div>
 					<Button
 						href={'/profile'}
 						buttonStyle='gray'
-						className='py-[14px] px-3 flex items-center gap-2 w-fit max-md:order-1 max-md:mb-[42px]'
+						className='py-[12px] !px-3 !pr-[20px] flex items-center gap-2 w-fit max-md:order-1 max-md:mb-[42px]'
 					>
-						<ArrowIcon />
+						<ArrowIcon className='w-6 h-6' />
 						<span>Back</span>
 					</Button>
 				</div>
@@ -62,7 +117,7 @@ const ProfilePageEditView: FC<IProfilePageEditViewProps> = props => {
 					<div className='flex items-center gap-2'>
 						<H2 className='text-2xl'>Wallets</H2>
 						<span className='block bg-absolute/100 bg-opacity-[0.07] py-[6px] px-4 rounded-full text-sm font-semibold text-absolute/100 !text-opacity-50'>
-							4/15
+							4
 						</span>
 					</div>
 
@@ -83,7 +138,7 @@ const ProfilePageEditView: FC<IProfilePageEditViewProps> = props => {
                       -bottom-[3px] border-bg border-[3px] bg-green/400'
 										/>
 									</div>
-									<div className={`flex flex-col  ${index === 0 && 'max-w-[100%]'}`}>
+									<div className={`flex flex-col  ${index === 0 && 'max-w-[85%]'}`}>
 										<span className='text-base font-medium flex items-center'>
 											<span className={`truncate`}>Primary address</span>
 											{index === 0 && (
@@ -98,32 +153,32 @@ const ProfilePageEditView: FC<IProfilePageEditViewProps> = props => {
 
 								<Button
 									buttonStyle='gray'
-									className='!bg-absolute/100 !bg-opacity-[0.07] py-[14px] min-w-0 px-3 flex items-center gap-2 w-fit'
+									className='!bg-absolute/100 !bg-opacity-[0.07] py-[12px] min-w-0 px-3 flex items-center gap-2 w-fit'
 								>
-									Edit
+									Disconnect
 								</Button>
 							</li>
 						);
 					})}
 				</ul>
 
-				<h2 className='text-2xl mt-[62px] max-md:mt-[42px]'>Social Profiles</h2>
+				<h2 className='text-2xl font-bold  mt-[62px] max-md:mt-[42px]'>Social Profiles</h2>
 
 				<ul className='mt-6 pb-[62px] max-pc:pb-[42px] flex gap-6 max-lg:grid max-lg:grid-cols-2 max-lg:gap-3'>
 					<li className='p-4 pr-5 !pt-6 bg-absolute/800 rounded-3xl text-center w-full'>
-						<div className='flex gap-5 mx-auto w-fit'>
+						<div className='flex gap-5 mx-auto w-fit items-center'>
 							<TwitterIcon />
 							<span className='font-medium text-base'>X (Twitter)</span>
 						</div>
 						<Button
-							buttonStyle='purple'
-							className='!bg-absolute/100 !bg-opacity-[0.07] mt-3 max-w-[160px] w-full'
+							buttonStyle='gray'
+							className='mt-3 max-w-[160px] w-full'
 						>
 							Disconnect
 						</Button>
 					</li>
 					<li className='p-4 pr-5 !pt-6 bg-absolute/800 rounded-3xl text-center w-full'>
-						<div className='flex gap-5 mx-auto w-fit'>
+						<div className='flex gap-5 mx-auto w-fit items-center'>
 							<TelegramIcon className='[&>*>path]:!fill-[#717171] ' />
 							<span className='font-medium text-base'>Telegram</span>
 						</div>
@@ -135,7 +190,7 @@ const ProfilePageEditView: FC<IProfilePageEditViewProps> = props => {
 						</Button>
 					</li>
 					<li className='p-4 pr-5 !pt-6 bg-absolute/800 rounded-3xl text-center w-full'>
-						<div className='flex gap-5 mx-auto w-fit'>
+						<div className='flex gap-5 mx-auto w-fit items-center'>
 							<DiscordIcon />
 							<span className='font-medium text-base'>Discord</span>
 						</div>
@@ -147,7 +202,7 @@ const ProfilePageEditView: FC<IProfilePageEditViewProps> = props => {
 						</Button>
 					</li>
 					<li className='p-4 pr-5 !pt-6 bg-absolute/800 rounded-3xl text-center w-full'>
-						<div className='flex gap-5 mx-auto w-fit'>
+						<div className='flex gap-5 mx-auto w-fit items-center'>
 							<GitHubIcon />
 							<span className='font-medium text-base'>Github</span>
 						</div>

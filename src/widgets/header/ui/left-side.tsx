@@ -15,7 +15,7 @@ const LeftSide: FC<LeftSideProps> = () => {
 
 			<span className='w-[1px] h-4 bg-absolute/100 opacity-15 mr-8 max-pc:hidden' />
 			<Link
-				className='text-sm max-pc:hidden font-semibold'
+				className='text-sm max-pc:hidden duration-500 py-[10px] px-3 rounded-xl leading-5 font-semibold hover:bg-absolute/100 hover:bg-opacity-[0.07] active:bg-opacity-15'
 				href={'/quests'}
 			>
 				Quests
