@@ -17,22 +17,22 @@ export const Footer: FC<FooterProps> = () => {
 	return (
 		<div className='bg-tone/200'>
 			<div className='container py-7'>
-				<div className='flex justify-between border-b pb-6 mb-6 border-border max-md:flex-col max-lg:gap-6'>
-					<div>
-						<h4 className='font-semibold text-lg leading-[100%]'>
+				<div className='flex justify-between border-b pb-6 mb-6 border-border max-md:flex-col max-xl:gap-6'>
+					<div className='basis-4/12'>
+						<h4 className='font-semibold text-xl leading-[100%]'>
 							Investerium <br className='' /> Quests
 						</h4>
-						<p className='mt-3 font-medium text-sm opacity-50 max-lg:text-xs max-md:text-sm'>
+						<p className='mt-3 font-medium text-sm opacity-50 max-xl:text-xs max-md:text-sm'>
 							Lorem ipsum dolor sit amet <br className='max-md:hidden' /> consectetur. Diam risus.
 						</p>
 					</div>
-					<div className='flex gap-6 max max-md:hidden'>
-						<div className='ml w-[196px] max-pc:w-[136px] max-lg:w-[96px]'>
+					<div className='flex basis-9/12 max-lg:basis-8/12 max-lg:justify-end gap-6 max max-md:hidden'>
+						<div className='ml w-full'>
 							<h5 className='font-medium text-sm mb-3'>Navigations</h5>
 							<ul className='flex flex-col gap-2'>
 								<li>
 									<SipleLink
-										className='font-medium text-sm opacity-50 max-lg:text-xs max-md:text-sm'
+										className='font-medium text-sm opacity-50 max-xl:text-xs max-md:text-sm'
 										href={'/'}
 									>
 										Quests
@@ -40,7 +40,7 @@ export const Footer: FC<FooterProps> = () => {
 								</li>
 								<li>
 									<SipleLink
-										className='font-medium text-sm opacity-50 max-lg:text-xs max-md:text-sm'
+										className='font-medium text-sm opacity-50 max-xl:text-xs max-md:text-sm'
 										href={'/'}
 									>
 										NFTs
@@ -48,7 +48,7 @@ export const Footer: FC<FooterProps> = () => {
 								</li>
 								<li>
 									<SipleLink
-										className='font-medium text-sm opacity-50 max-lg:text-xs max-md:text-sm'
+										className='font-medium text-sm opacity-50 max-xl:text-xs max-md:text-sm'
 										href={'/'}
 									>
 										Blockchains
@@ -56,7 +56,7 @@ export const Footer: FC<FooterProps> = () => {
 								</li>
 								<li>
 									<SipleLink
-										className='font-medium text-sm opacity-50 max-lg:text-xs max-md:text-sm'
+										className='font-medium text-sm opacity-50 max-xl:text-xs max-md:text-sm'
 										href={'/'}
 									>
 										Communities
@@ -64,12 +64,12 @@ export const Footer: FC<FooterProps> = () => {
 								</li>
 							</ul>
 						</div>
-						<div className='ml w-[196px] max-pc:w-[136px] max-lg:w-[96px]'>
+						<div className='ml w-full'>
 							<h5 className='font-medium text-sm mb-3'>Community</h5>
 							<ul className='flex flex-col gap-2'>
 								<li>
 									<SipleLink
-										className='font-medium text-sm opacity-50 max-lg:text-xs max-md:text-sm'
+										className='font-medium text-sm opacity-50 max-xl:text-xs max-md:text-sm'
 										href={'/'}
 									>
 										Blog
@@ -77,7 +77,7 @@ export const Footer: FC<FooterProps> = () => {
 								</li>
 								<li>
 									<SipleLink
-										className='font-medium text-sm opacity-50 max-lg:text-xs max-md:text-sm'
+										className='font-medium text-sm opacity-50 max-xl:text-xs max-md:text-sm'
 										href={'/'}
 									>
 										X
@@ -85,7 +85,7 @@ export const Footer: FC<FooterProps> = () => {
 								</li>
 								<li>
 									<SipleLink
-										className='font-medium text-sm opacity-50 max-lg:text-xs max-md:text-sm'
+										className='font-medium text-sm opacity-50 max-xl:text-xs max-md:text-sm'
 										href={'/'}
 									>
 										Telegram
@@ -93,7 +93,7 @@ export const Footer: FC<FooterProps> = () => {
 								</li>
 								<li>
 									<SipleLink
-										className='font-medium text-sm opacity-50 max-lg:text-xs max-md:text-sm'
+										className='font-medium text-sm opacity-50 max-xl:text-xs max-md:text-sm'
 										href={'/'}
 									>
 										Discord
@@ -101,12 +101,12 @@ export const Footer: FC<FooterProps> = () => {
 								</li>
 							</ul>
 						</div>
-						<div className='ml w-[196px] max-pc:w-[136px] max-lg:w-[96px]'>
+						<div className='ml w-full'>
 							<h5 className='font-medium text-sm mb-3'>About</h5>
 							<ul className='flex flex-col gap-2'>
 								<li>
 									<SipleLink
-										className='font-medium text-sm opacity-50 max-lg:text-xs max-md:text-sm'
+										className='font-medium text-sm opacity-50 max-xl:text-xs max-md:text-sm'
 										href={'/'}
 									>
 										Help Center
@@ -114,7 +114,7 @@ export const Footer: FC<FooterProps> = () => {
 								</li>
 								<li>
 									<SipleLink
-										className='font-medium text-sm opacity-50 max-lg:text-xs max-md:text-sm'
+										className='font-medium text-sm opacity-50 max-xl:text-xs max-md:text-sm'
 										href={'/'}
 									>
 										Support
@@ -122,7 +122,7 @@ export const Footer: FC<FooterProps> = () => {
 								</li>
 								<li>
 									<SipleLink
-										className='font-medium text-sm opacity-50 max-lg:text-xs max-md:text-sm'
+										className='font-medium text-sm opacity-50 max-xl:text-xs max-md:text-sm'
 										href={'/'}
 									>
 										Career
@@ -130,12 +130,12 @@ export const Footer: FC<FooterProps> = () => {
 								</li>
 							</ul>
 						</div>
-						<div className='ml w-[196px] max-pc:w-[136px] max-lg:w-[96px]'>
+						<div className='ml w-full'>
 							<h5 className='font-medium text-sm mb-3'>Developers</h5>
 							<ul className='flex flex-col gap-2'>
 								<li>
 									<SipleLink
-										className='font-medium text-sm opacity-50 max-lg:text-xs max-md:text-sm'
+										className='font-medium text-sm opacity-50 max-xl:text-xs max-md:text-sm'
 										href={'/'}
 									>
 										Analiytics
@@ -143,7 +143,7 @@ export const Footer: FC<FooterProps> = () => {
 								</li>
 								<li>
 									<SipleLink
-										className='font-medium text-sm opacity-50 max-lg:text-xs max-md:text-sm'
+										className='font-medium text-sm opacity-50 max-xl:text-xs max-md:text-sm'
 										href={'/'}
 									>
 										Documentation
@@ -151,7 +151,7 @@ export const Footer: FC<FooterProps> = () => {
 								</li>
 								<li>
 									<SipleLink
-										className='font-medium text-sm opacity-50 max-lg:text-xs max-md:text-sm'
+										className='font-medium text-sm opacity-50 max-xl:text-xs max-md:text-sm'
 										href={'/'}
 									>
 										Github
@@ -162,20 +162,20 @@ export const Footer: FC<FooterProps> = () => {
 					</div>
 					<MobileAccordion />
 				</div>
-				<div className='flex max-md:flex-col max-md:justify-start'>
-					<span className='font-medium w-[416px] max-pc:w-[296px] text-sm opacity-50 max-lg:text-xs max-md:text-sm block text-nowrap'>
+				<div className='flex max-md:flex-col gap-6 max-md:gap-0 max-md:justify-start'>
+					<span className='font-medium basis-4/12 max-lg:basis-5/12 text-sm opacity-50 max-xl:text-xs max-md:text-sm block text-nowrap'>
 						© {new Date().getFullYear()} Stephen King. All rights reserved.
 					</span>
-					<div className='flex mr-auto justify-between max-lg:w-full max-md:mt-[18px] '>
+					<div className='flex mr-auto basis-9/12 max-lg:basis-8/12 max-xl:w-full max-md:mt-[18px] '>
 						<SipleLink
 							href={'/'}
-							className='font-medium max-md:!text-left max-lg:text-right text-sm opacity-50 max-lg:text-xs max-md:text-sm max ml-6 text-nowrap w-[196px] max-pc:w-[136px] max-lg:w-[100%] max-md:ml-0'
+							className='font-medium max-md:!text-left max-xl:text-right text-sm opacity-50 max-xl:text-xs max-md:text-sm max text-nowrap  max-md:ml-0 max-lg:w-full'
 						>
 							Terms of Service
 						</SipleLink>
 						<SipleLink
 							href={'/'}
-							className='font-medium max-md:!text-left max-lg:text-right max-lg:mr-6 text-sm opacity-50 max-lg:text-xs max-md:text-sm ml-6 text-nowrap w-[196px] max-pc:w-[136px] max-lg:w-[100%]'
+							className='font-medium max-md:!text-left max-xl:text-right max-xl:mr-6 text-sm opacity-50 max-xl:text-xs max-md:text-sm ml-6 text-nowrap   max-lg:w-full'
 						>
 							Privacy Policy
 						</SipleLink>
@@ -331,7 +331,7 @@ const MobileAccordion = () => {
 					className='bg-inherit p-0 m-0 text-absolute/100 !min-h-0'
 					classes={{
 						content: '!m-0',
-						expandIconWrapper: '!transition-none'
+						expandIconWrapper: '!transition-none',
 					}}
 				>
 					<Typography className='bg-inherit !m-0 min-h-0 text-sm font-medium'>About</Typography>
@@ -385,7 +385,6 @@ const MobileAccordion = () => {
 					classes={{
 						content: '!m-0',
 						expandIconWrapper: '!transition-none',
-						
 					}}
 				>
 					<Typography className='bg-inherit !m-0 min-h-0 text-sm font-medium'>

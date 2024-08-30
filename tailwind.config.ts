@@ -6,20 +6,30 @@ const config: Config = {
 		'./src/**/*.{js,ts,jsx,tsx,mdx}',
 	],
 	theme: {
+		mode: 'jit',
 		extend: {
 			container: {
 				center: true,
 				padding: {
 					DEFAULT: '12px',
+					sm: '16px',
 				},
 			},
 
+			// screens: {
+			// 	xs: '480px',
+			// 	md: '768px',
+			// 	lg: '1140px',
+			// 	pc: '1320px',
+			// },
 			screens: {
-				xs: '480px',
-				md: '768px',
-				lg: '1024px',
-				pc: '1320px',
+				'sm': '520px',
+				'md': '768px',
+				'lg': '992px',
+				'pc': '1200px',
+				'2xl': '1330px',
 			},
+
 			colors: {
 				'bg': '#232323',
 
@@ -43,13 +53,12 @@ const config: Config = {
 		},
 	},
 	plugins: [
-		//@ts-ignore
-		function ({ addComponents }) {
+		// @ts-ignore
+		function ({ addComponents, theme }) {
 			addComponents({
 				'.container': {
-					'maxWidth': '351px',
-					'@screen xs': {
-						maxWidth: '351px',
+					'@screen sm': {
+						maxWidth: '480px',
 					},
 					'@screen md': {
 						maxWidth: '720px',
@@ -58,7 +67,10 @@ const config: Config = {
 						maxWidth: '960px',
 					},
 					'@screen pc': {
-						maxWidth: '1320px',
+						maxWidth: '1140px',
+					},
+					'@screen 2xl': {
+						maxWidth: '1298px',
 					},
 				},
 			});

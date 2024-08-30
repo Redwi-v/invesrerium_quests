@@ -76,7 +76,7 @@ export const QuestsPageView: FC<IQuestsPageViewProps> = props => {
 	const { xpCheckbox, tokenCheckbox, nftCheckbox } = stateReward;
 
 	return (
-		<div className='custom-container'>
+		<div className='container'>
 			<div className='pt-[42px]'>
 				<div className='flex justify-between max-md:flex-wrap'>
 					<H2 className='max-md:w-full max-md:mb-[26px]'>Quests</H2>
