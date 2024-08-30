@@ -17,7 +17,7 @@ export const Footer: FC<FooterProps> = () => {
 	return (
 		<div className='bg-tone/200'>
 			<div className='container py-7'>
-				<div className='flex justify-between border-b pb-6 mb-6 border-border max-md:flex-col max-xl:gap-6'>
+				<div className='flex gap-6 justify-between border-b pb-6 mb-6 border-border max-md:flex-col max-xl:gap-6'>
 					<div className='basis-4/12'>
 						<h4 className='font-semibold text-xl leading-[100%]'>
 							Investerium <br className='' /> Quests
@@ -162,7 +162,7 @@ export const Footer: FC<FooterProps> = () => {
 					</div>
 					<MobileAccordion />
 				</div>
-				<div className='flex max-md:flex-col gap-6 max-md:gap-0 max-md:justify-start'>
+				<div className='flex max-md:flex-col gap-6 max-lg:!gap-0 max-md:gap-[18px] max-md:justify-start'>
 					<span className='font-medium basis-4/12 max-lg:basis-5/12 text-sm opacity-50 max-xl:text-xs max-md:text-sm block text-nowrap'>
 						© {new Date().getFullYear()} Stephen King. All rights reserved.
 					</span>
