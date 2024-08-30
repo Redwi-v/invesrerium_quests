@@ -10,7 +10,7 @@ const UserStats: FC<IUserStatsProps> = props => {
 	const { isOpen, setOpen } = useRewardPopupStore(state => state);
 
 	return (
-		<div className='custom-container mt-[42px]'>
+		<div className='container mt-[42px]'>
 			<div className='border-b border-absolute/100 border-opacity-15 pb-[42px] flex justify-between items-center'>
 				<div className='flex gap-[24px] items-center'>
 					<Avatar

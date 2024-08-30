@@ -13,6 +13,11 @@ const buttonStyles: { [key: string]: string } = {
 	purple: 'bg-blue/400 hover:!bg-blue/500',
 	gray: '!bg-absolute/100 !bg-opacity-[0.07] hover:!bg-opacity-[0.15]',
 };
+const buttonSizes: { [key: string]: string } = {
+	green: 'with-icon',
+	purple: 'with-icon-reverse',
+	gray: '',
+};
 
 export const Button: FC<ButtonProps & MuiButtonProps> = ({ children, ...muiProps }) => {
 	const { className, buttonStyle, ...props } = muiProps;
@@ -22,13 +27,14 @@ export const Button: FC<ButtonProps & MuiButtonProps> = ({ children, ...muiProps
 	return (
 		<MuiButton
 			className={`
-				${tailwindStyles} 
-        ${cssIf(className)}
+	
        text-absolute/100
       	normal-case rounded-xl px-[18px]
 				duration-500
        	py-3 text-base max-md:text-sm max-md:px-3 max-md:py-[10px]
        	font-semibold 
+				${tailwindStyles} 
+        ${cssIf(className)}
        `}
 			{...props}
 		>

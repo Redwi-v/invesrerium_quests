@@ -19,6 +19,7 @@ import { QuestCard } from '@/entities/quest';
 import { useWindowSize } from '../../../shared/hooks/scripts/use-window-size';
 import { Store } from 'react-notifications-component';
 import { SuccessNotification } from '@/shared/ui-kit/notifications/indext';
+import CopyButton from '@/shared/ui-kit/copy-button/ui/copy-button';
 
 interface IProfilePageViewProps {}
 
@@ -61,57 +62,29 @@ const ProfilePageView: FC<IProfilePageViewProps> = props => {
 		setValue(newValue);
 	};
 
-	const copyAddress = (e: any) => {
-		e.stopPropagation();
-		navigator.clipboard.writeText('адрес кошелька полный').then(() => {
-			Store.addNotification({
-				insert: 'top',
-				title: 'Copied',
-				container: 'top-right',
-				content: SuccessNotification,
-				animationIn: ['animate__animated animate__bounceInRight'], // `animate.css v4` classes
-				animationOut: [''],
-				dismiss: {
-					duration: 5000,
-					click: false,
-				},
-			});
-		});
-	};
-
 	const windowWidth = useWindowSize();
 
 	return (
 		<div>
-			<div className='custom-container relative'>
-				<Button
-					buttonStyle='gray'
-					href='/profile/edit'
-					className='flex items-center gap-2 absolute top-[42px] right-[14px] max-pc:hidden !py-[12px] !pl-[12px] !pr-5'
-				>
-					<PlusCircle />
-					<span>Edit Profile</span>
-				</Button>
-
+			<div className='container relative'>
 				<div className='flex flex-col items-center pt-[42px]'>
 					<div className='block absolute -top-[160px] -z-[1] bg-blue/400 blur-[150px] w-[300px] h-[300px] rounded-full' />
 					<Avatar className='w-[196px] h-[196px] max-pc:w-[136px] max-pc:h-[136px]' />
-					<button onClick={copyAddress}>
-						<IconBox className='!bg-absolute/100 !rounded-2xl !p-[4px] !pr-3 !bg-opacity-[0.07] mt-6 flex items-center gap-[6px]'>
-							<Button
-								onClick={copyAddress}
-								buttonStyle='gray'
-								className='!bg-opacity-[0] !p-[10px] min-w-0 hover:!bg-opacity-[0.07] !rounded-xl'
-							>
-								<CopyIcon className='w-5 h-5' />
-							</Button>
-							<span className='font-bold text-base opacity-50'>OxB046...0a4b</span>
-						</IconBox>
-					</button>
+					<div className='flex items-center gap-2 mt-6'>
+						<CopyButton />
+						<Button
+							buttonStyle='gray'
+							href='/profile/edit'
+							className='flex items-center gap-[5px] !py-[12px] !pl-[8px] !pr-[18px]'
+						>
+							<PlusCircle className='w-6 h-6' />
+							<span>Edit Profile</span>
+						</Button>
+					</div>
 
 					<div className='mt-2 w-[416px] max-md:w-full'>
 						<div className='flex items-center'>
-							<div className=' relative z-10 min-w-[44px] h-[44px] bg-blue/400 flex justify-center items-center font-bold text-lg rounded-full border-[4px] border-bg'>
+							<div className=' relative z-10 min-w-[44px] h-[44px] bg-blue/400 flex justify-center items-center font-bold text-lg rounded-full border-[3px] border-bg'>
 								6
 							</div>
 							<div className='relative bg-absolute/700 rounded-[100px] w-[416px] h-3 -ml-3 overflow-hidden max-md:w-full'>
@@ -131,8 +104,8 @@ const ProfilePageView: FC<IProfilePageViewProps> = props => {
 						</IconBox>
 						<div className='flex flex-col gap-[6px] ml-2'>
 							<span className='text-sm font-semibold opacity-50'>GM Streak</span>
-							<span className='font-bold text-lg'>
-								6 <span className='font-medium opacity-50'>d</span>
+							<span className='font-bold text-lg leading-[26px]'>
+								6 <span className='font-medium opacity-50 '>d</span>
 							</span>
 						</div>
 					</IconBox>
@@ -142,7 +115,7 @@ const ProfilePageView: FC<IProfilePageViewProps> = props => {
 						</IconBox>
 						<div className='flex flex-col gap-[6px] ml-2'>
 							<span className='text-sm font-semibold opacity-50'>Quests</span>
-							<span className='font-bold text-lg'>124</span>
+							<span className='font-bold text-lg leading-[26px]'>124</span>
 						</div>
 					</IconBox>
 					<IconBox className='!bg-absolute/800 flex items-center w-full !p-[12px] !rounded-2xl '>
@@ -151,7 +124,7 @@ const ProfilePageView: FC<IProfilePageViewProps> = props => {
 						</IconBox>
 						<div className='flex flex-col gap-[6px] ml-2'>
 							<span className='text-sm font-semibold opacity-50'>Rewards</span>
-							<span className='font-bold text-lg'>$ 125.09</span>
+							<span className='font-bold text-lg leading-[26px]'>$ 125.09</span>
 						</div>
 					</IconBox>
 					<IconBox className='!bg-absolute/800 flex items-center w-full !p-[12px] !rounded-2xl '>
@@ -160,7 +133,7 @@ const ProfilePageView: FC<IProfilePageViewProps> = props => {
 						</IconBox>
 						<div className='flex flex-col gap-[6px] ml-2'>
 							<span className='text-sm font-semibold opacity-50'>Referrals</span>
-							<span className='font-bold text-lg'>6</span>
+							<span className='font-bold text-lg leading-[26px]'>6</span>
 						</div>
 					</IconBox>
 				</div>

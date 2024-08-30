@@ -20,10 +20,11 @@ import { KeyIcon } from '@/shared/images/ui/key';
 import { NftIcon } from '@/shared/images/ui/nft';
 import { SmallArrow } from '@/shared/images/ui/smallArrow';
 import { Avatars, Button, H1, H2, P, Participants, Tag } from '@/shared/ui-kit';
+import CopyButton from '@/shared/ui-kit/copy-button/ui/copy-button';
 import { SuccessNotification } from '@/shared/ui-kit/notifications/indext';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import { Store } from 'react-notifications-component';
 interface IQuestPageViewProps {}
 
@@ -43,6 +44,7 @@ export const QuestPageView: FC<IQuestPageViewProps> = props => {
 	};
 
 	const [communityHovered, setCommunityHovered] = useState(false);
+	const questRef = useRef<HTMLDivElement | null>(null);
 
 	useEffect(() => {
 		if (!document) return;
@@ -53,6 +55,43 @@ export const QuestPageView: FC<IQuestPageViewProps> = props => {
 			document.body.style.overflow = '';
 		}
 	}, [questIsOpen, windowSize]);
+
+	useEffect(() => {
+		const closeModal = () => {
+			setQuestIsOpen(false);
+		};
+
+		const eskEvent = (e: globalThis.KeyboardEvent) => {
+			if (e.code === 'Escape') {
+				setQuestIsOpen(false);
+			}
+		};
+
+		const questMove = () => {
+			console.log('work');
+			if (!questRef?.current?.clientHeight || window.innerWidth < 768) return;
+
+			console.log(questRef?.current?.clientHeight);
+			console.log(window.innerHeight);
+
+			if (questRef?.current?.clientHeight > window.innerHeight) {
+				questRef.current.style.top =
+					-questRef?.current?.clientHeight + window.innerHeight - 10 + 'px';
+			} else {
+				questRef.current.style.top = '110px';
+			}
+		};
+
+		window.addEventListener('resize', closeModal);
+		window.addEventListener('resize', questMove);
+		window.addEventListener('scroll', questMove);
+		window.addEventListener('keyup', eskEvent);
+
+		return () => {
+			window.removeEventListener('resize', closeModal);
+			window.removeEventListener('keyup', eskEvent);
+		};
+	}, []);
 
 	const copyLink = (e: any) => {
 		e.stopPropagation();
@@ -74,21 +113,24 @@ export const QuestPageView: FC<IQuestPageViewProps> = props => {
 
 	return (
 		<>
-			<div className={`custom-container `}>
+			<div className={`container `}>
 				<div className='flex relative gap-6 pt-6 pb-[62px] max-pc:pb-[42px]'>
 					<div
-						className={`w-full max-w-[856px]  md:sticky md:h-fit top-[90px] max-md:opacity-0 max-md:-z-10 max-md:fixed max-md:left-0 
+						ref={ref => {
+							if (ref) questRef.current = ref;
+						}}
+						className={`w-full max-w-[856px]  md:sticky  md:h-fit top-[50px] max-md:opacity-0 max-md:-z-10 max-md:fixed max-md:left-0 
 							 max-md:bottom-0  max-md:top-0 max-md:bg-bg max-md:overflow-auto
 							${
 								questIsOpen &&
 								windowSize.width < 768 &&
-								'!flex max-md:opacity-100 flex-col overflow-y-auto max-md:!z-[2000]'
+								'!flex max-md:opacity-100 flex-col overflow-y-auto max-md:!z-[2000] !top-0'
 							}`}
 					>
 						<div className='max-md:!overflow-auto '>
 							{questIsOpen && windowSize.width < 768 && (
 								<div className=' py-2 border-b border-border'>
-									<div className='custom-container flex justify-between items-center'>
+									<div className='container flex justify-between items-center'>
 										<div className='font-bold text-xl'>Step #{step}</div>
 										<button
 											className='p-[10px] bg bg-absolute/100 bg-opacity-[0.07] rounded-xl'
@@ -101,10 +143,10 @@ export const QuestPageView: FC<IQuestPageViewProps> = props => {
 							)}
 							<div
 								className={`w-full relative flex bg-absolute/800 
-								min-h-[728px] rounded-[32px] px-[82px] justify-center
+								min-h-[728px] rounded-[32px] px-[82px] py-[80px] justify-center
 						 		items-center text-center max-pc:p-6 overflow-hidden
-								max-md:top-0 max-md:bg-transparent pt-[102px] max-pc:pt-[87.5px] max-lg:pt-[24px]
-								${questIsOpen && windowSize.width < 768 && 'custom-container'}
+								max-md:top-0 max-md:bg-transparent  max-pc:pt-[87.5px] max-lg:pt-[24px]
+								${questIsOpen && windowSize.width < 768 && 'container'}
 							`}
 							>
 								<Image
@@ -133,7 +175,7 @@ export const QuestPageView: FC<IQuestPageViewProps> = props => {
 											</div>
 										</div>
 									</div>
-									<ul className='mt-8 flex flex-col pb-14 max-md:pb-0 max-lg:pb-5 gap-2 max-lg:w-full max-lg:[&>li]:w-full'>
+									<ul className='mt-8 flex flex-col max-md:pb-0 max-lg:pb-5 gap-2 max-lg:w-full max-lg:[&>li]:w-full'>
 										<li className='flex justify-between bg-absolute/100 bg-opacity-[0.07] py-[14px] px-3 rounded-2xl'>
 											<span className='font-semibold text-base'>Credential</span>
 											<PolygonImage className='w-6 h-6' />
@@ -177,16 +219,16 @@ export const QuestPageView: FC<IQuestPageViewProps> = props => {
 						items-center max-pc:grid max-pc:grid-cols-2 
 						max-pc:grid-rows-2 max-pc:gap-0  max-pc:mt-0
 						max-pc:auto-rows-min max-md:mt-auto max-md:pb-3 ${
-							questIsOpen && windowSize.width < 768 && 'custom-container'
+							questIsOpen && windowSize.width < 768 && 'container'
 						}`}
 							>
 								<Button
 									buttonStyle='gray'
 									onClick={prevStep}
-									className='  flex items-center gap-2 !max-w-[175px] w-full max-pc:!max-w-[120px] max-pc:row-start-2 max-md:w-fit'
+									className='  flex items-center !py-[12px] gap-2 !max-w-[175px] w-full max-pc:!max-w-[120px] max-pc:row-start-2'
 								>
-									<ArrowIcon />
-									<span>Prev</span>
+									<ArrowIcon className='w-6 h-6' />
+									<span className='text-base'>Prev</span>
 								</Button>
 								<div className='flex w-full gap-2 max-pc:col-span-2'>
 									{Array.from(Array(steps).keys()).map(index => (
@@ -201,14 +243,14 @@ export const QuestPageView: FC<IQuestPageViewProps> = props => {
 									<Button
 										buttonStyle='gray'
 										onClick={nextStep}
-										className='!bg-absolute/100 !bg-opacity-[0.07]  flex items-center gap-2 !max-w-[70px] w-full'
+										className='!bg-absolute/100 !bg-opacity-[0.07] !py-[12px] flex items-center gap-2 !max-w-[70px] w-full'
 									>
-										<span>Skip</span>
+										<span className='text-base'>Skip</span>
 									</Button>
 									<Button
 										buttonStyle='purple'
 										onClick={nextStep}
-										className='flex items-center !px-[10px] !pl-[18px] gap-2 !max-w-[175px] w-full max-pc:!max-w-[120px]'
+										className='flex items-center text-base !px-[10px] !py-[12px] !pl-[18px] gap-2 !max-w-[175px] w-full max-pc:!max-w-[120px]'
 									>
 										Next
 										<ArrowIcon className='rotate-180 min-w-6 h-6' />
@@ -316,7 +358,7 @@ export const QuestPageView: FC<IQuestPageViewProps> = props => {
 								</span>
 								<span className='font-semibold text-sm opacity-15 ml-auto flex items-center gap-2'>
 									Optional
-									<KeyIcon />
+									<KeyIcon className='[&>path]:fill-absolute/100' />
 								</span>
 							</button>
 						</ul>
@@ -333,7 +375,7 @@ export const QuestPageView: FC<IQuestPageViewProps> = props => {
 
 							<div className='flex justify-center flex-col gap-3'>
 								<span className='text-center font-medium text-sm opacity-50'>Rewards</span>
-								<div className='flex gap-3 items-center'>
+								<div className='flex gap-3 items-center flex-wrap justify-center'>
 									<PolygonImage className='w-6 h-6' />
 									<NftIcon className='w-6 h-6' />
 									<span className='w-[1px] h-4 bg-blue/400' />
@@ -381,14 +423,23 @@ export const QuestPageView: FC<IQuestPageViewProps> = props => {
 								<TelegramIcon />
 								<span>Share to TG</span>
 							</Button>
-							<Button
+							{/* <Button
 								onClick={copyLink}
 								buttonStyle='gray'
 								className='w-full flex items-center gap-2 py-[14px]'
 							>
-								<CopyIcon />
-								<span>Copy link</span>
-							</Button>
+								
+							</Button> */}
+							<CopyButton
+								className='w-full flex items-center gap-2 py-[14px] !!p-0 !!px-0 !rounded-xl [&>span]:opacity-100'
+								text={
+									<div className='flex items-center gap-2'>
+										<CopyIcon />
+										<span>Copy link</span>
+									</div>
+								}
+								iconClassName='pointer-events-none !p-0 [&>svg]:w-6 [&>svg]:h-6'
+							/>
 						</div>
 					</div>
 				</div>
@@ -397,10 +448,10 @@ export const QuestPageView: FC<IQuestPageViewProps> = props => {
 				<Button
 					buttonStyle='purple'
 					onClick={() => setQuestIsOpen(true)}
-					className=' !bg-blue/400 max-w-[351px] !bg-opacity-100 font-semibold text-base w-full flex items-center gap-2'
+					className=' !bg-blue/400 max-w-[351px] !py-3 !bg-opacity-100 font-semibold  w-full flex items-center gap-2'
 				>
-					<span>Start Quest </span>
-					<ArrowIcon className='rotate-180' />
+					<span className='text-base'>Start Quest </span>
+					<ArrowIcon className='rotate-180 w-6 h-6' />
 				</Button>
 			</div>
 		</>

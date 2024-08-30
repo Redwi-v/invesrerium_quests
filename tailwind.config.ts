@@ -7,11 +7,18 @@ const config: Config = {
 	],
 	theme: {
 		extend: {
+			container: {
+				center: true,
+				padding: {
+					DEFAULT: '12px',
+				},
+			},
+
 			screens: {
 				xs: '480px',
 				md: '768px',
 				lg: '1024px',
-				pc: '1328px',
+				pc: '1320px',
 			},
 			colors: {
 				'bg': '#232323',
@@ -35,6 +42,27 @@ const config: Config = {
 			},
 		},
 	},
-	plugins: [],
+	plugins: [
+		//@ts-ignore
+		function ({ addComponents }) {
+			addComponents({
+				'.container': {
+					'maxWidth': '351px',
+					'@screen xs': {
+						maxWidth: '351px',
+					},
+					'@screen md': {
+						maxWidth: '720px',
+					},
+					'@screen lg': {
+						maxWidth: '960px',
+					},
+					'@screen pc': {
+						maxWidth: '1320px',
+					},
+				},
+			});
+		},
+	],
 };
 export default config;

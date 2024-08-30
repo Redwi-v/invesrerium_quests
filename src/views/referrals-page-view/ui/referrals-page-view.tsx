@@ -18,7 +18,7 @@ const ReferralsPageView: FC<IReferralsPageViewProps> = props => {
 
 	return (
 		<div>
-			<div className='custom-container mt-6 pb-[62px] max-lg:pb-[42px]'>
+			<div className='container mt-6 pb-[62px] max-lg:pb-[42px]'>
 				<div className='flex gap-6'>
 					<div className='w-full bg-absolute/800 rounded-3xl overflow-hidden flex h-[600px]'>
 						<div className='w-full px-[62px] flex justify-center items-center'>

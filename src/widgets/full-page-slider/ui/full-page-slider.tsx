@@ -28,7 +28,7 @@ const FullPageSlider: FC<FullPageSliderProps> = () => {
 	return (
 		<div className='overflow-hidden relative'>
 			<Spiral className='absolute -rotate-90 -right-[213px] top-[12px] max-pc:hidden' />
-			<div className='custom-container mt-[42px] pb-[62px] relative max-md:!mt-6'>
+			<div className='container mt-[42px] pb-[62px] relative max-md:!mt-6'>
 				<Spiral className='absolute rotate-90 -left-[359px] -top-[44px] max-pc:hidden' />
 
 				<div className='flex justify-between'>

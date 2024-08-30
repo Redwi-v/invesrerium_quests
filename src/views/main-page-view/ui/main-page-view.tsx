@@ -25,7 +25,7 @@ export const MainPageView: FC<MainPageViewProps> = () => {
 				mainTitle='In progress'
 				className=''
 			/>
-			<div className='custom-container max-md:w-auto max-md:px-3'>
+			<div className='container max-md:w-auto max-md:px-3'>
 				<span className='mb-[62px] border-b border-absolute/100 border-opacity-15 block max-md:mb-8'></span>
 			</div>
 			<ListSlider mainTitle='New Quests' />

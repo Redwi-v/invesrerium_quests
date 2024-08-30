@@ -16,7 +16,7 @@ import {
 import { Button, Checkbox, H2, Input, P } from '@/shared/ui-kit';
 import { CheckmarksAccordionSelect } from '@/shared/ui-kit/checkmarks-accordion-select';
 import { SelectMenu } from '@/shared/ui-kit/select-menu/ui/select-menu';
-import { FC, PropsWithChildren, ReactElement, useState } from 'react';
+import { FC, PropsWithChildren, ReactElement, useEffect, useState } from 'react';
 interface IQuestsPageViewProps {}
 
 export const QuestsPageView: FC<IQuestsPageViewProps> = props => {
@@ -36,6 +36,26 @@ export const QuestsPageView: FC<IQuestsPageViewProps> = props => {
 		intermediante: false,
 		advanced: false,
 	});
+
+	useEffect(() => {
+		const closeModal = () => {
+			setFiltersIsOpen(false);
+		};
+
+		const eskEvent = (e: globalThis.KeyboardEvent) => {
+			if (e.code === 'Escape') {
+				setFiltersIsOpen(false);
+			}
+		};
+
+		window.addEventListener('resize', closeModal);
+		window.addEventListener('keyup', eskEvent);
+
+		return () => {
+			window.removeEventListener('resize', closeModal);
+			window.removeEventListener('keyup', eskEvent);
+		};
+	}, []);
 
 	const clearBooleanState = (object1: { [key: string]: boolean }) => {
 		const object: any = {};

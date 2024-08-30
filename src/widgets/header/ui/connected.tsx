@@ -16,14 +16,24 @@ const ConnectedHeaderContent: FC<ConnectedHeaderContentProps> = ({}) => {
 		const closeModal = () => {
 			setMenuIsOpen(false);
 		};
+		const eskEvent = (e: globalThis.KeyboardEvent) => {
+			console.log(e.code === 'Escape');
+
+			if (e.code === 'Escape') {
+				closeModal();
+			}
+		};
+
 		window.addEventListener('scroll', closeModal);
 		window.addEventListener('resize', closeModal);
 		window.addEventListener('click', closeModal);
+		window.addEventListener('keyup', eskEvent);
 
 		return () => {
 			window.removeEventListener('scroll', closeModal);
 			window.removeEventListener('resize', closeModal);
 			window.removeEventListener('click', closeModal);
+			window.removeEventListener('keyup', eskEvent);
 		};
 	}, []);
 

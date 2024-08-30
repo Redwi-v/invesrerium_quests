@@ -8,8 +8,6 @@ import 'swiper/css';
 import WebApp from '@twa-dev/sdk';
 import 'react-circular-progressbar/dist/styles.css';
 
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 import { inter } from '../fonts';
 import Providers from '../progress.bar';
 import { Suspense, useEffect } from 'react';

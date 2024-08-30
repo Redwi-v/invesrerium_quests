@@ -9,6 +9,7 @@ import {
 	TwitterIcon,
 } from '@/shared/images';
 import { Button, H2 } from '@/shared/ui-kit';
+import CopyButton from '@/shared/ui-kit/copy-button/ui/copy-button';
 import { SuccessNotification } from '@/shared/ui-kit/notifications/indext';
 import { Avatar } from '@mui/material';
 import { FC, useRef, useState } from 'react';
@@ -61,7 +62,7 @@ const ProfilePageEditView: FC<IProfilePageEditViewProps> = props => {
 
 	return (
 		<div className='mt-[42px] bottom-[62px] max-pc:bottom-[42px] max-md:mt-[24px]'>
-			<div className='custom-container !max-w-[857px] min-[1024px]:p-0'>
+			<div className='container !max-w-[857px] min-[1024px]:p-0'>
 				<div className='flex justify-between items-center max-md:flex-col max-md:items-stretch'>
 					<div className='flex items-center gap-[24px] max-md:order-2'>
 						<div className='relative w-[112px] h-[112px] max-md:w-[82px] max-md:h-[82px]'>
@@ -90,18 +91,7 @@ const ProfilePageEditView: FC<IProfilePageEditViewProps> = props => {
 								</span>
 							</label>
 						</div>
-						<button onClick={copyAddress}>
-							<div className='p-[4px] pr-[12px] !bg-absolute/100 !bg-opacity-[0.07] flex items-center gap-[6px] !rounded-2xl'>
-								<Button
-									onClick={copyAddress}
-									buttonStyle='gray'
-									className='!p-[10px] !bg-opacity-[0] !min-w-0 hover:!bg-opacity-[0.07]'
-								>
-									<CopyIcon className='w-5 h-5' />
-								</Button>
-								<span className='text-base opacity-50 font-bold'>OxB046...0a4b</span>
-							</div>
-						</button>
+						<CopyButton />
 					</div>
 					<Button
 						href={'/profile'}
@@ -121,7 +111,12 @@ const ProfilePageEditView: FC<IProfilePageEditViewProps> = props => {
 						</span>
 					</div>
 
-					<Button buttonStyle='purple'>Connect Wallet</Button>
+					<Button
+						buttonStyle='purple'
+						className='!px-[18px] !py-3 !text-base'
+					>
+						Connect Wallet
+					</Button>
 				</div>
 
 				<ul className='mt-6 flex flex-col gap-2 '>
@@ -138,7 +133,7 @@ const ProfilePageEditView: FC<IProfilePageEditViewProps> = props => {
                       -bottom-[3px] border-bg border-[3px] bg-green/400'
 										/>
 									</div>
-									<div className={`flex flex-col  ${index === 0 && 'max-w-[85%]'}`}>
+									<div className={`flex flex-col  ${index === 0 && 'max-w-[80%]'}`}>
 										<span className='text-base font-medium flex items-center'>
 											<span className={`truncate`}>Primary address</span>
 											{index === 0 && (
@@ -153,7 +148,7 @@ const ProfilePageEditView: FC<IProfilePageEditViewProps> = props => {
 
 								<Button
 									buttonStyle='gray'
-									className='!bg-absolute/100 !bg-opacity-[0.07] py-[12px] min-w-0 px-3 flex items-center gap-2 w-fit'
+									className='!bg-absolute/100 !bg-opacity-[0.07] !py-[12px] min-w-0 !px-3 flex items-center gap-2 w-fit !text-base'
 								>
 									Disconnect
 								</Button>
@@ -164,7 +159,7 @@ const ProfilePageEditView: FC<IProfilePageEditViewProps> = props => {
 
 				<h2 className='text-2xl font-bold  mt-[62px] max-md:mt-[42px]'>Social Profiles</h2>
 
-				<ul className='mt-6 pb-[62px] max-pc:pb-[42px] flex gap-6 max-lg:grid max-lg:grid-cols-2 max-lg:gap-3'>
+				<ul className='mt-6 pb-[62px] max-pc:pb-[42px] flex gap-6 max-md:grid max-md:grid-cols-2 max-md:gap-3'>
 					<li className='p-4 pr-5 !pt-6 bg-absolute/800 rounded-3xl text-center w-full'>
 						<div className='flex gap-5 mx-auto w-fit items-center'>
 							<TwitterIcon />

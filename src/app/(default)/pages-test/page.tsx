@@ -40,7 +40,7 @@ const Page: FC<IPageProps> = props => {
 	];
 
 	return (
-		<div className='custom-container py-8'>
+		<div className='container py-8'>
 			<span className='mb-2 block'>pages: {pages.length}/15</span>
 			<ul className='grid grid-cols-3  gap-4 '>
 				{pages.map(item => (

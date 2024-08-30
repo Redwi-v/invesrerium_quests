@@ -12,7 +12,7 @@ const NotConnectedHeaderContent: FC<NotConnectedHeaderContentProps> = ({ setUser
 		<div className='flex'>
 			<Button
 				buttonStyle='purple'
-				className=''
+				className='font-semibold'
 				onClick={() => setUser(true)}
 			>
 				Connect Wallet
