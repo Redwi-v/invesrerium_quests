@@ -9,6 +9,7 @@
 }
 
 body {
+
   overflow-x: hidden;
   @apply max-md:min-w-[375px]
 
@@ -40,22 +41,7 @@ body {
   }
 }
 
-.custom-container {
-
-  @apply
-
-    mx-auto px-4 w-[1328px]
-    max-pc:w-[936px]
-    max-pc:!px-0
-    max-lg:w-[696px]
-    max-md:w-[375px]
-    max-md:!px-[12px]
-
-  ;
-
-}
-
-button, a, span {
+button, a, span, input, p {
   font-family: inherit !important;
 }
 
