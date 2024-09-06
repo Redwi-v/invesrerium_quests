@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import 'animate.css';
+
+*{
+  box-sizing: border-box;
+  outline: none !important;
+}
+
+html, body {
+  min-height: 100%;
+}
+
+body {
+  background: #232323;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+.rnc__notification-container--top-right {
+  width: fit-content !important;
+  min-width: auto !important;
+}
+.rnc__notification {
+  animation: animateNoti 1s !important;
+  width: fit-content !important;
+
+}
+
+.rnc__notification-item {
+  box-shadow: none !important;
+}
+
+@keyframes animateNoti {
+  0%{
+    opacity: 0;
+  }
+
+  100%{
+    opacity: 1;
+  }
+}
+
+button, a, span, input, p {
+  font-family: inherit !important;
+}
+
+.main {
+  @apply pt-[84px] max-md:pt-[60px] flex flex-col w-full h-full;
+
+  .content {
+    display: block;
+    min-height: calc(100vh - 277px);
+  }
+}
+
+.transition {
+  transition-duration: 500ms;
+}
